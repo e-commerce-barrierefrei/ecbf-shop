@@ -1,0 +1,19 @@
+<div class="header-layout">
+  <a class="logo" href="/" aria-labelledby="logo-alt">
+    <include src="partials/logo.html"></include>
+  </a>
+
+  <!-- include ist kein HTML-Element, nur ein Partial-Helfer! -->
+  <include src="partials/search-main.html"></include>
+  <include src="partials/warenkorb.html"></include>
+
+  <button class="accountbutton">Mein Konto</button>
+
+  <include src="partials/nav-main.html" locals='{
+        "text": "Hauptmenü"
+    }'></include>
+</div>
+
+
+<!--    <include src="partials/nav-main-2.html"></include>-->
+

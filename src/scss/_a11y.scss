@@ -1,0 +1,32 @@
+.aufklapp-button[aria-expanded="false"] + .aufklapp-bereich {
+  display: none;
+}
+
+/* Fokusstile, wenn :focus-visible nicht unterstützt wird */
+*:focus {
+  outline: 2px solid red;
+  outline-offset: 0.25em;
+}
+
+@supports selector(:focus-visible) {
+  /* Reset von :focus, wenn :focus-visible unterstützt wird  */
+  *:focus {
+    outline: none;
+  }
+
+  /* Fokusstile, wenn :focus-visible unterstützt wird */
+  *:focus-visible {
+    outline: 2px solid blue;
+    outline-offset: 0.25em;
+  }
+}
+
+.visually-hidden {
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

@@ -1,0 +1,33 @@
+<button data-cart-modal-trigger>
+  Mein Warenkorb
+</button>
+
+<dialog
+  id="cart-modal"
+  aria-labelledby="cart-modal-title"
+  class="dialog-container"
+>
+  <div class="dialog-overlay" data-a11y-dialog-hide></div>
+  <div class="dialog-content fifty">
+
+    <form method="dialog">
+      <button data-a11y-dialog-hide aria-label="Dialog schließen">
+        &times;
+      </button>
+    </form>
+
+    <h1 id="cart-modal-title">Mein Warenkorb</h1>
+
+    <ul id="cartproducts" v-for="cartItemId in cart">
+      <li
+
+      >
+        <strong>{{ getCartItemById(cartItemId) [0].name }}</strong>
+        <p>€ {{ getCartItemById(cartItemId) [0].price / 100 }}</p>
+        <button @click="toggleCartItem(cartItemId)">
+          Aus Warenkorb entfernen
+        </button>
+      </li>
+    </ul>
+  </div>
+</dialog>

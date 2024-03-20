@@ -1,0 +1,27 @@
+<a href="#produktliste" class="u-skiplink">Zur Produktliste</a>
+<fieldset>
+  <legend>Sortieren</legend>
+  <label for="sort">Sortierichtung</label>
+  <select id="sort" name="sort" @change="changeSort">
+    <option value="" checked></option>
+    <option value="name-desc">Alphabetisch, Z - A</option>
+    <option value="name-asc">Alphabetisch, A - Z</option>
+    <option value="price-asc">Preis, niedrigste zuerst</option>
+    <option value="price-desc">Preis, teuerste zuerst</option>
+  </select>
+</fieldset>
+
+<fieldset>
+  <legend>Filtern</legend>
+  <input type="checkbox" id="few" name="few" v-model="filterOn" /><label
+    for="few"
+    >Geringe Stückzahl</label
+  >
+</fieldset>
+
+<div
+  class="visually-hidden"
+  aria-live="assertive"
+  id="filter-live-region"
+  rel="filterLiveRegion"
+></div>

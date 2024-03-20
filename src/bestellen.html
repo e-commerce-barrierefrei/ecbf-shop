@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="de">
+<include src="partials/html-head.html">
+  {
+  "title": "Bestellen - ECBF.shop"
+  }
+</include>
+<body>
+<header>
+
+  <include src="partials/header.html"></include>
+
+</header>
+<main>
+  <h1>Als Gast bestellen</h1>
+
+  <h2>Versandadresse</h2>
+
+  <form data-order method="post" v-scope="{ invoiceDataHidden: false }">
+    <div>
+      <div class="box box--form">
+        <small class="form__required-label">* bedeutet: Notwendige Angaben</small>
+        <div class="row">
+
+          <fieldset aria-required="true" role="radiogroup" class="input-box col-xs-12 util-add-margin-bottom"
+                    data-required-error="err1">
+            <legend class="util-add-margin-bottom">
+              Anrede<em>*</em>
+            </legend>
+
+            <input type="radio" name="address.radiogroup.salutation" id="address.radiogroup.salutation.Mrs" value="Mrs"
+                   class="">
+            <label class="util-add-margin-right-full" for="address.radiogroup.salutation.Mrs">
+              Frau
+            </label>
+
+            <input type="radio" name="address.radiogroup.salutation" id="address.radiogroup.salutation.Mr" value="Mr"
+                   class="">
+            <label class="util-add-margin-right-full" for="address.radiogroup.salutation.Mr">
+              Herr
+            </label>
+
+            <input type="radio" name="address.radiogroup.salutation" id="address.radiogroup.salutation.Other"
+                   value="Other" class="">
+            <label class="" for="address.radiogroup.salutation.Other">
+              Divers
+            </label>
+
+            <p id="err1" class="form__error" hidden>Bitte wählen Sie eine Anrede aus.</p>
+          </fieldset>
+
+          <div class="input-box col-xs-12 col-md-6">
+            <label for="address.firstName">Vorname<em>*</em>
+            </label>
+            <input aria-required="true" data-required-error="err2" autocomplete="given-name" type="text"
+                   name="address.firstName" id="address.firstName">
+            <p class="form__error" hidden id="err2">Bitte Vornamen angeben</p>
+          </div>
+          <div>
+            <label for="address.lastName">Nachname<em>*</em>
+            </label>
+            <input aria-required="true" data-required-error="err3" type="text" name="address.lastName"
+                   id="address.lastName" autocomplete="family-name" value="">
+            <p class="form__error" hidden id="err3">Bitte Nachnamen angeben</p>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="address.company">Adresszusatz / Firma
+            </label>
+            <input type="text" name="address.company" id="address.company" autocomplete="organization"
+                   data-nudge="#nudgeCheckoutPersonalData-company-ng-maxlength" value="">
+          </div>
+          <div class="row">
+            <div>
+              <label for="address.address1">Straße<em>*</em>
+              </label>
+              <input type="text" aria-required="true" data-required-error="err4" name="address.address1"
+                     id="address.address1" autocomplete="address-level3">
+              <p class="form__error" hidden id="err4">Bitte Straße angeben</p>
+            </div>
+            <div class="input-box col-xs-4 col-sm-3 col-lg-2">
+              <label for="address.address2">Nr.<em>*</em>
+              </label>
+              <input type="text" aria-required="true" data-required-error="err5" name="address.address2"
+                     id="address.address2" value="">
+              <p class="form__error" hidden id="err5">Bitte Hausnummer angeben</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-box col-xs-5 col-sm-3 col-lg-2">
+              <label for="address.zipCode">PLZ<em>*</em>
+              </label>
+              <input type="text" aria-required="true" data-required-error="err6" name="address.zipCode"
+                     id="address.zipCode" autocomplete="postal-code" pattern="[0-9]*">
+              <p class="form__error" hidden id="err6">Bitte Postleitzahl angeben</p>
+            </div>
+            <div class="input-box col-xs-7 col-sm-9 col-lg-10">
+              <label for="address.city">Ort<em>*</em>
+              </label>
+              <input autocomplete="address-level2" aria-required="true" data-required-error="err7" type="text"
+                     name="address.city" id="address.city" value="">
+              <p class="form__error" hidden id="err7">Bitte Ort angeben</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-box col-xs-12">
+              <label for="address.email">E-Mail-Adresse<em>*</em>
+              </label>
+              <input aria-required="true" data-required-error="err8" data-email-syntax-error="err9" type="email"
+                     name="address.email" id="address.email" value="" maxlength="50" autocomplete="email">
+              <p class="form__error" hidden id="err8">Bitte E-Mail-Adresse angeben</p>
+              <p class="form__error" hidden id="err9">Die E-Mail-Adresse wurde nicht im richtigen Format eingegeben.</p>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div>
+        <h2>Rechnungsaddresse</h2>
+
+      </div>
+      <div>
+        <input type="checkbox" :checked="invoiceDataHidden" id="addressIsInvoiceAddress" name="addressIsInvoiceAddress" value="1"
+               @click="invoiceDataHidden = !invoiceDataHidden">
+        <label for="addressIsInvoiceAddress">
+          Die Versandadresse entspricht der Rechnungsadresse
+        </label>
+        <div v-show="!invoiceDataHidden">
+          <fieldset aria-required="true" role="radiogroup" class="input-box col-xs-12 util-add-margin-bottom"
+                    data-required-error="err1">
+            <legend class="util-add-margin-bottom">
+              Anrede<em>*</em>
+            </legend>
+
+            <input type="radio" name="address.radiogroup.salutation" id="address-invoice.radiogroup.salutation.Mrs"
+                   value="Mrs" class="">
+            <label class="util-add-margin-right-full" for="address-invoice.radiogroup.salutation.Mrs">
+              Frau
+            </label>
+
+            <input type="radio" name="address-invoice.radiogroup.salutation"
+                   id="address-invoice.radiogroup.salutation.Mr" value="Mr" class="">
+            <label class="util-add-margin-right-full" for="address-invoice.radiogroup.salutation.Mr">
+              Herr
+            </label>
+
+            <input type="radio" name="address-invoice.radiogroup.salutation"
+                   id="address-invoice.radiogroup.salutation.Other" value="Other" class="">
+            <label class="" for="address-invoice.radiogroup.salutation.Other">
+              Divers
+            </label>
+
+            <p id="err21" class="form__error" hidden>Bitte wählen Sie eine Anrede aus.</p>
+          </fieldset>
+          <div class="input-box col-xs-12 col-md-6">
+            <label for="address-invoice.firstName">Vorname<em>*</em>
+            </label>
+            <input aria-required="true" data-required-error="err22" autocomplete="given-name" type="text"
+                   name="address-invoice.firstName" id="address-invoice.firstName">
+            <p class="form__error" hidden id="err22">Bitte Vornamen angeben</p>
+          </div>
+          <div>
+            <label for="address-invoice.lastName">Nachname<em>*</em>
+            </label>
+            <input aria-required="true" data-required-error="err23" type="text" name="address-invoice.lastName"
+                   id="address-invoice.lastName" autocomplete="family-name" value="">
+            <p class="form__error" hidden id="err23">Bitte Nachnamen angeben</p>
+          </div>
+        <div class="row">
+          <div>
+            <label for="address-invoice.company">Adresszusatz / Firma
+            </label>
+            <input type="text" name="address-invoice.company" id="address-invoice.company" autocomplete="organization"
+                   data-nudge="#nudgeCheckoutPersonalData-company-ng-maxlength" value="">
+          </div>
+          <div class="row">
+            <div>
+              <label for="address-invoice.address1">Straße<em>*</em>
+              </label>
+              <input type="text" aria-required="true" data-required-error="err24" name="address-invoice.address1"
+                     id="address-invoice.address1" autocomplete="address-level3">
+              <p class="form__error" hidden id="err24">Bitte Straße angeben</p>
+            </div>
+            <div class="input-box col-xs-4 col-sm-3 col-lg-2">
+              <label for="address-invoice.address2">Nr.<em>*</em>
+              </label>
+              <input type="text" aria-required="true" data-required-error="err25" name="address-invoice.address2"
+                     id="address-invoice.address2" value="">
+              <p class="form__error" hidden id="err25">Bitte Hausnummer angeben</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-box col-xs-5 col-sm-3 col-lg-2">
+              <label for="address-invoice.zipCode">PLZ<em>*</em>
+              </label>
+              <input type="text" aria-required="true" data-required-error="err26" name="address-invoice.zipCode"
+                     id="address-invoice.zipCode" autocomplete="postal-code" pattern="[0-9]*">
+              <p class="form__error" hidden id="err26">Bitte Postleitzahl angeben</p>
+            </div>
+            <div class="input-box col-xs-7 col-sm-9 col-lg-10">
+              <label for="address-invoice.city">Ort<em>*</em>
+              </label>
+              <input autocomplete="address-level2" aria-required="true" data-required-error="err27" type="text"
+                     name="address-invoice.city" id="address-invoice.city" value="">
+              <p class="form__error" hidden id="err27">Bitte Ort angeben</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-box col-xs-12">
+              <label for="address-invoice.email">E-Mail-Adresse<em>*</em>
+              </label>
+              <input aria-required="true" data-required-error="err28" data-email-syntax-error="err29" type="email"
+                     name="address-invoice.email" id="address-invoice.email" value="" maxlength="50"
+                     autocomplete="email">
+              <p class="form__error" hidden id="err28">Bitte E-Mail-Adresse angeben</p>
+              <p class="form__error" hidden id="err29">Die E-Mail-Adresse wurde nicht im richtigen Format
+                eingegeben.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <input type="hidden" v-if="invoiceDataHidden" name="customerDataIsInvoiceData">
+      <div class="row">
+        <div>
+          <h2>Kundenkonto</h2>
+
+          <label for="registerUser"><input type="checkbox" id="registerUser" name="registerUser" value="1">
+
+            Ich möchte bei der nächsten Bestellung meine Daten nicht erneut eingeben müssen und gern ein Konto anlegen.</label>
+
+
+          <div class="row" id="registerUserArea" hidden>
+            <div>
+              <label for="logonData.loginPassword">Passwort (min. 6 Zeichen)<em>*</em>
+              </label>
+              <input type="password" data-required-error="err10" aria-required="true" name="logonData.loginPassword"
+                     id="logonData.loginPassword" value="" title="Passwort (min. 6 Zeichen)" maxlength="30">
+              <button class="form__password-switch passwordHideShow" type="button">Passwort anzeigen</button>
+              <span class="visually-hidden" aria-live="polite"></span>
+              <p class="form__error" hidden id="err10">Bitte Passwort angeben</p>
+            </div>
+            <div>
+              <label for="logonData.loginPasswordRepeat">Passwort wiederholen<em>*</em>
+              </label>
+              <input type="password" data-required-error="err11" data-pw-mismatch-error="err12" aria-required="true"
+                     name="logonData.loginPasswordRepeat" id="logonData.loginPasswordRepeat" value=""
+                     title="Passwort wiederholen" maxlength="30">
+              <button class="form__password-switch passwordHideShow" type="button">Passwort anzeigen</button>
+              <span class="visually-hidden" aria-live="polite"></span>
+              <p class="form__error" hidden id="err11">Bitte Passwort erneut angeben</p>
+              <p class="form__error" hidden id="err12">Passwort und Passwortwiederholung stimmen nicht überein</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit">Absenden</button>
+    </div>
+
+  </form>
+
+</main>
+<aside>
+
+</aside>
+<footer>
+  <include src="partials/html-footer.html"></include>
+</footer>
+</body>
+</html>

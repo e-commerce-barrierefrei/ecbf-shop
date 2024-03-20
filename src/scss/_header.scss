@@ -1,0 +1,69 @@
+  header {
+    background-color: #003366;
+    padding: 2rem
+  }
+
+  .hero {
+    background-color: #d4deef;
+
+    .title {
+      margin: 0;
+      padding: .5em 0;
+    }
+  }
+
+header .search-widget {
+  grid-area: search;
+  display: flex;
+  flex-direction: column;
+}
+
+header .accountbutton {
+  grid-area: accountbutton;
+
+}
+
+header [data-cart-modal-trigger] {
+  grid-area: cardbutton;
+}
+
+.nav-main li {
+  position: relative;
+}
+
+@media (min-width: 40em) {
+  #main-nav-toggle,
+  #main-search-toggle {
+    display: none;
+  }
+
+  #main-nav-toggle[aria-expanded] + .aufklapp-bereich,
+  #main-search-toggle[aria-expanded] + .aufklapp-bereich {
+    display: flex;
+  }
+
+
+  .nav-main ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .nav-main li .aufklapp-bereich {
+    position: absolute;
+    left: 0;
+    background-color: #fff;
+  }
+}
+
+
+@media (max-width: 40em) {
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .logo {
+    display: block;
+  }
+}

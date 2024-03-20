@@ -1,0 +1,15 @@
+<h2>Neuerscheinungen</h2>
+
+
+<include src="partials/produktfilter.html"></include>
+
+<ul id="cartproducts" v-for="product in sortedProducts">
+  <li :hidden="isFiltered(product)">
+    <strong>{{product.name}}</strong>
+    <p>€ {{product.price / 100}}</p>
+    <button
+      @click="toggleCartItem(product.id)"
+      v-text="!isInCart(product.id) ? 'In den Warenkorb legen' : 'Aus dem Warenkorb entfernen'"
+    ></button>
+  </li>
+</ul>

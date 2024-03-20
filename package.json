@@ -1,0 +1,25 @@
+{
+  "name": "ecbfws",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel src/*.html --no-source-maps",
+    "build": "parcel build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.1.0",
+    "eslint": "^8.7.0",
+    "jsdoc": "^3.6.10",
+    "parcel": "^2.1.0"
+  },
+  "dependencies": {
+    "@parcel/transformer-css": "^2.8.2",
+    "hoverintent": "^2.2.1",
+    "posthtml-include": "^1.7.2",
+    "tinysort": "^3.2.7"
+  }
+}

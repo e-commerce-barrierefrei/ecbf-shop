@@ -1,0 +1,33 @@
+ .dialog-content {
+   background-color: white;
+
+   &.fifty {
+     position: fixed;
+    width: 50vw;
+    right: 0;
+    left: 50vw;
+    bottom: 0;
+    top: 0;
+
+
+     @media (max-width: 40em) {
+       width: 90vw;
+        left: 5vw;
+       right: 5vw;
+       top: 25vw;
+       bottom: 5vw;
+     }
+
+
+   }
+ }
+dialog {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+ dialog::backdrop {
+   background: rgba(0, 0, 0, .65);
+   backdrop-filter: blur(4px);
+
+ }
