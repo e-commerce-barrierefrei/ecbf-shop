@@ -1,1 +1,34 @@
-hallo
+<!DOCTYPE html>
+<html lang="de">
+<include src="partials/html-head.html">
+  {
+  "title": "Suchergebnisse – ECBF.shop"
+  }
+</include>
+<body>
+<header>
+  <script>
+    /* Nur für die Demo */
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      document.getElementById('cb1-input').value =  urlParams.get('s');
+      document.getElementById('searchTerm').textContent =  urlParams.get('s');
+      document.querySelectorAll('.searchTerm-instance').forEach((searchTermInstance) => searchTermInstance.textContent = urlParams.get('s'))
+    }
+  </script>
+
+  <include src="partials/header.html"></include>
+
+  <!--      <button @click="toggleCartItem(5)">increment</button>-->
+</header>
+<main id="petite-vue">
+<h1>Suche nach: <span id="searchTerm">"Suchbegriff"</span> – 42 Ergebnissse</h1>
+  <include src="partials/search-results.html"></include>
+
+</main>
+
+<footer>
+  <include src="partials/html-footer.html"></include>
+</footer>
+</body>
+</html>

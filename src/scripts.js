@@ -3,6 +3,8 @@ import "./js/resize";
 import { isMobile, toggleAriaExpanded } from "./js/_helpers";
 import { initCarousel } from "./js/carousel";
 import { animations } from "./js/animations";
+import { combobox } from "./js/combobox";
+
 import { sorting } from "./js/sorting";
 import { formManagement } from "./js/form-management";
 
@@ -58,6 +60,9 @@ if (document.querySelector("#produktliste")) {
   sorting();
 }
 
+
+
+combobox();
 
 isMobile();
 cart();
