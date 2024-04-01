@@ -1,12 +1,13 @@
 body {
     font-family: 'Schibsted Grotesk', sans-serif;
     background-color: #fff;
-    max-width: 1200px;
-    margin: 0 auto;
+    margin: 0;
+    padding: 0;
 }
 
 @import "scss/logo";
 @import "scss/header";
+@import "scss/footer";
 @import "scss/layout";
 @import "scss/main-nav";
 @import "scss/a11y";

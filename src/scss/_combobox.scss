@@ -1,10 +1,15 @@
+:root {
+  --input-height: 3rem;
+  --border-radius: 7px;
+  --input-width: 20rem;
+}
+
 .combobox-list {
   position: relative;
 }
 
 .combobox .group {
   display: inline-flex;
-  padding: 4px;
   cursor: pointer;
 }
 
@@ -13,7 +18,7 @@
   background-color: white;
   color: black;
   box-sizing: border-box;
-  height: 30px;
+  height: var(--input-height);
   padding: 0;
   margin: 0;
   vertical-align: bottom;
@@ -23,77 +28,77 @@
 }
 
 .combobox input {
-  width: 150px;
-  border-right: none;
-  outline: none;
-  font-size: 87.5%;
-  padding: 1px 3px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .combobox button {
-  width: 19px;
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+
+}
+
+.combobox input {
+  width: var(--input-width);
+  border-right: none;
+  outline: none;
+  font-size: inherit;
+  border-radius: var(--border-radius);
+  padding: 0 .75rem;
+
+}
+
+.combobox button {
+  width: 2.5rem;
+  padding: 0 .75rem;
+  margin-left: -.25rem;
   border-left: none;
   outline: none;
   color: rgb(0 90 156);
-}
-
-.combobox button[aria-expanded="true"] svg {
-  transform: rotate(180deg) translate(0, -3px);
 }
 
 ul[role="listbox"] {
   margin: 0;
   padding: 0;
   position: absolute;
-  left: 4px;
-  top: 34px;
+  top: var(--input-height);
+  left: .5rem;
   list-style: none;
   background-color: white;
   display: none;
   box-sizing: border-box;
-  border: 2px currentcolor solid;
   max-height: 250px;
-  width: 168px;
+  width: var(--input-width);
   overflow: scroll;
   overflow-x: hidden;
   font-size: 87.5%;
   cursor: pointer;
+  z-index: 300;
+  box-shadow: rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0.5) 0 4px 6px -1px, rgba(0, 0, 0, 0.33) 0 2px 4px -2px;
+
+  &:empty {
+    border: none;
+  }
+
 }
 
 ul[role="listbox"] li[role="option"] {
   margin: 0;
   display: block;
-  padding-left: 3px;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-left:6px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
-/* focus and hover styling */
-
-.combobox .group.focus,
-.combobox .group:hover {
-  padding: 2px;
-  border: 2px solid currentcolor;
-  border-radius: 4px;
-}
 
 .combobox .group.focus polygon,
 .combobox .group:hover polygon {
   fill-opacity: 1;
 }
 
-.combobox .group.focus input,
-.combobox .group.focus button,
-.combobox .group input:hover,
-.combobox .group button:hover {
-  background-color: #def;
-}
-
 [role="listbox"].focus [role="option"][aria-selected="true"],
 [role="listbox"] [role="option"]:hover {
   background-color: #def;
-  padding-top: 0;
-  padding-bottom: 0;
-  border-top: 2px solid currentcolor;
-  border-bottom: 2px solid currentcolor;
+
+
 }

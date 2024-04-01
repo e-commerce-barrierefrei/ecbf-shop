@@ -3,6 +3,13 @@
   grid-template-areas:
     "logo search cardbutton accountbutton"
     "menu menu menu menu";
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 10rem 10rem;
+}
+
+main {
+  background-color: rgb(250, 251, 252);
+  padding: 1rem 2rem;
 }
 
 

@@ -564,6 +564,7 @@ export function combobox() {
     // Listbox Option Events
 
     onOptionClick(event) {
+      console.log(this.comboboxNode.value);
       this.comboboxNode.value = event.target.textContent;
       this.close(true);
       this.formNode.submit();  /* Modification: new */
