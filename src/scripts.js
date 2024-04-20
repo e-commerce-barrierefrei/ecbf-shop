@@ -10,15 +10,11 @@ import { formManagement } from "./js/form-management";
 
 let mainSearchToggle = document.getElementById("main-search-toggle");
 
-
 const cookieModal = document.querySelector("#cookie-modal");
 const cartModal = document.querySelector("#cart-modal");
 //const cookieModal = document.querySelector("#cookie-modal");
 const cookieModalTrigger = document.querySelector("[data-cookie-modal-trigger]");
 const cartModalTrigger = document.querySelector("[data-cart-modal-trigger]");
-
-
-
 
 
 
@@ -73,5 +69,3 @@ console.log(jsondata);
 
 // eslint-disable-next-line no-undef
 PetiteVue.createApp().mount("#petite-vue")
-
-let invoiceDataHidden;

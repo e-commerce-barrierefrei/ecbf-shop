@@ -8,14 +8,16 @@ export function combobox() {
   'use strict';
 
   class ComboboxAutocomplete {
-    constructor(comboboxNode, buttonNode, listboxNode, form) {
+    constructor(comboboxNode, buttonNode, listboxNode, form, realListbox) {
       this.comboboxNode = comboboxNode;
       this.buttonNode = buttonNode;
+      this.realListbox = realListbox;
       this.listboxNode = listboxNode;
       this.formNode = form;  /* Modification: new, also "form" as param in constructor */
 
       this.comboboxHasVisualFocus = false;
       this.listboxHasVisualFocus = false;
+
 
       this.hasHover = false;
 
@@ -290,6 +292,8 @@ export function combobox() {
     }
 
     open() {
+
+      this.realListbox.style.display = 'block';
       this.listboxNode.style.display = 'block';
       this.comboboxNode.setAttribute('aria-expanded', 'true');
       this.buttonNode.setAttribute('aria-expanded', 'true');
@@ -308,6 +312,8 @@ export function combobox() {
       ) {
         this.setCurrentOptionStyle(false);
         this.listboxNode.style.display = 'none';
+        this.realListbox.style.display = 'none';
+
         this.comboboxNode.setAttribute('aria-expanded', 'false');
         this.buttonNode.setAttribute('aria-expanded', 'false');
         this.setActiveDescendant(false);
@@ -564,8 +570,8 @@ export function combobox() {
     // Listbox Option Events
 
     onOptionClick(event) {
-      console.log(this.comboboxNode.value);
-      this.comboboxNode.value = event.target.textContent;
+      //console.log(this.comboboxNode.value);
+      this.comboboxNode.value = event.target.querySelector('[role="option"]').textContent;
       this.close(true);
       this.formNode.submit();  /* Modification: new */
     }
@@ -590,9 +596,10 @@ export function combobox() {
       var combobox = comboboxes[i];
       var comboboxNode = combobox.querySelector('input');
       var buttonNode = combobox.querySelector('button');
-      var listboxNode = combobox.querySelector('[role="listbox"]');
+      var realListBox = combobox.querySelector('[role="listbox"]'); /* Modifiction */
+      var listboxNode = combobox.querySelector('[role="listbox"] [role="group"]'); /* Modifiction */
       var formNode = document.querySelector('form.search-widget'); /* Modifiction: new */
-      new ComboboxAutocomplete(comboboxNode, buttonNode, listboxNode, formNode);
+      new ComboboxAutocomplete(comboboxNode, buttonNode, listboxNode, formNode, realListBox);
     }
   });
 
