@@ -85,6 +85,10 @@
 
 }
 
+[role="listbox"] h2:first-of-type {
+  margin-top: 0;
+}
+
 ul[role="listbox"] li[role="option"] {
   margin: 0;
   display: block;

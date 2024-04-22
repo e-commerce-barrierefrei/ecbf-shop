@@ -83,7 +83,8 @@ export function combobox() {
 
       // Traverse the element children of domNode: configure each with
       // option role behavior and store reference in.options array.
-      var nodes = this.listboxNode.getElementsByTagName('LI');
+
+      var nodes = this.realListbox.querySelectorAll('[role="option"]');
 
       for (var i = 0; i < nodes.length; i++) {
         var node = nodes[i];
@@ -194,6 +195,9 @@ export function combobox() {
     // ComboboxAutocomplete Events
 
     filterOptions() {
+
+      console.log("filter Options");
+
       // do not filter any options if autocomplete is none
       if (this.isNone) {
         this.filter = '';
@@ -213,7 +217,16 @@ export function combobox() {
           this.getLowercaseContent(option).indexOf(filter) === 0
         ) {
           this.filteredOptions.push(option);
+
+          console.log("this.filteredOptions", this.filteredOptions)
+
+          // TODO das ist wohl die Stelle, wo alles in EINE liste gepackt wird
           this.listboxNode.appendChild(option);
+
+          this.realListbox.querySelectorAll('[role="group"]').forEach((dsad) => {
+            //console.log(dsad);
+            dsad.appendChild(option);
+          })
         }
       }
 
@@ -420,6 +433,7 @@ export function combobox() {
     }
 
     onComboboxKeyUp(event) {
+
       var flag = false,
         option = null,
         char = event.key;
@@ -466,12 +480,15 @@ export function combobox() {
           break;
 
         default:
+
           if (this.isPrintableCharacter(char)) {
+
             this.setVisualFocusCombobox();
             this.setCurrentOptionStyle(false);
             flag = true;
 
             if (this.isList || this.isBoth) {
+
               option = this.filterOptions();
               if (option) {
                 if (this.isClosed() && this.comboboxNode.value.length) {
