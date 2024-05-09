@@ -176,10 +176,10 @@ window.addEventListener('load', function(event) {
       }
       else {
         // desktop mode
-        let b = menu.querySelector('button.mega-menu-toggle[aria-expanded="true"]');
+        let bu1 = menu.querySelector('button.mega-menu-toggle[aria-expanded="true"]');
 
-        b.setAttribute('aria-expanded','false');
-        b.focus();
+        bu1.setAttribute('aria-expanded','false');
+        bu1.focus();
 
         menu.setAttribute('data-hover-open', 'false');
         menu.setAttribute('data-menu-state', 'closed');

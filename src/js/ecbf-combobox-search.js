@@ -28,22 +28,12 @@ class ComboboxSearch extends HTMLElement {
     this.cachedResults = {};
     this.isOpen = false;
     this.getAndHandleAllOptions();
-
-
-    // console.log(this);
-    // console.log(this.input);
-    // console.log(this.listbox);
-    // console.log(this.liveregion);
-    // console.log(this.resetButton);
-    // console.log(this.allPredictiveSearchInstances);
-    // console.log(this.getAttribute('data-loading-text'));
-
     this.setupEventListeners();
 
   }
 
   getAndHandleAllOptions() {
-    var nodes = this.listbox.getElementsByTagName('LI');
+    var nodes = this.listbox.querySelectorAll('li');
 
     for (var i = 0; i < nodes.length; i++) {
       var node = nodes[i];
@@ -72,8 +62,6 @@ class ComboboxSearch extends HTMLElement {
   }
 
   setupEventListeners() {
-    //console.log("setting up event listeners");
-
     this.input.form.addEventListener('submit', this.onFormSubmit.bind(this));
     this.input.addEventListener('focus', this.onFocus.bind(this));
     this.input.addEventListener('input', this.onInput.bind(this));
@@ -92,7 +80,7 @@ class ComboboxSearch extends HTMLElement {
       // Remove the results when they are no longer relevant for the new search term
       // so they don't show up when the dropdown opens again
 
-      // this.querySelector('#ecbf-combobox-search-results-groups-wrapper')?.remove();
+      //this.querySelector('#ecbf-combobox-search-results-groups-wrapper ul')?.empty();
     }
 
     // Update the term asap, don't wait for the predictive search query to finish loading
@@ -105,7 +93,8 @@ class ComboboxSearch extends HTMLElement {
       return;
     }
 
-    console.log("firing getSeachResults");
+    //console.log("firing getSeachResults");
+    this.listboxOptionContainer.innerHTML = '';
     this.getSearchResults(this.searchTerm);
   }
 
@@ -122,8 +111,12 @@ class ComboboxSearch extends HTMLElement {
     }
   }
 
-  getLowercaseContent(node) {
-    return node.textContent.toLowerCase();
+  getLowercaseContentWithoutPrice(node) {
+   if (node.querySelector('a') !== null ) {
+      return node.querySelector('a').textContent.toLowerCase();
+   } else {
+     return node.textContent.toLowerCase();
+   }
   }
 
   getSearchResults(searchTerm) {
@@ -132,13 +125,12 @@ class ComboboxSearch extends HTMLElement {
 
     // Der Kern der Suchfunktion ist bewusst eher simpel gehalten, weil vermutlich ohnehin
     // eigene Logik mit Apache Solr usw.
-    this.listboxOptionContainer.innerHTML = '';
 
     this.allOptions.forEach((o) => {
       let option = o;
         if (
           searchTerm.length === 0 ||
-          this.getLowercaseContent(option).includes(searchTerm) === true
+          this.getLowercaseContentWithoutPrice(option).includes(searchTerm) === true
         ) {
           this.filteredOptions.push(option);
           this.listboxOptionContainer.appendChild(option);
@@ -197,7 +189,76 @@ class ComboboxSearch extends HTMLElement {
   }
 
   onKeyup() {
+    if (!this.getQuery().length) this.close(true);
+    event.preventDefault();
 
+    switch (event.code) {
+      case 'ArrowUp':
+        this.switchOption('up');
+        break;
+      case 'ArrowDown':
+        this.switchOption('down');
+        break;
+      case 'Enter':
+        this.selectOption();
+        break;
+      case 'Escape':
+        this.close();
+        break;
+    }
+  }
+
+  selectOption() {
+    const selectedOption = this.querySelector('[aria-selected="true"] a, button[aria-selected="true"]');
+
+    if (selectedOption) console.log("sO", selectedOption); //selectedOption.click();
+  }
+  switchOption(direction) {
+
+    console.log(direction);
+
+    //if (!this.getAttribute('open')) return;
+
+    const moveUp = direction === 'up';
+    const selectedElement = this.querySelector('[aria-selected="true"]');
+
+    // Filter out hidden elements (duplicated page and article resources) thanks
+    // to this https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetParent
+    const allVisibleElements = Array.from(this.querySelectorAll('[role="option"]')).filter(
+      (element) => element.offsetParent !== null
+    );
+    let activeElementIndex = 0;
+
+    if (moveUp && !selectedElement) return;
+
+    let selectedElementIndex = -1;
+    let i = 0;
+
+    while (selectedElementIndex === -1 && i <= allVisibleElements.length) {
+      if (allVisibleElements[i] === selectedElement) {
+        selectedElementIndex = i;
+      }
+      i++;
+    }
+
+    this.statusElement.textContent = '';
+
+    if (!moveUp && selectedElement) {
+      activeElementIndex = selectedElementIndex === allVisibleElements.length - 1 ? 0 : selectedElementIndex + 1;
+    } else if (moveUp) {
+      activeElementIndex = selectedElementIndex === 0 ? allVisibleElements.length - 1 : selectedElementIndex - 1;
+    }
+
+    if (activeElementIndex === selectedElementIndex) return;
+
+    const activeElement = allVisibleElements[activeElementIndex];
+
+    activeElement.setAttribute('aria-selected', true);
+    if (selectedElement) selectedElement.setAttribute('aria-selected', false);
+
+    this.input.setAttribute('aria-activedescendant', activeElement.id);
+
+    console.log(activeElement.id)
   }
 
   onKeydown() {
@@ -221,79 +282,4 @@ class ComboboxSearch extends HTMLElement {
   }
 }
 customElements.define('ecbf-combobox-search', ComboboxSearch);
-
-// export function combobox() {
-//
-//   'use strict';
-//
-//   class ComboboxAutocomplete {
-//    constructor(comboboxNode, buttonNode, listboxNode, formNode, realListBox) {
-//      this.input = comboboxNode;
-//      this.listbox = realListBox;
-//
-//      this.setupEventListeners();
-//
-//    }
-//
-//     setupEventListeners() {
-//
-//       this.input.form.addEventListener('submit', this.onFormSubmit.bind(this));
-//       this.input.addEventListener('focus', this.onFocus.bind(this));
-//       this.input.addEventListener('input', this.onInput.bind(this));
-//       this.input.addEventListener('focusout', this.onFocusOut.bind(this));
-//       // this.addEventListener('keyup', this.onKeyup.bind(this));
-//       // this.addEventListener('keydown', this.onKeydown.bind(this));
-//     }
-//
-//     onInput() {
-//      this.open();
-//     }
-//
-//    open() {
-//      this.input.setAttribute('aria-expanded', 'true');
-//    }
-//
-//     close() {
-//       this.input.setAttribute('aria-expanded', 'false');
-//     }
-//
-//     onKeyup() {
-//
-//     }
-//
-//     onKeydown() {
-//
-//     }
-//
-//     onFocus() {
-//
-//     }
-//
-//     onFocusOut() {
-//       this.close();
-//     }
-//
-//     onFormSubmit() {
-//
-//     }
-//   }
-//
-//   // Initialize comboboxes
-//
-//   window.addEventListener('load', function () {
-//     var comboboxes = document.querySelectorAll('.combobox-list');
-//
-//     for (var i = 0; i < comboboxes.length; i++) {
-//       var combobox = comboboxes[i];
-//       var comboboxNode = combobox.querySelector('input');
-//       var buttonNode = combobox.querySelector('button');
-//       var realListBox = combobox.querySelector('[role="listbox"]'); /* Modifiction */
-//       var listboxNode = combobox.querySelector('[role="listbox"] [role="group"]'); /* Modifiction */
-//       var formNode = document.querySelector('form.search-widget'); /* Modifiction: new */
-//       new ComboboxAutocomplete(comboboxNode, buttonNode, listboxNode, formNode, realListBox);
-//     }
-//   });
-//
-//
-// }
 
