@@ -106,20 +106,25 @@ class PredictiveSearch extends SearchForm {
   }
 
   updateSearchForTerm(previousTerm, newTerm) {
+
     const searchForTextElement = this.querySelector('[data-predictive-search-search-for-text]');
+    console.log(searchForTextElement);
     const currentButtonText = searchForTextElement?.innerText;
+
     if (currentButtonText) {
       if (currentButtonText.match(new RegExp(previousTerm, 'g')).length > 1) {
         // The new term matches part of the button text and not just the search term, do not replace to avoid mistakes
         return;
       }
+
       const newButtonText = currentButtonText.replace(previousTerm, newTerm);
       searchForTextElement.innerText = newButtonText;
     }
+
   }
 
   switchOption(direction) {
-    if (!this.getAttribute('open')) return;
+    //if (!this.getAttribute('open')) return;
 
     const moveUp = direction === 'up';
     const selectedElement = this.querySelector('[aria-selected="true"]');
@@ -209,7 +214,7 @@ class PredictiveSearch extends SearchForm {
   }
 
   setLiveRegionLoadingState() {
-    this.x this.statusElement || this.querySelector('.predictive-search-status');
+    this.statusElement = this.statusElement || this.querySelector('.predictive-search-status');
     this.loadingText = this.loadingText || this.getAttribute('data-loading-text');
 
     this.setLiveRegionText(this.loadingText);

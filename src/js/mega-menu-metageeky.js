@@ -178,8 +178,8 @@ window.addEventListener('load', function(event) {
         // desktop mode
         let bu1 = menu.querySelector('button.mega-menu-toggle[aria-expanded="true"]');
 
-        bu1.setAttribute('aria-expanded','false');
-        bu1.focus();
+        bu1?.setAttribute('aria-expanded','false');
+        bu1?.focus();
 
         menu.setAttribute('data-hover-open', 'false');
         menu.setAttribute('data-menu-state', 'closed');

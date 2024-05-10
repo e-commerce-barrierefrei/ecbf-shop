@@ -94,7 +94,7 @@ ul[role="listbox"] li[role="option"] {
   padding-bottom: 8px;
 }
 
-li[role="option"][aria-selected="true"] {
+[role="option"][aria-selected="true"] {
   background: lightsalmon;
 }
 
