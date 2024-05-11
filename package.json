@@ -4,7 +4,7 @@
   "description": "",
   "source": "src/index.html",
   "scripts": {
-    "start": "parcel src/*.html --no-source-maps",
+    "start": "parcel src/*.html --no-source-maps --no-hmr",
     "build": "parcel build"
   },
   "keywords": [],
