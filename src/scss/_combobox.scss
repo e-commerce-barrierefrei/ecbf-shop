@@ -15,6 +15,7 @@ ecbf-combobox-search .group {
 
 ecbf-combobox-search input,
 ecbf-combobox-search button {
+  font: inherit;
   background-color: white;
   color: black;
   box-sizing: border-box;
@@ -48,7 +49,7 @@ ecbf-combobox-search input {
   }
 }
 
-ecbf-combobox-search button {
+ecbf-combobox-search button[type="submit"] {
   width: 2.5rem;
   padding: 0 .75rem;
   margin-left: -.25rem;

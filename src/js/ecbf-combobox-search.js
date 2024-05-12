@@ -6,14 +6,12 @@ class ComboboxSearch extends HTMLElement {
     this.listboxOptionContainer = this.querySelector("#ecbf-combobox-listbox ul");
     this.liveregion = this.querySelector("#ecbf-combobox-search-status");
     this.allPredictiveSearchInstances = document.querySelectorAll("ecbf-combobox-search");
-    this.resetButton = this.querySelector("button[type=\"reset\"]");
     this.statusElement = this.querySelector(".ecbf-combobox-search-status");
     this.filteredOptions = [];
 
     this.searchTerm = "";
 
     if (this.input) {
-      //this.input.form.addEventListener('reset', this.onFormReset.bind(this));
       this.input.addEventListener(
         "input",
         this.debounce((event) => {
@@ -69,18 +67,8 @@ class ComboboxSearch extends HTMLElement {
 
   onChange() {
 
-    this.toggleResetButton();
-
     const newSearchTerm = this.getQuery();
 
-    if (!this.searchTerm || !newSearchTerm.startsWith(this.searchTerm)) {
-      // Remove the results when they are no longer relevant for the new search term
-      // so they don't show up when the dropdown opens again
-
-      //this.querySelector('#ecbf-combobox-search-results-groups-wrapper ul')?.empty();
-    }
-
-    // Update the term asap, don't wait for the predictive search query to finish loading
     this.updateSearchForTerm(newSearchTerm);
 
     this.searchTerm = newSearchTerm;
@@ -90,7 +78,6 @@ class ComboboxSearch extends HTMLElement {
       return;
     }
 
-    //console.log("firing getSeachResults");
     this.listboxOptionContainer.innerHTML = "";
     this.getSearchResults(this.searchTerm);
   }
@@ -110,36 +97,36 @@ class ComboboxSearch extends HTMLElement {
 
   getSearchResults(searchTerm) {
 
+    const currentEntry = this.getQuery().length;
 
-    // Der Kern der Suchfunktion ist bewusst eher simpel gehalten, weil vermutlich ohnehin
-    // eigene Logik mit Apache Solr usw.
 
-    this.allOptions.forEach((o) => {
-      let option = o;
-      if (
-        searchTerm.length === 0 ||
-        this.getLowercaseContentWithoutPrice(option).includes(searchTerm) === true
-      ) {
-        this.filteredOptions.push(option);
-        this.listboxOptionContainer.appendChild(option);
-      }
-    });
+      this.allOptions.forEach((o) => {
+        let option = o;
+        if (
+          searchTerm.length === 0 ||
+          this.getLowercaseContentWithoutPrice(option).includes(searchTerm) === true
+        ) {
+          this.filteredOptions.push(option);
+          this.listboxOptionContainer.appendChild(option);
+        }
+      });
 
-    const realTimeOptionAmount = this.listboxOptionContainer.querySelectorAll("li")?.length;
+      const realTimeOptionAmount = this.listboxOptionContainer.querySelectorAll("li")?.length;
 
-    if (realTimeOptionAmount) {
-      if (this.input.value !== "") {
-        setTimeout(() => {
-          this.setLiveRegionText(`${realTimeOptionAmount} Ergebnisse gefunden`);
-        }, 700);
+      if (realTimeOptionAmount) {
+        if (this.input.value !== "") {
+          setTimeout(() => {
+            this.setLiveRegionText(`${realTimeOptionAmount} Ergebnisse gefunden`);
+          }, 700);
+        } else {
+          this.yieldNoResultsInLiveRegion();
+        }
       } else {
         this.yieldNoResultsInLiveRegion();
       }
-    } else {
-      this.yieldNoResultsInLiveRegion();
-    }
 
-    this.open();
+      this.open();
+
   }
 
   yieldNoResultsInLiveRegion() {
@@ -156,27 +143,9 @@ class ComboboxSearch extends HTMLElement {
   }
 
   onInput() {
-    this.open();
-  }
-
-  setLiveRegionResults() {
-    this.removeAttribute("loading");
-    this.setLiveRegionText(this.querySelector("[data-predictive-search-live-region-count-value]").textContent);
-  }
-
-  setLiveRegionLoadingState() {
-    this.statusElement = this.statusElement || this.querySelector(".ecbf-combobox-search-status");
-    this.loadingText = this.loadingText || this.getAttribute("data-loading-text");
-
-  }
-
-  toggleResetButton() {
-    // const resetIsHidden = this.resetButton.classList.contains('hidden');
-    // if (this.input.value.length > 0 && resetIsHidden) {
-    //   this.resetButton.classList.remove('hidden');
-    // } else if (this.input.value.length === 0 && !resetIsHidden) {
-    //   this.resetButton.classList.add('hidden');
-    // }
+    if (this.getQuery().length >= 2) {
+      this.open();
+    }
   }
 
   open() {
@@ -277,8 +246,7 @@ class ComboboxSearch extends HTMLElement {
   }
 
   onFormSubmit() {
-    // console.log("submit", this.input.getAttribute('aria-activedescendant'));
-    // alert("submit");
+
     if (!this.getQuery().length || this.querySelector("[aria-selected=\"true\"] a")) event.preventDefault();
 
   }
