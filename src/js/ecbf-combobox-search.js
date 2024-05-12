@@ -3,7 +3,8 @@ class ComboboxSearch extends HTMLElement {
     super();
     this.input = this.querySelector("input[type=\"search\"]");
     this.listbox = this.querySelector("#ecbf-combobox-listbox");
-    this.listboxOptionContainer = this.querySelector("#ecbf-combobox-listbox ul");
+    this.listboxOptionContainer1 = this.querySelector("#ecbf-combobox-listbox ul#cb1-listbox");
+    this.listboxOptionContainer2 = this.querySelector("#ecbf-combobox-listbox ul#cb2-listbox");
     this.liveregion = this.querySelector("#ecbf-combobox-search-status");
     this.allPredictiveSearchInstances = document.querySelectorAll("ecbf-combobox-search");
     this.statusElement = this.querySelector(".ecbf-combobox-search-status");
@@ -16,12 +17,13 @@ class ComboboxSearch extends HTMLElement {
         "input",
         this.debounce((event) => {
           this.onChange(event);
-        }, 300).bind(this)
+        }, 200).bind(this)
       );
     }
 
 
-    this.allOptions = [];
+    this.allOptions1 = [];
+    this.allOptions2 = [];
     this.cachedResults = {};
     this.isOpen = false;
     this.getAndHandleAllOptions();
@@ -29,13 +31,21 @@ class ComboboxSearch extends HTMLElement {
   }
 
   getAndHandleAllOptions() {
-    var nodes = this.listbox.querySelectorAll("li");
+    var nodes1 = this.listbox.querySelectorAll("#cb1-listbox li");
+    var nodes2 = this.listbox.querySelectorAll("#cb2-listbox li");
 
-    for (var i = 0; i < nodes.length; i++) {
-      var node = nodes[i];
-      this.allOptions.push(node);
+    for (var i = 0; i < nodes1.length; i++) {
+      var node1 = nodes1[i];
+      this.allOptions1.push(node1);
 
-      node.addEventListener("click", this.onOptionClick.bind(this));
+      node1.addEventListener("click", this.onOptionClick.bind(this));
+    }
+
+    for (var j = 0; j < nodes2.length; j++) {
+      var node2 = nodes2[j];
+      this.allOptions2.push(node2);
+
+      node2.addEventListener("click", this.onOptionClick.bind(this));
     }
   }
 
@@ -78,7 +88,8 @@ class ComboboxSearch extends HTMLElement {
       return;
     }
 
-    this.listboxOptionContainer.innerHTML = "";
+    this.listboxOptionContainer1.innerHTML = "";
+    this.listboxOptionContainer2.innerHTML = "";
     this.getSearchResults(this.searchTerm);
   }
 
@@ -97,33 +108,41 @@ class ComboboxSearch extends HTMLElement {
 
   getSearchResults(searchTerm) {
 
-    const currentEntry = this.getQuery().length;
-
-
-      this.allOptions.forEach((o) => {
+      this.allOptions1.forEach((o) => {
         let option = o;
         if (
           searchTerm.length === 0 ||
           this.getLowercaseContentWithoutPrice(option).includes(searchTerm) === true
         ) {
           this.filteredOptions.push(option);
-          this.listboxOptionContainer.appendChild(option);
+          this.listboxOptionContainer1.appendChild(option);
         }
       });
 
-      const realTimeOptionAmount = this.listboxOptionContainer.querySelectorAll("li")?.length;
-
-      if (realTimeOptionAmount) {
-        if (this.input.value !== "") {
-          setTimeout(() => {
-            this.setLiveRegionText(`${realTimeOptionAmount} Ergebnisse gefunden`);
-          }, 700);
-        } else {
-          this.yieldNoResultsInLiveRegion();
-        }
-      } else {
-        this.yieldNoResultsInLiveRegion();
+    this.allOptions2.forEach((o) => {
+      let option = o;
+      if (
+        searchTerm.length === 0 ||
+        this.getLowercaseContentWithoutPrice(option).includes(searchTerm) === true
+      ) {
+        this.filteredOptions.push(option);
+        this.listboxOptionContainer2.appendChild(option);
       }
+    });
+
+    // const realTimeOptionAmount = this.listboxOptionContainer1.querySelectorAll("li")?.length;
+    //
+    //   if (realTimeOptionAmount) {
+    //     if (this.input.value !== "") {
+    //       setTimeout(() => {
+    //         this.setLiveRegionText(`${realTimeOptionAmount} Ergebnisse gefunden`);
+    //       }, 700);
+    //     } else {
+    //       this.yieldNoResultsInLiveRegion();
+    //     }
+    //   } else {
+    //     this.yieldNoResultsInLiveRegion();
+    //   }
 
       this.open();
 

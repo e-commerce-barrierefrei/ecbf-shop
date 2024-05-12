@@ -107,7 +107,8 @@
     </button>
     <div id="ecbf-combobox-listbox" role="listbox" class="combobox-list" >
       <div id="ecbf-combobox-search-results-groups-wrapper">
-        <ul id="cb1-listbox">
+        <h3 id="foo">Produkte</h3>
+        <ul id="cb1-listbox" aria-labelledby="foo">
           <li id="lb1-al" role="option"><a href="/product/alabama">Alabama</a>
             <span class="preis">€ 9,99</span></li>
           <li id="lb1-ak" role="option"><a href="/product/alaska">Alaska</a></li>
@@ -153,6 +154,21 @@
           <li id="lb1-pa" role="option">Pennsylvania</li>
           <li id="lb1-pr" role="option">Puerto Rico</li>
           <li id="lb1-ri" role="option">Rhode Island</li>
+        </ul>
+        <h3 id="bar">Seiten</h3>
+        <ul id="cb2-listbox" aria-labelledby="bar">
+          <li id="lb1-sc" role="option">South Carolina</li>
+          <li id="lb1-sd" role="option">South Dakota</li>
+          <li id="lb1-tn" role="option">Tennessee</li>
+          <li id="lb1-tx" role="option">Texas</li>
+          <li id="lb1-ut" role="option">Utah</li>
+          <li id="lb1-ve" role="option">Vermont</li>
+          <li id="lb1-va" role="option">Virginia</li>
+          <li id="lb1-vi" role="option">Virgin Islands</li>
+          <li id="lb1-wa" role="option">Washington</li>
+          <li id="lb1-wv" role="option">West Virginia</li>
+          <li id="lb1-wi" role="option">Wisconsin</li>
+          <li id="lb1-wy" role="option">Wyoming</li>
         </ul>
         <button class="predictive-search__item predictive-search__item--term link link--text h5 animate-arrow" tabindex="-1" role="option" aria-selected="false">
           Suche nach <span data-ecbf-combobox-search-search-for-text></span>
