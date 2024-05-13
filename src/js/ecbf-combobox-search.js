@@ -130,21 +130,22 @@ class ComboboxSearch extends HTMLElement {
       }
     });
 
-    // const realTimeOptionAmount = this.listboxOptionContainer1.querySelectorAll("li")?.length;
-    //
-    //   if (realTimeOptionAmount) {
-    //     if (this.input.value !== "") {
-    //       setTimeout(() => {
-    //         this.setLiveRegionText(`${realTimeOptionAmount} Ergebnisse gefunden`);
-    //       }, 700);
-    //     } else {
-    //       this.yieldNoResultsInLiveRegion();
-    //     }
-    //   } else {
-    //     this.yieldNoResultsInLiveRegion();
-    //   }
+    const realTimeOptionAmount1 = this.listboxOptionContainer1.querySelectorAll("#cb1-listbox li")?.length;
+    const realTimeOptionAmount2 = this.listboxOptionContainer2.querySelectorAll("#cb2-listbox li")?.length;
 
-      this.open();
+      if (realTimeOptionAmount1 || realTimeOptionAmount2) {
+        if (this.input.value !== "") {
+          setTimeout(() => {
+            this.setLiveRegionText(`${realTimeOptionAmount1 + realTimeOptionAmount2} Ergebnisse gefunden: ${realTimeOptionAmount1 ? realTimeOptionAmount1 : 0} Produkte und ${realTimeOptionAmount2 ? realTimeOptionAmount2 : 0} Seiten`);
+          }, 1100);
+        } else {
+          this.yieldNoResultsInLiveRegion();
+        }
+      } else {
+        this.yieldNoResultsInLiveRegion();
+      }
+
+    this.open();
 
   }
 
@@ -156,19 +157,21 @@ class ComboboxSearch extends HTMLElement {
     this.statusElement.setAttribute("aria-hidden", "false");
     this.statusElement.textContent = statusText;
 
+    console.log("live region", statusText);
+
     setTimeout(() => {
       this.statusElement.setAttribute("aria-hidden", "true");
     }, 1000);
   }
 
   onInput() {
-    if (this.getQuery().length >= 2) {
-      this.open();
-    }
+    this.open();
   }
 
   open() {
-    this.input.setAttribute("aria-expanded", "true");
+    if (this.getQuery().length >= 2) {
+      setTimeout(() => this.input.setAttribute("aria-expanded", "true"), 500)
+    }
   }
 
   close() {
