@@ -4,9 +4,7 @@ class ComboboxSearch extends HTMLElement {
     this.input = this.querySelector('input[type="search"]');
     this.listbox = this.querySelector("#ecbf-combobox-listbox");
     this.listboxOptionContainerProducts = this.querySelector("[data-products-list]");
-    this.listboxOptionContainerProductsHeadline = this.querySelector("#products-headline");
     this.listboxOptionContainerPages = this.querySelector("[data-pages-list]");
-    this.listboxOptionContainerPagesHeadline = this.querySelector("#pages-headline");
     this.statusElement = this.querySelector("[data-ecbf-combobox-search-status]");
     this.filteredOptions = [];
     this.searchTerm = "";
@@ -89,7 +87,6 @@ class ComboboxSearch extends HTMLElement {
         ) {
           this.filteredOptions.push(option);
           this.listboxOptionContainerProducts.appendChild(option);
-          this.listboxOptionContainerProductsHeadline.removeAttribute("hidden");
         }
       });
 
@@ -103,7 +100,6 @@ class ComboboxSearch extends HTMLElement {
       ) {
         this.filteredOptions.push(option);
         this.listboxOptionContainerPages.appendChild(option);
-        this.listboxOptionContainerPagesHeadline.removeAttribute("hidden");
       }
     });
 
