@@ -79,11 +79,10 @@
   <ecbf-combobox-search role="search" data-loading-text="Loading...">
     <input
       class="search__input field__input"
-      id=""
       type="search"
-      name="s"
+      name="q"
       value=""
-      placeholder="Search"
+      placeholder="Suche"
       role="combobox"
       aria-expanded="false"
       aria-owns="ecbf-combobox-listbox"
@@ -94,82 +93,81 @@
       autocomplete="off"
       autocapitalize="off"
       spellcheck="false">
-    <button type="submit" id="cb1-button" aria-label="Suchen" aria-controls="cb1-listbox">
+    <button type="submit" id="cb1-button" aria-label="Suchen">
       <svg aria-hidden="true" class="icon icon-search" viewBox="0 0 37 40">
         <path
           d="M35.6 36l-9.8-9.8c4.1-5.4 3.6-13.2-1.3-18.1-5.4-5.4-14.2-5.4-19.7 0-5.4 5.4-5.4 14.2 0 19.7 2.6 2.6 6.1 4.1 9.8 4.1 3 0 5.9-1 8.3-2.8l9.8 9.8c.4.4.9.6 1.4.6s1-.2 1.4-.6c.9-.9.9-2.1.1-2.9zm-20.9-8.2c-2.6 0-5.1-1-7-2.9-3.9-3.9-3.9-10.1 0-14C9.6 9 12.2 8 14.7 8s5.1 1 7 2.9c3.9 3.9 3.9 10.1 0 14-1.9 1.9-4.4 2.9-7 2.9z"></path>
       </svg>
     </button>
-    <button style="display: none" type="reset" class="reset__button field__button" aria-label="Clear search term">
-      <svg class="icon icon-close" aria-hidden="true" focusable="false">
-        <use xlink:href="#icon-reset">
-        </use></svg>
-    </button>
-    <div id="ecbf-combobox-listbox" role="listbox" class="combobox-list" >
+    <div id="ecbf-combobox-listbox" role="listbox" class="combobox-list">
       <div id="ecbf-combobox-search-results-groups-wrapper">
-        <h3 id="foo">Produkte</h3>
-        <ul id="cb1-listbox" aria-labelledby="foo">
-          <li id="lb1-al" role="option"><a href="/product/alabama">Alabama</a>
-            <span class="preis">€ 9,99</span></li>
-          <li id="lb1-ak" role="option"><a href="/product/alaska">Alaska</a></li>
-          <li id="lb1-as" role="option">American Samoa</li>
-          <li id="lb1-az" role="option">Arizona</li>
-          <li id="lb1-ar" role="option">Arkansas</li>
-          <li id="lb1-ca" role="option">California</li>
-          <li id="lb1-co" role="option">Colorado</li>
-          <li id="lb1-ct" role="option">Connecticut</li>
-          <li id="lb1-de" role="option">Delaware</li>
-          <li id="lb1-dc" role="option">District of Columbia</li>
-          <li id="lb1-fl" role="option">Florida</li>
-          <li id="lb1-ga" role="option">Georgia</li>
-          <li id="lb1-gm" role="option">Guam</li>
-          <li id="lb1-hi" role="option">Hawaii</li>
-          <li id="lb1-id" role="option">Idaho</li>
-          <li id="lb1-il" role="option">Illinois</li>
-          <li id="lb1-in" role="option">Indiana</li>
-          <li id="lb1-ia" role="option">Iowa</li>
-          <li id="lb1-ks" role="option">Kansas</li>
-          <li id="lb1-ky" role="option">Kentucky</li>
-          <li id="lb1-la" role="option">Louisiana</li>
-          <li id="lb1-me" role="option">Maine</li>
-          <li id="lb1-md" role="option">Maryland</li>
-          <li id="lb1-ma" role="option">Massachusetts</li>
-          <li id="lb1-mi" role="option">Michigan</li>
-          <li id="lb1-mn" role="option">Minnesota</li>
-          <li id="lb1-ms" role="option">Mississippi</li>
-          <li id="lb1-mo" role="option">Missouri</li>
-          <li id="lb1-mt" role="option">Montana</li>
-          <li id="lb1-ne" role="option">Nebraska</li>
-          <li id="lb1-nv" role="option">Nevada</li>
-          <li id="lb1-nh" role="option">New Hampshire</li>
-          <li id="lb1-nj" role="option">New Jersey</li>
-          <li id="lb1-nm" role="option">New Mexico</li>
-          <li id="lb1-ny" role="option">New York</li>
-          <li id="lb1-nc" role="option">North Carolina</li>
-          <li id="lb1-nd" role="option">North Dakota</li>
-          <li id="lb1-mp" role="option">Northern Marianas Islands</li>
-          <li id="lb1-oh" role="option">Ohio</li>
-          <li id="lb1-ok" role="option">Oklahoma</li>
-          <li id="lb1-or" role="option">Oregon</li>
-          <li id="lb1-pa" role="option">Pennsylvania</li>
-          <li id="lb1-pr" role="option">Puerto Rico</li>
-          <li id="lb1-ri" role="option">Rhode Island</li>
-        </ul>
-        <h3 id="bar">Seiten</h3>
-        <ul id="cb2-listbox" aria-labelledby="bar">
-          <li id="lb1-sc" role="option">South Carolina</li>
-          <li id="lb1-sd" role="option">South Dakota</li>
-          <li id="lb1-tn" role="option">Tennessee</li>
-          <li id="lb1-tx" role="option">Texas</li>
-          <li id="lb1-ut" role="option">Utah</li>
-          <li id="lb1-ve" role="option">Vermont</li>
-          <li id="lb1-va" role="option">Virginia</li>
-          <li id="lb1-vi" role="option">Virgin Islands</li>
-          <li id="lb1-wa" role="option">Washington</li>
-          <li id="lb1-wv" role="option">West Virginia</li>
-          <li id="lb1-wi" role="option">Wisconsin</li>
-          <li id="lb1-wy" role="option">Wyoming</li>
-        </ul>
+        <div class="ecbf-combobox-search-results-group-section">
+          <h3 id="products-headline" hidden>Produkte</h3>
+          <ul id="cb1-listbox" data-products-list aria-labelledby="products-headline">
+            <li id="lb1-al" role="option"><a href="/product/alabama">Alabama</a>
+              <span class="preis">€ 9,99</span></li>
+            <li id="lb1-ak" role="option"><a href="/product/alaska">Alaska</a></li>
+            <li id="lb1-as" role="option">American Samoa</li>
+            <li id="lb1-az" role="option">Arizona</li>
+            <li id="lb1-ar" role="option">Arkansas</li>
+            <li id="lb1-ca" role="option">California</li>
+            <li id="lb1-co" role="option">Colorado</li>
+            <li id="lb1-ct" role="option">Connecticut</li>
+            <li id="lb1-de" role="option">Delaware</li>
+            <li id="lb1-dc" role="option">District of Columbia</li>
+            <li id="lb1-fl" role="option">Florida</li>
+            <li id="lb1-ga" role="option">Georgia</li>
+            <li id="lb1-gm" role="option">Guam</li>
+            <li id="lb1-hi" role="option">Hawaii</li>
+            <li id="lb1-id" role="option">Idaho</li>
+            <li id="lb1-il" role="option">Illinois</li>
+            <li id="lb1-in" role="option">Indiana</li>
+            <li id="lb1-ia" role="option">Iowa</li>
+            <li id="lb1-ks" role="option">Kansas</li>
+            <li id="lb1-ky" role="option">Kentucky</li>
+            <li id="lb1-la" role="option">Louisiana</li>
+            <li id="lb1-me" role="option">Maine</li>
+            <li id="lb1-md" role="option">Maryland</li>
+            <li id="lb1-ma" role="option">Massachusetts</li>
+            <li id="lb1-mi" role="option">Michigan</li>
+            <li id="lb1-mn" role="option">Minnesota</li>
+            <li id="lb1-ms" role="option">Mississippi</li>
+            <li id="lb1-mo" role="option">Missouri</li>
+            <li id="lb1-mt" role="option">Montana</li>
+            <li id="lb1-ne" role="option">Nebraska</li>
+            <li id="lb1-nv" role="option">Nevada</li>
+            <li id="lb1-nh" role="option">New Hampshire</li>
+            <li id="lb1-nj" role="option">New Jersey</li>
+            <li id="lb1-nm" role="option">New Mexico</li>
+            <li id="lb1-ny" role="option">New York</li>
+            <li id="lb1-nc" role="option">North Carolina</li>
+            <li id="lb1-nd" role="option">North Dakota</li>
+            <li id="lb1-mp" role="option">Northern Marianas Islands</li>
+            <li id="lb1-oh" role="option">Ohio</li>
+            <li id="lb1-ok" role="option">Oklahoma</li>
+            <li id="lb1-or" role="option">Oregon</li>
+            <li id="lb1-pa" role="option">Pennsylvania</li>
+            <li id="lb1-pr" role="option">Puerto Rico</li>
+            <li id="lb1-ri" role="option">Rhode Island</li>
+          </ul>
+        </div>
+        <div class="ecbf-combobox-search-results-group-section">
+          <h3 id="pages-headline" hidden>Seiten</h3>
+          <ul id="cb2-listbox" data-pages-list aria-labelledby="pages-headline">
+            <li id="lb1-sc" role="option">South Carolina</li>
+            <li id="lb1-sd" role="option">South Dakota</li>
+            <li id="lb1-tn" role="option">Tennessee</li>
+            <li id="lb1-tx" role="option">Texas</li>
+            <li id="lb1-ut" role="option">Utah</li>
+            <li id="lb1-ve" role="option">Vermont</li>
+            <li id="lb1-va" role="option">Virginia</li>
+            <li id="lb1-vi" role="option">Virgin Islands</li>
+            <li id="lb1-wa" role="option">Washington</li>
+            <li id="lb1-wv" role="option">West Virginia</li>
+            <li id="lb1-wi" role="option">Wisconsin</li>
+            <li id="lb1-wy" role="option">Wyoming</li>
+          </ul>
+        </div>
         <button class="predictive-search__item predictive-search__item--term link link--text h5 animate-arrow" tabindex="-1" role="option" aria-selected="false">
           Suche nach <span data-ecbf-combobox-search-search-for-text></span>
           <svg viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
@@ -179,10 +177,9 @@
       </div>
     </div>
     <span class="hidden" data-ecbf-combobox-search-live-region-count-value></span>
-    <span id="ecbf-combobox-search-status" class="ecbf-combobox-search-status visually-hidden" role="status" aria-hidden="true">
+    <span id="ecbf-combobox-search-status" data-ecbf-combobox-search-status class="ecbf-combobox-search-status visually-hidden" role="status" aria-hidden="true">
     </span>
   </ecbf-combobox-search>
-
 </form>
 
 
