@@ -1,4 +1,4 @@
-<ecbf-combobox-search role="search" data-loading-text="Loading...">
+<ecbf-combobox-search role="search" starts-open="true">
   <input
     class="search__input field__input"
     type="search"
@@ -23,7 +23,7 @@
   </button>
   <div id="ecbf-combobox-listbox" role="listbox" class="combobox-list">
     <div id="ecbf-combobox-search-results-groups-wrapper">
-      <div class="ecbf-combobox-search-results-group-section">
+      <div class="ecbf-combobox-search-results-group-section ecbf-combobox-search-results-group-section--products">
         <h3 id="products-headline">Produkte</h3>
         <ul role="group" data-products-list aria-labelledby="products-headline">
           <li id="option-al" role="option">
@@ -183,7 +183,7 @@
           </li>
         </ul>
       </div>
-      <div class="ecbf-combobox-search-results-group-section">
+      <div class="ecbf-combobox-search-results-group-section ecbf-combobox-search-results-group-pages">
         <h3 id="pages-headline">Seiten</h3>
         <ul role="group" data-pages-list aria-labelledby="pages-headline">
           <li id="option-uhrmel" role="option">
@@ -197,7 +197,7 @@
           </li>
         </ul>
       </div>
-      <button class="predictive-search__item predictive-search__item--term link link--text h5 animate-arrow" tabindex="-1" role="option" aria-selected="false">
+      <button class="ecbf-combobox-search-results-search" tabindex="-1" role="option" aria-selected="false">
         Suche nach <span data-ecbf-combobox-search-search-for-text></span>
         <svg viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor">

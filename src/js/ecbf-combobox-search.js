@@ -10,6 +10,7 @@ class ComboboxSearch extends HTMLElement {
     this.searchTerm = "";
     this.allProductOptions = [];
     this.allPageOptions = [];
+    this.startsOpen = this.getAttribute('starts-open');
 
     if (this.input) {
       this.input.addEventListener("input", this.debounce((event) => {
@@ -17,6 +18,10 @@ class ComboboxSearch extends HTMLElement {
         }, 200).bind(this)
       );
     }
+
+    if (this.startsOpen === "true") {
+      this.input.setAttribute("aria-expanded", "true");
+    };
 
     this.getAndHandleAllOptions();
     this.setupEventListeners();

@@ -1,7 +1,7 @@
 :root {
   --input-height: 3rem;
   --border-radius: 7px;
-  --input-width: 20rem;
+  --input-width: 30rem;
 }
 
 ecbf-combobox-search {
@@ -35,7 +35,7 @@ ecbf-combobox-search button {
 }
 
 ecbf-combobox-search input {
-  width: var(--input-width);
+  width: 700px;
   border-right: none;
   outline: none;
   font-size: inherit;
@@ -76,7 +76,6 @@ ecbf-combobox-search button[type="submit"] {
   list-style: none;
   box-sizing: border-box;
   max-height: 250px;
-  width: var(--input-width);
   overflow: scroll;
   overflow-x: hidden;
   font-size: 87.5%;
@@ -109,12 +108,6 @@ ecbf-combobox-search .group:hover polygon {
 [role="listbox"].focus [role="option"][aria-selected="true"],
 [role="listbox"] [role="option"]:hover {
   background-color: #def;
-}
-
-:root {
-  --input-height: 3rem;
-  --border-radius: 7px;
-  --input-width: 20rem;
 }
 
 ecbf-combobox-search-list {
@@ -161,13 +154,50 @@ ecbf-combobox-search input {
   }
 }
 
+ecbf-combobox-search ul[data-products-list] li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}
+
+#ecbf-combobox-search-results-groups-wrapper {
+  width: var(--input-width);
+  display: grid;
+  grid-template-areas: "products pages"
+                        "search search";
+
+}
+
+.ecbf-combobox-search-results-group-section--products {
+  grid-area: products;
+}
+
+.ecbf-combobox-search-results-group-section--pages {
+  grid-area: pages;
+}
+
+.ecbf-combobox-search-results-search {
+  grid-area: search;
+  border: none;
+
+  .icon {
+    width: 1em;
+  }
+}
+
+
 ecbf-combobox-search button {
-  width: 2.5rem;
   padding: 0 .75rem;
   margin-left: -.25rem;
   border-left: none;
   outline: none;
   color: rgb(0 90 156);
+}
+
+.combobox-list h3 {
+  margin-block-start: 0;
 }
 
 [role="listbox"] {
@@ -185,7 +215,6 @@ ecbf-combobox-search button {
   list-style: none;
   box-sizing: border-box;
   max-height: 250px;
-  width: var(--input-width);
   overflow: scroll;
   overflow-x: hidden;
   font-size: 87.5%;
