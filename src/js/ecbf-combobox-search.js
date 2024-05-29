@@ -174,7 +174,13 @@ class ComboboxSearch extends HTMLElement {
         this.close();
         this.input.select();
         break;
+      default:
+        this.emptyAriaActivedescendant();
     }
+  }
+
+  emptyAriaActivedescendant() {
+    this.input.setAttribute('aria-activedescendant', '');
   }
 
   selectOption() {
