@@ -1,9 +1,13 @@
 import "./js/mega-menu-metageeky";
 import "./js/resize";
+
+// Custom Elements
+import  "./js/ecbf-combobox-search";
+
+
 import { isMobile, toggleAriaExpanded } from "./js/_helpers";
 import { initCarousel } from "./js/carousel";
 import { animations } from "./js/animations";
-import { combobox } from "./js/combobox";
 
 import { sorting } from "./js/sorting";
 import { formManagement } from "./js/form-management";
@@ -58,14 +62,14 @@ if (document.querySelector("#produktliste")) {
 
 
 
-combobox();
+
 
 isMobile();
 cart();
 
 
 import jsondata from '../data.json';
-console.log(jsondata);
+//console.log(jsondata);
 
 // eslint-disable-next-line no-undef
 PetiteVue.createApp().mount("#petite-vue")
