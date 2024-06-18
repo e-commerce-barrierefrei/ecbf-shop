@@ -2,14 +2,16 @@ import products from '../../data.json';
 const cartModal = document.querySelector("#cart-modal");
 
 export function cart() {
-
-
   PetiteVue.createApp({
     products,
     filterLiveRegion: document.querySelector("#filter-live-region"),
-    cart: [],
+    cart: JSON.parse(localStorage.getItem('cart')) || [],
+    amount: 1,
+    sum: 0,
+    totalCartItems: 0,
     sortBy: "id",
     sortDirection: "asc",
+    giftwrapPrice: 299,
     filterOn: false,
     get sortedProducts() {
       return this.products.sort((p1, p2) => {
@@ -20,11 +22,69 @@ export function cart() {
         return 0;
       });
     },
+    updateItemPrice(id) {
+      let product = this.getCartItemById(id)[0];
+      product.amount = parseFloat(event.target.value);
+      this.persistCart();
+      this.getLocalSum(product, parseFloat(event.target.value));
+      this.getLocalTotal(product);
+      this.updateCartItemAmount();
+      this.updateTotalSum();
+      this.filterLiveRegion.textContent = "Neuer Preis: €" + this.getLocalTotal(product) / 100 + ". Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100;
+    },
+    whenMounted() {
+      this.updateCartItemAmount();
+      this.updateTotalSum();
+    },
+    updateCartItemAmount() {
+      let cartItemAmount = 0;
+
+      this.cart.forEach((cI) => {
+        cartItemAmount += cI.amount;
+      });
+
+      this.totalCartItems = cartItemAmount;
+    },
+    updateTotalSum() {
+
+      let theSum = 0;
+
+      this.cart.forEach((product) => {
+        theSum += product.price * product.amount;
+
+        if (product.giftwrap) {
+          theSum = theSum + this.giftwrapPrice;
+        }
+      })
+
+      this.sum = theSum;
+    },
+    getLocalSum(cartItem, amount) {
+      if (cartItem && amount) {
+        let returnVal = cartItem.price * amount;
+        cartItem.localTotal = returnVal;
+        return returnVal;
+      }
+    },
+    getLocalTotal(product) {
+      let price;
+      price = product.localTotal;
+
+      if (product.giftwrap) {
+        price += this.giftwrapPrice;
+      }
+
+      return price;
+    },
+    localSum(cartItem, amount) {
+      return this.getLocalSum(cartItem, amount);
+    },
     isFiltered(product) {
       return (this.filterOn && product.amount < 10);
     },
     isInCart(id) {
-      return this.cart.includes(id);
+      return this.cart.find(x => x.id === id);
+      //return this.cart.includes(id);
     },
     changeSort(e) {
       switch (e.target.value) {
@@ -57,22 +117,56 @@ export function cart() {
           break;
       }
     },
-    getCartItemById(id) {
-      return this.products.filter((n) => n.id === id);
+    getProductById(id) {
+      return products.filter((product) => product.id === id);
     },
-    toggleCartItem(id) {
-      if (this.isInCart(id)) {
-        this.cart = this.cart.filter((n) => n != id);
-      } else {
-        this.cart.push(id);
+    getCartItemById(id) {
+      return this.cart.filter((product) => product.id === id);
+    },
+    persistCart() {
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+    },
+    toggleCartItem(productId) {
+      let product = this.getProductById(productId);
+
+      if (this.cart.find(x => x.id === productId)) {
+        this.cart = this.cart.filter((n) => n.id !== product[0].id);
+        this.persistCart();
+        this.updateTotalSum();
+        this.filterLiveRegion.textContent = "Artikel entfernt. Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100;
+      }
+      else {
+        product[0].localTotal = product[0].price;
+        this.cart.push(product[0]);
+        this.updateTotalSum();
+        this.filterLiveRegion.textContent = "Artikel ergänzt. Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100;
+        this.persistCart();
         cartModal.showModal();
       }
+      this.getLocalTotal(product);
+      this.updateCartItemAmount();
+
+
+    },
+    toggleGiftWrap(id) {
+      let item = this.getCartItemById(id)[0];
+      item.giftwrap = !item.giftwrap;
+      this.persistCart();
+      this.updateTotalSum();
+      let addedOrRemoved =  (item.giftwrap) ? 'hinzugefügt' : 'entfernt';
+
+      this.filterLiveRegion.textContent = "Geschenkverpackung " + addedOrRemoved + ". Neuer Preis: €" + this.getLocalTotal(item) / 100 + ". Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100;
+
+      //console.log("Geschenkverpackung " + addedOrRemoved + ". Neuer Preis: €" + this.getLocalTotal(item) / 100 + ". Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100);
+    },
+    hasGiftwrap(id) {
+      if (this.getCartItemById(id)[0]) return this.getCartItemById(id)[0].giftwrap;
     },
     sort: function (s) {
       if (s === this.sortBy) {
         this.sortDirection = this.sortDirection === "asc" ? "asc" : "desc";
       }
       this.sortBy = s;
-    },
+    }
   }).mount();
 }

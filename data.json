@@ -2,26 +2,37 @@
   {
     "id": 1,
     "name": "Foo",
-    "amount": 3,
-    "price": 999
+    "in_stock": 3,
+    "price": 999,
+    "amount": 1,
+    "localTotal": 0,
+    "giftwrap": false
   },
   {
     "id": 2,
     "name": "Do",
-    "amount": 30,
+    "in_stock": 30,
     "price": 499,
+    "amount": 1,
+    "localTotal": 0,
+    "giftwrap": false
   },
   {
     "id": 3,
     "name": "Re",
-    "amount": 13,
+    "in_stock": 13,
     "price": 99,
+    "amount": 1,
+    "localTotal": 0,
+    "giftwrap": false
   },
   {
     "id": 4,
     "name": "Mi",
-    "amount": 5,
+    "in_stock": 5,
     "price": 2549,
+    "amount": 1,
+    "giftwrap": false
   }
 ]
 
