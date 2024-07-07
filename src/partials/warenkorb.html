@@ -20,8 +20,16 @@
 
     <div v-show="cart.length === 0">Leer</div>
 
-    <table v-show="cart.length !== 0">
-      <tr><th>Produkt</th><th id="menge">Menge</th><th>Optionen</th><th>Preis</th></tr>
+    <table v-show="cart.length !== 0" tabindex="-1" ref="cart">
+      <caption class="visually-hidden">
+        <span>Warenkob, Gesamtsumme </span>
+        <span data-cart-caption-total></span>
+        <span> Euro</span>
+      </caption>
+      <thead>
+            <tr><th>Produkt</th><th id="menge">Menge</th><th>Optionen</th><th>Preis</th></tr>
+      </thead>
+      <tbody>
       <tr id="cartproducts" v-for="cartItem in cart">
         <td><strong>{{cartItem.name}}</strong></td>
         <td><input aria-labelledby="menge" :value="cartItem.amount" type="number" min="1" @change="updateItemPrice(cartItem.id)"></td>
@@ -32,10 +40,10 @@
             <input :id="'giftwrap-' + cartItem.id" type="checkbox" @change="toggleGiftWrap(cartItem.id)" :checked="hasGiftwrap(cartItem.id) ? true: undefined">Geschenkverpackung  (€ {{giftwrapPrice / 100}})</label>
 
         </td>
-        <td>{{ getLocalTotal(cartItem) / 100 }}</td>
+        <td><strong>€ {{ getLocalTotal(cartItem) / 100 }}</strong></td>
 
       </tr>
-
+      </tbody>
     </table>
     Gesamtsumme € {{ sum / 100 }}
   </div>

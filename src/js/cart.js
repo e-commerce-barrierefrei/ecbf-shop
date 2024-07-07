@@ -5,6 +5,8 @@ export function cart() {
   PetiteVue.createApp({
     products,
     filterLiveRegion: document.querySelector("#filter-live-region"),
+    table: document.querySelector("[data-cart]"),
+    cartCaptionTotal: document.querySelector("[data-cart-caption-total]"),
     cart: JSON.parse(localStorage.getItem('cart')) || [],
     amount: 1,
     sum: 0,
@@ -31,10 +33,12 @@ export function cart() {
       this.updateCartItemAmount();
       this.updateTotalSum();
       this.filterLiveRegion.textContent = "Neuer Preis: €" + this.getLocalTotal(product) / 100 + ". Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100;
+      this.cartCaptionTotal.textContent = String(this.sum/100);
     },
     whenMounted() {
       this.updateCartItemAmount();
       this.updateTotalSum();
+      this.cartCaptionTotal.textContent = String(this.sum/100);
     },
     updateCartItemAmount() {
       let cartItemAmount = 0;
@@ -84,7 +88,6 @@ export function cart() {
     },
     isInCart(id) {
       return this.cart.find(x => x.id === id);
-      //return this.cart.includes(id);
     },
     changeSort(e) {
       switch (e.target.value) {
@@ -133,13 +136,15 @@ export function cart() {
         this.cart = this.cart.filter((n) => n.id !== product[0].id);
         this.persistCart();
         this.updateTotalSum();
-        this.filterLiveRegion.textContent = "Artikel entfernt. Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100;
+        this.filterLiveRegion.textContent = "Artikel " + product[0].name + " entfernt. Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100;
+       // console.log(this.cart);
+        this.$refs.cart.focus();
       }
       else {
         product[0].localTotal = product[0].price;
         this.cart.push(product[0]);
         this.updateTotalSum();
-        this.filterLiveRegion.textContent = "Artikel ergänzt. Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100;
+        this.filterLiveRegion.textContent = "Artikel "+ product[0].name + " ergänzt. Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100;
         this.persistCart();
         cartModal.showModal();
       }
