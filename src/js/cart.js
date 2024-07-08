@@ -130,7 +130,9 @@ export function cart() {
       localStorage.setItem('cart', JSON.stringify(this.cart));
     },
     toggleCartItem(productId) {
+      console.log(productId);
       let product = this.getProductById(productId);
+
 
       if (this.cart.find(x => x.id === productId)) {
         this.cart = this.cart.filter((n) => n.id !== product[0].id);
@@ -175,3 +177,10 @@ export function cart() {
     }
   }).mount();
 }
+
+const dialog = document.querySelector('#cart-modal');
+dialog.addEventListener('click', (event) => {
+  if (event.target.nodeName === 'DIALOG') {
+    dialog.close();
+  }
+});

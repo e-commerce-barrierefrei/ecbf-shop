@@ -2,7 +2,7 @@
 <html lang="de">
 <include src="partials/html-head.html">
   {
-  "title": "Lorem Sonic - ECBF.shop"
+  "title": "Karaffex - ECBF.shop"
   }
 </include>
 <body>
@@ -11,41 +11,68 @@
   <include src="partials/header.html"></include>
 
 </header>
-<main>
-  <h1>Lorem Sonic</h1>
+<main id="content" @mounted="whenMounted()">
+  <div class="wrapper">
+    <h1>Karaffex</h1>
+    <div class="wrapper__inner">
+      <div>
+        <include src="partials/produktbild.html"></include>
+      </div>
+      <div>
+        <include src="partials/produktpreis.html"></include>
 
-  <p>Bild</p>
+        <ul>
+          <li>Für köstlich aromatischen Filterkaffee</li>
+          <li>Filterkaffeezubereiter und Dekantiergefäß in einem</li>
+          <li>Ergonomischer Holzgriff für komfortable Handhabung</li>
+          <li>Präziser Ausgießer für tropffreies Einschenken</li>
+          <li>Im Museum of Modern Art in New York als eines der 100 schönsten Designobjekte präsentiert</li>
+        </ul>
 
-  <details>
-    <summary>Produkteigenschaften</summary>
+        <include src="partials/5star.html"></include>
 
-    <dl>
-      <dt>Marke</dt>
-      <dd>ACME</dd>
-      <dt>Farbe</dt>
-      <dd>Asphaltgrau</dd>
-      <dt>Farbe</dt>
-      <dd>Asphaltgrau</dd>
-      <dt>Konnektivitätstechnologie</dt>
-      <dd>Kabellos</dd>
-      <dt>Modellname</dt>
-      <dd>Lorem Sonic</dd>
-      <dt>Formfaktor</dt>
-      <dd>Ohrumschließend</dd>
-      <dt>Rauschkontrolle</dt>
-      <dd>Geräuschabschirmung</dd>
-      <dt>Kopfhörerbuchse</dt>
-      <dd>3,5 mm Klinke</dd>
-    </dl>
+        <details>
+          <summary>Produkteigenschaften</summary>
 
-  </details>
+          <dl>
+            <dt>Marke</dt>
+            <dd>ACME</dd>
+            <dt>Material</dt>
+            <dd>Glas</dd>
+            <dt>Konnektivitätstechnologie</dt>
+            <dd>Kabellos</dd>
+            <dt>Modellname</dt>
+            <dd>Lorem Karaffex</dd>
+            <dt>Formfaktor</dt>
+            <dd>Ohrumschließend</dd>
+            <dt>Rauschkontrolle</dt>
+            <dd>Geräuschabschirmung</dd>
+            <dt>Kopfhörerbuchse</dt>
+            <dd>3,5 mm Klinke</dd>
+          </dl>
 
+        </details>
+
+        <details>
+          <summary>Maße</summary>
+          6,3 &times; 9,6 &times; 1,4 cm
+        </details>
+
+        <button
+          @click="toggleCartItem(4)"
+          v-text="!isInCart(4) ? 'In den Warenkorb legen' : 'Aus dem Warenkorb entfernen'"
+        ></button>
+      </div>
+    </div>
+  </div>
 </main>
 <aside>
 
 </aside>
 <footer>
   <include src="partials/html-footer.html"></include>
+  <include src="partials/filterliveregion.html"></include>
+
 </footer>
 </body>
 </html>

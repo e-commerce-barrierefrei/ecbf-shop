@@ -69,7 +69,16 @@ cart();
 
 
 import jsondata from '../data.json';
-//console.log(jsondata);
+console.log(jsondata);
 
 // eslint-disable-next-line no-undef
-PetiteVue.createApp().mount("#petite-vue")
+PetiteVue.createApp().mount("#content");
+
+const triggerBigImageDialog = document.querySelector('#trigger-big-image-dialog');
+const bigImageDialog = document.querySelector('#big-image');
+
+if (triggerBigImageDialog) {
+  triggerBigImageDialog.addEventListener('click', function() {
+    bigImageDialog.showModal();
+  })
+}

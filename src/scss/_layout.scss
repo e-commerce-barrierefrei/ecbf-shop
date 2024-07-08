@@ -10,6 +10,16 @@
 main {
   background-color: rgb(250, 251, 252);
   padding: 1rem 2rem;
+
+  .wrapper {
+    margin: 0 auto;
+    max-width: 125ch;
+  }
+
+  .wrapper__inner {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
 }
 
 
