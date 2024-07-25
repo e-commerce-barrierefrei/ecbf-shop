@@ -10,6 +10,7 @@ export function cart() {
     cartCaptionTotal: document.querySelector("[data-cart-caption-total]"),
     cart: JSON.parse(localStorage.getItem('cart')) || [],
     amount: 1,
+    invoiceDataHidden: false,
     sum: 0,
     totalCartItems: 0,
     sortBy: "id",

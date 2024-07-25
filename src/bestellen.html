@@ -11,7 +11,7 @@
   <include src="partials/header.html"></include>
 
 </header>
-<main id="content" @mounted="whenMounted()">
+<main id="content" @mounted="whenMounted()"  >
   <h1>Bestellen</h1>
 
   <table tabindex="-1" ref="cart">
@@ -62,7 +62,7 @@
 
   <h2>Versandadresse</h2>
 
-  <form data-order method="post" v-scope="{ invoiceDataHidden: false }">
+  <form data-order method="post">
     <div>
       <div class="box box--form">
         <small class="form__required-label">* bedeutet: Notwendige Angaben</small>
