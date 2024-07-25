@@ -18,13 +18,15 @@ const cookieModal = document.querySelector("#cookie-modal");
 const cartModal = document.querySelector("#cart-modal");
 //const cookieModal = document.querySelector("#cookie-modal");
 const cookieModalTrigger = document.querySelector("[data-cookie-modal-trigger]");
-const cartModalTrigger = document.querySelector("[data-cart-modal-trigger]");
+const cartModalTriggers = document.querySelectorAll("[data-cart-modal-trigger]");
 
 
-
-cartModalTrigger.addEventListener('click', () => {
-  cartModal.showModal();
+cartModalTriggers.forEach((cartModalTrigger) => {
+  cartModalTrigger.addEventListener('click', () => {
+    cartModal.showModal();
+  })
 })
+
 
 cookieModalTrigger.addEventListener('click', () => {
   cookieModal.showModal();
@@ -37,7 +39,6 @@ cookieModal.addEventListener('cancel', (event) => {
 
 
 
-import { cart } from "./js/cart";
 
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("cookiebanner") === "1") {
@@ -65,6 +66,9 @@ if (document.querySelector("#produktliste")) {
 
 
 isMobile();
+
+import { cart } from "./js/cart";
+
 cart();
 
 

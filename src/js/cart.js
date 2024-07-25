@@ -1,6 +1,7 @@
 import products from '../../data.json';
 const cartModal = document.querySelector("#cart-modal");
 
+
 export function cart() {
   PetiteVue.createApp({
     products,
@@ -177,6 +178,7 @@ export function cart() {
     }
   }).mount();
 }
+
 
 const dialog = document.querySelector('#cart-modal');
 dialog.addEventListener('click', (event) => {

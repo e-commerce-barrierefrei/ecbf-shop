@@ -11,16 +11,10 @@
   <include src="partials/header.html"></include>
 
 </header>
-<main>
+<main id="content" @mounted="whenMounted()">
   <h1>Bestellen</h1>
 
-  <h2>Warenkorb</h2>
-  <table  tabindex="-1" ref="cart">
-    <caption class="visually-hidden">
-      <span>Warenkob, Gesamtsumme </span>
-      <span data-cart-caption-total></span>
-      <span> Euro</span>
-    </caption>
+  <table tabindex="-1" ref="cart">
     <thead>
     <tr>
       <th>Produkt</th>
@@ -30,24 +24,41 @@
     </tr>
     </thead>
     <tbody>
-    <tr id="cartproducts" v-for="cartItem in cart">
+    <tr id="cartproducts">
       <td><strong>Karaffex</strong></td>
       <td>2</td>
       <td>
         <button @click="toggleCartItem(cartItem.id)">
           Aus Warenkorb entfernen
         </button>
-        <label :for="'giftwrap-' + cartItem.id">
-          <input :id="'giftwrap-' + cartItem.id" type="checkbox" @change="toggleGiftWrap(cartItem.id)"
-                 :checked="hasGiftwrap(cartItem.id) ? true: undefined">Geschenkverpackung (€ {{giftwrapPrice /
-          100}})</label>
+
 
       </td>
-      <td><strong>€ {{ getLocalTotal(cartItem) / 100 }}</strong></td>
+      <td><strong>€ 91,98</strong></td>
+
+    </tr>
+    <tr>
+      <td><strong>Grüner Tee Uno</strong></td>
+      <td>1</td>
+      <td>
+        <button @click="toggleCartItem(cartItem.id)">
+          Aus Warenkorb entfernen
+        </button>
+
+
+      </td>
+      <td><strong>€ 7,99</strong></td>
 
     </tr>
     </tbody>
   </table>
+
+  <p>Gesamt: <strong>€ 99,88</strong></p>
+
+  <button type="button" data-cart-modal-trigger>Warenkorb anpassen</button>
+
+  <h2>Warenkorb</h2>
+
 
   <h2>Versandadresse</h2>
 
@@ -157,7 +168,8 @@
 
       </div>
       <div>
-        <input type="checkbox" :checked="invoiceDataHidden" id="addressIsInvoiceAddress" name="addressIsInvoiceAddress" value="1"
+        <input type="checkbox" :checked="invoiceDataHidden" id="addressIsInvoiceAddress" name="addressIsInvoiceAddress"
+               value="1"
                @click="invoiceDataHidden = !invoiceDataHidden">
         <label for="addressIsInvoiceAddress">
           Die Versandadresse entspricht der Rechnungsadresse
@@ -203,108 +215,115 @@
                    id="address-invoice.lastName" autocomplete="family-name" value="">
             <p class="form__error" hidden id="err23">Bitte Nachnamen angeben</p>
           </div>
+          <div class="row">
+            <div>
+              <label for="address-invoice.company">Adresszusatz / Firma
+              </label>
+              <input type="text" name="address-invoice.company" id="address-invoice.company" autocomplete="organization"
+                     data-nudge="#nudgeCheckoutPersonalData-company-ng-maxlength" value="">
+            </div>
+            <div class="row">
+              <div>
+                <label for="address-invoice.address1">Straße<em>*</em>
+                </label>
+                <input type="text" aria-required="true" data-required-error="err24" name="address-invoice.address1"
+                       id="address-invoice.address1" autocomplete="address-level3">
+                <p class="form__error" hidden id="err24">Bitte Straße angeben</p>
+              </div>
+              <div class="input-box col-xs-4 col-sm-3 col-lg-2">
+                <label for="address-invoice.address2">Nr.<em>*</em>
+                </label>
+                <input type="text" aria-required="true" data-required-error="err25" name="address-invoice.address2"
+                       id="address-invoice.address2" value="">
+                <p class="form__error" hidden id="err25">Bitte Hausnummer angeben</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-box col-xs-5 col-sm-3 col-lg-2">
+                <label for="address-invoice.zipCode">PLZ<em>*</em>
+                </label>
+                <input type="text" aria-required="true" data-required-error="err26" name="address-invoice.zipCode"
+                       id="address-invoice.zipCode" autocomplete="postal-code" pattern="[0-9]*">
+                <p class="form__error" hidden id="err26">Bitte Postleitzahl angeben</p>
+              </div>
+              <div class="input-box col-xs-7 col-sm-9 col-lg-10">
+                <label for="address-invoice.city">Ort<em>*</em>
+                </label>
+                <input autocomplete="address-level2" aria-required="true" data-required-error="err27" type="text"
+                       name="address-invoice.city" id="address-invoice.city" value="">
+                <p class="form__error" hidden id="err27">Bitte Ort angeben</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-box col-xs-12">
+                <label for="address-invoice.email">E-Mail-Adresse<em>*</em>
+                </label>
+                <input aria-required="true" data-required-error="err28" data-email-syntax-error="err29" type="email"
+                       name="address-invoice.email" id="address-invoice.email" value="" maxlength="50"
+                       autocomplete="email">
+                <p class="form__error" hidden id="err28">Bitte E-Mail-Adresse angeben</p>
+                <p class="form__error" hidden id="err29">Die E-Mail-Adresse wurde nicht im richtigen Format
+                  eingegeben.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" v-if="invoiceDataHidden" name="customerDataIsInvoiceData">
         <div class="row">
           <div>
-            <label for="address-invoice.company">Adresszusatz / Firma
-            </label>
-            <input type="text" name="address-invoice.company" id="address-invoice.company" autocomplete="organization"
-                   data-nudge="#nudgeCheckoutPersonalData-company-ng-maxlength" value="">
-          </div>
-          <div class="row">
-            <div>
-              <label for="address-invoice.address1">Straße<em>*</em>
-              </label>
-              <input type="text" aria-required="true" data-required-error="err24" name="address-invoice.address1"
-                     id="address-invoice.address1" autocomplete="address-level3">
-              <p class="form__error" hidden id="err24">Bitte Straße angeben</p>
-            </div>
-            <div class="input-box col-xs-4 col-sm-3 col-lg-2">
-              <label for="address-invoice.address2">Nr.<em>*</em>
-              </label>
-              <input type="text" aria-required="true" data-required-error="err25" name="address-invoice.address2"
-                     id="address-invoice.address2" value="">
-              <p class="form__error" hidden id="err25">Bitte Hausnummer angeben</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-box col-xs-5 col-sm-3 col-lg-2">
-              <label for="address-invoice.zipCode">PLZ<em>*</em>
-              </label>
-              <input type="text" aria-required="true" data-required-error="err26" name="address-invoice.zipCode"
-                     id="address-invoice.zipCode" autocomplete="postal-code" pattern="[0-9]*">
-              <p class="form__error" hidden id="err26">Bitte Postleitzahl angeben</p>
-            </div>
-            <div class="input-box col-xs-7 col-sm-9 col-lg-10">
-              <label for="address-invoice.city">Ort<em>*</em>
-              </label>
-              <input autocomplete="address-level2" aria-required="true" data-required-error="err27" type="text"
-                     name="address-invoice.city" id="address-invoice.city" value="">
-              <p class="form__error" hidden id="err27">Bitte Ort angeben</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-box col-xs-12">
-              <label for="address-invoice.email">E-Mail-Adresse<em>*</em>
-              </label>
-              <input aria-required="true" data-required-error="err28" data-email-syntax-error="err29" type="email"
-                     name="address-invoice.email" id="address-invoice.email" value="" maxlength="50"
-                     autocomplete="email">
-              <p class="form__error" hidden id="err28">Bitte E-Mail-Adresse angeben</p>
-              <p class="form__error" hidden id="err29">Die E-Mail-Adresse wurde nicht im richtigen Format
-                eingegeben.</p>
+            <h2>Kundenkonto</h2>
+
+            <label for="registerUser"><input type="checkbox" id="registerUser" name="registerUser" value="1">
+
+              Ich möchte bei der nächsten Bestellung meine Daten nicht erneut eingeben müssen und gern ein Konto
+              anlegen.</label>
+
+
+            <div class="row" id="registerUserArea" hidden>
+              <div>
+                <label for="logonData.loginPassword">Passwort (min. 6 Zeichen)<em>*</em>
+                </label>
+                <input type="password" data-required-error="err10" aria-required="true" name="logonData.loginPassword"
+                       id="logonData.loginPassword" value="" title="Passwort (min. 6 Zeichen)" maxlength="30">
+                <button class="form__password-switch passwordHideShow" type="button">Passwort anzeigen</button>
+                <span class="visually-hidden" aria-live="polite"></span>
+                <p class="form__error" hidden id="err10">Bitte Passwort angeben</p>
+              </div>
+              <div>
+                <label for="logonData.loginPasswordRepeat">Passwort wiederholen<em>*</em>
+                </label>
+                <input type="password" data-required-error="err11" data-pw-mismatch-error="err12" aria-required="true"
+                       name="logonData.loginPasswordRepeat" id="logonData.loginPasswordRepeat" value=""
+                       title="Passwort wiederholen" maxlength="30">
+                <button class="form__password-switch passwordHideShow" type="button">Passwort anzeigen</button>
+                <span class="visually-hidden" aria-live="polite"></span>
+                <p class="form__error" hidden id="err11">Bitte Passwort erneut angeben</p>
+                <p class="form__error" hidden id="err12">Passwort und Passwortwiederholung stimmen nicht überein</p>
+              </div>
             </div>
           </div>
         </div>
+
+        <button type="submit">Absenden</button>
       </div>
-        <input type="hidden" v-if="invoiceDataHidden" name="customerDataIsInvoiceData">
-      <div class="row">
-        <div>
-          <h2>Kundenkonto</h2>
-
-          <label for="registerUser"><input type="checkbox" id="registerUser" name="registerUser" value="1">
-
-            Ich möchte bei der nächsten Bestellung meine Daten nicht erneut eingeben müssen und gern ein Konto anlegen.</label>
-
-
-          <div class="row" id="registerUserArea" hidden>
-            <div>
-              <label for="logonData.loginPassword">Passwort (min. 6 Zeichen)<em>*</em>
-              </label>
-              <input type="password" data-required-error="err10" aria-required="true" name="logonData.loginPassword"
-                     id="logonData.loginPassword" value="" title="Passwort (min. 6 Zeichen)" maxlength="30">
-              <button class="form__password-switch passwordHideShow" type="button">Passwort anzeigen</button>
-              <span class="visually-hidden" aria-live="polite"></span>
-              <p class="form__error" hidden id="err10">Bitte Passwort angeben</p>
-            </div>
-            <div>
-              <label for="logonData.loginPasswordRepeat">Passwort wiederholen<em>*</em>
-              </label>
-              <input type="password" data-required-error="err11" data-pw-mismatch-error="err12" aria-required="true"
-                     name="logonData.loginPasswordRepeat" id="logonData.loginPasswordRepeat" value=""
-                     title="Passwort wiederholen" maxlength="30">
-              <button class="form__password-switch passwordHideShow" type="button">Passwort anzeigen</button>
-              <span class="visually-hidden" aria-live="polite"></span>
-              <p class="form__error" hidden id="err11">Bitte Passwort erneut angeben</p>
-              <p class="form__error" hidden id="err12">Passwort und Passwortwiederholung stimmen nicht überein</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <button type="submit">Absenden</button>
     </div>
 
   </form>
 
-  <h2>Lieferoptionen:</h2>
-  <h2>Bezahlmethode:</h2>
+  <fieldset>
+    <legend>Bezahlmethode</legend>
+
+    <div><label for="rechnung"> <input type="radio" id="rechnung" name="bezahlmethode"> Rechnung</label></div>
+      <div><label for="vorkasse"> <input type="radio" id="vorkasse" name="bezahlmethode"> Vorkasse</label></div>
+        <div><label for="paythis"> <input type="radio" id="paythis" name="bezahlmethode"> Online bezahlen via PayThisNow</label></div>
+  </fieldset>
+
+
 
 </main>
 <aside>
 
 </aside>
-<footer>
-  <include src="partials/html-footer.html"></include>
-</footer>
+<include src="partials/html-footer.html"></include>
 </body>
 </html>
