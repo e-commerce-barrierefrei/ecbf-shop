@@ -12,7 +12,42 @@
 
 </header>
 <main>
-  <h1>Als Gast bestellen</h1>
+  <h1>Bestellen</h1>
+
+  <h2>Warenkorb</h2>
+  <table  tabindex="-1" ref="cart">
+    <caption class="visually-hidden">
+      <span>Warenkob, Gesamtsumme </span>
+      <span data-cart-caption-total></span>
+      <span> Euro</span>
+    </caption>
+    <thead>
+    <tr>
+      <th>Produkt</th>
+      <th id="menge">Menge</th>
+      <th>Optionen</th>
+      <th>Preis</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="cartproducts" v-for="cartItem in cart">
+      <td><strong>Karaffex</strong></td>
+      <td>2</td>
+      <td>
+        <button @click="toggleCartItem(cartItem.id)">
+          Aus Warenkorb entfernen
+        </button>
+        <label :for="'giftwrap-' + cartItem.id">
+          <input :id="'giftwrap-' + cartItem.id" type="checkbox" @change="toggleGiftWrap(cartItem.id)"
+                 :checked="hasGiftwrap(cartItem.id) ? true: undefined">Geschenkverpackung (€ {{giftwrapPrice /
+          100}})</label>
+
+      </td>
+      <td><strong>€ {{ getLocalTotal(cartItem) / 100 }}</strong></td>
+
+    </tr>
+    </tbody>
+  </table>
 
   <h2>Versandadresse</h2>
 
@@ -260,6 +295,9 @@
     </div>
 
   </form>
+
+  <h2>Lieferoptionen:</h2>
+  <h2>Bezahlmethode:</h2>
 
 </main>
 <aside>

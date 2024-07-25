@@ -1,5 +1,9 @@
 <button data-cart-modal-trigger class="header-button">
-  <svg viewBox='0 0 32 32' width='24' height='24' aria-hidden="true" focusable="false" xmlns='http://www.w3.org/2000/svg'><path fill='currentColor' d='M28.76 11.35A1 1 0 0 0 28 11h-6V7a3 3 0 0 0-3-3h-6a3 3 0 0 0-3 3v4H4a1 1 0 0 0-1 1.15L4.88 24.3a2 2 0 0 0 2 1.7h18.26a2 2 0 0 0 2-1.7L29 12.15a1 1 0 0 0-.24-.8M12 7a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4h-8Zm13.14 17H6.86L5.17 13h21.66Z' /></svg>
+  <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" focusable="false"
+       xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor"
+          d="M28.76 11.35A1 1 0 0 0 28 11h-6V7a3 3 0 0 0-3-3h-6a3 3 0 0 0-3 3v4H4a1 1 0 0 0-1 1.15L4.88 24.3a2 2 0 0 0 2 1.7h18.26a2 2 0 0 0 2-1.7L29 12.15a1 1 0 0 0-.24-.8M12 7a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4h-8Zm13.14 17H6.86L5.17 13h21.66Z" />
+  </svg>
   <span>Mein Warenkorb ({{ totalCartItems }})</span>
 </button>
 
@@ -16,35 +20,46 @@
       </button>
     </form>
 
-    <h1 id="cart-modal-title">Mein Warenkorb ({{ totalCartItems }})</h1>
+    <h1 id="cart-modal-title">Mein Warenkorb! ({{ totalCartItems }})</h1>
 
     <div v-show="cart.length === 0">Leer</div>
+    <form v-show="cart.length !== 0" action="./bestellen.html">
+      <table  tabindex="-1" ref="cart">
+        <caption class="visually-hidden">
+          <span>Warenkob, Gesamtsumme </span>
+          <span data-cart-caption-total></span>
+          <span> Euro</span>
+        </caption>
+        <thead>
+        <tr>
+          <th>Produkt</th>
+          <th id="menge">Menge</th>
+          <th>Optionen</th>
+          <th>Preis</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="cartproducts" v-for="cartItem in cart">
+          <td><strong>{{cartItem.name}}</strong></td>
+          <td><input aria-labelledby="menge" :value="cartItem.amount" type="number" min="1"
+                     @change="updateItemPrice(cartItem.id)"></td>
+          <td>
+            <button @click="toggleCartItem(cartItem.id)">
+              Aus Warenkorb entfernen
+            </button>
+            <label :for="'giftwrap-' + cartItem.id">
+              <input :id="'giftwrap-' + cartItem.id" type="checkbox" @change="toggleGiftWrap(cartItem.id)"
+                     :checked="hasGiftwrap(cartItem.id) ? true: undefined">Geschenkverpackung (€ {{giftwrapPrice /
+              100}})</label>
 
-    <table v-show="cart.length !== 0" tabindex="-1" ref="cart">
-      <caption class="visually-hidden">
-        <span>Warenkob, Gesamtsumme </span>
-        <span data-cart-caption-total></span>
-        <span> Euro</span>
-      </caption>
-      <thead>
-            <tr><th>Produkt</th><th id="menge">Menge</th><th>Optionen</th><th>Preis</th></tr>
-      </thead>
-      <tbody>
-      <tr id="cartproducts" v-for="cartItem in cart">
-        <td><strong>{{cartItem.name}}</strong></td>
-        <td><input aria-labelledby="menge" :value="cartItem.amount" type="number" min="1" @change="updateItemPrice(cartItem.id)"></td>
-        <td><button @click="toggleCartItem(cartItem.id)">
-            Aus Warenkorb entfernen
-          </button>
-          <label :for="'giftwrap-' + cartItem.id">
-            <input :id="'giftwrap-' + cartItem.id" type="checkbox" @change="toggleGiftWrap(cartItem.id)" :checked="hasGiftwrap(cartItem.id) ? true: undefined">Geschenkverpackung  (€ {{giftwrapPrice / 100}})</label>
+          </td>
+          <td><strong>€ {{ getLocalTotal(cartItem) / 100 }}</strong></td>
 
-        </td>
-        <td><strong>€ {{ getLocalTotal(cartItem) / 100 }}</strong></td>
-
-      </tr>
-      </tbody>
-    </table>
-    Gesamtsumme € {{ sum / 100 }}
+        </tr>
+        </tbody>
+      </table>
+      Gesamtsumme € {{ sum / 100 }}
+    <button type="submit">Bestellen</button>
+    </form>
   </div>
 </dialog>
