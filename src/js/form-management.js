@@ -65,9 +65,9 @@ export function formManagement() {
        * @param {HTMLInputElement} requiredField
        */
       requiredFields.forEach((requiredField) => {
-
+        
         // Ist "requiredField" ein Fieldset, in dem ein Input ausgewählt ist?
-        let requiredFieldsetisChecked = requiredField.tagName === "FIELDSET" && !!requiredField.querySelector("input:checked");
+        let requiredFieldsetisChecked = requiredField.tagName === "FIELDSET" && !requiredField.querySelector("input:checked");
 
         // Erkenne nicht ausgefüllte oder nicht gecheckte Pflichtfelder oder Radiogroups in Fehlerzustand
         const fieldInputEmptyThoughRequired = (!requiredField.checked && requiredField.value === "") || !!requiredFieldsetisChecked;

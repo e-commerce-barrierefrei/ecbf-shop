@@ -19,7 +19,6 @@
     <tr>
       <th>Produkt</th>
       <th id="menge">Menge</th>
-      <th>Optionen</th>
       <th>Preis</th>
     </tr>
     </thead>
@@ -27,26 +26,13 @@
     <tr id="cartproducts">
       <td><strong>Karaffex</strong></td>
       <td>2</td>
-      <td>
-        <button @click="toggleCartItem(cartItem.id)">
-          Aus Warenkorb entfernen
-        </button>
 
-
-      </td>
       <td><strong>€ 91,98</strong></td>
 
     </tr>
     <tr>
       <td><strong>Grüner Tee Uno</strong></td>
       <td>1</td>
-      <td>
-        <button @click="toggleCartItem(cartItem.id)">
-          Aus Warenkorb entfernen
-        </button>
-
-
-      </td>
       <td><strong>€ 7,99</strong></td>
 
     </tr>
@@ -304,19 +290,25 @@
           </div>
         </div>
 
-        <button type="submit">Absenden</button>
       </div>
     </div>
 
+    <fieldset aria-required="true" role="radiogroup" data-required-error="err13">
+      <legend>Bezahlmethode</legend>
+
+      <div><label for="rechnung"> <input type="radio" id="rechnung" name="bezahlmethode"> Rechnung</label></div>
+      <div><label for="vorkasse"> <input type="radio" id="vorkasse" name="bezahlmethode"> Vorkasse</label></div>
+      <div><label for="paythis"> <input type="radio" id="paythis" name="bezahlmethode"> Online bezahlen via PayThisNow</label></div>
+
+      <p class="form__error" hidden id="err13">Bitte Zahlmethode wählen</p>
+
+    </fieldset>
+
+    <button type="submit">Absenden</button>
+
   </form>
 
-  <fieldset>
-    <legend>Bezahlmethode</legend>
 
-    <div><label for="rechnung"> <input type="radio" id="rechnung" name="bezahlmethode"> Rechnung</label></div>
-      <div><label for="vorkasse"> <input type="radio" id="vorkasse" name="bezahlmethode"> Vorkasse</label></div>
-        <div><label for="paythis"> <input type="radio" id="paythis" name="bezahlmethode"> Online bezahlen via PayThisNow</label></div>
-  </fieldset>
 
 
 
