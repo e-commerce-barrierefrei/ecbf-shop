@@ -4,7 +4,7 @@
     <path fill="currentColor"
           d="M28.76 11.35A1 1 0 0 0 28 11h-6V7a3 3 0 0 0-3-3h-6a3 3 0 0 0-3 3v4H4a1 1 0 0 0-1 1.15L4.88 24.3a2 2 0 0 0 2 1.7h18.26a2 2 0 0 0 2-1.7L29 12.15a1 1 0 0 0-.24-.8M12 7a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4h-8Zm13.14 17H6.86L5.17 13h21.66Z" />
   </svg>
-  <span>Mein Warenkorb ({{ totalCartItems }})</span>
+  <span>Warenkorb <span class="total-cart-items">{{ totalCartItems }}</span> <span class="visually-hidden">Stück</span></span>
 </button>
 
 <dialog
@@ -12,54 +12,67 @@
   aria-labelledby="cart-modal-title"
   class="dialog-container"
 >
-  <div class="dialog-content fifty">
+  <div class="dialog-content fifty cart">
+    <div class="cart__header">
+      <form method="dialog" class="cart__close-form">
+        <button class="cart__close" aria-label="Dialog schließen">
+        </button>
+      </form>
 
-    <form method="dialog">
-      <button aria-label="Dialog schließen">
-        &times;
-      </button>
-    </form>
-
-    <h1 id="cart-modal-title">Mein Warenkorb! ({{ totalCartItems }})</h1>
-
+      <h1 class="cart__title" id="cart-modal-title">Warenkorb ({{ totalCartItems }})</h1>
+    </div>
     <div v-show="cart.length === 0">Leer</div>
     <form v-show="cart.length !== 0" action="./bestellen.html">
-      <table  tabindex="-1" ref="cart">
+      <table class="cart__table" tabindex="-1" ref="cart">
         <caption class="visually-hidden">
-          <span>Warenkob, Gesamtsumme </span>
+          <span>Warenkorb, Gesamtsumme </span>
           <span data-cart-caption-total></span>
           <span> Euro</span>
         </caption>
         <thead>
         <tr>
-          <th>Produkt</th>
-          <th id="menge">Menge</th>
-          <th>Optionen</th>
-          <th>Preis</th>
+          <th><span class="visually-hidden">Produkt</span></th>
+          <th><span class="visually-hidden">Menge</span></th>
+          <th><span class="visually-hidden">Optionen</span></th>
+          <th><span class="visually-hidden">Warenkorb</span></th>
+          <th><span class="visually-hidden">Preis</span></th>
         </tr>
         </thead>
         <tbody>
-        <tr id="cartproducts" v-for="cartItem in cart">
-          <td><strong>{{cartItem.name}}</strong></td>
-          <td><input aria-labelledby="menge" :value="cartItem.amount" type="number" min="1"
-                     @change="updateItemPrice(cartItem.id)"></td>
-          <td>
-            <button @click="toggleCartItem(cartItem.id)">
-              Aus Warenkorb entfernen
-            </button>
-            <label :for="'giftwrap-' + cartItem.id">
-              <input :id="'giftwrap-' + cartItem.id" type="checkbox" @change="toggleGiftWrap(cartItem.id)"
-                     :checked="hasGiftwrap(cartItem.id) ? true: undefined">Geschenkverpackung (€ {{giftwrapPrice /
-              100}})</label>
-
+        <tr v-for="cartItem in cart">
+          <td class="product-area">
+            <strong><a class="cart__product-link" href="produkt.html">{{cartItem.name}}</a></strong>
+            <img class="cart__product-image" :src="cartItem.img_url" :alt="cartItem.img_alt" />
           </td>
-          <td><strong>€ {{ getLocalTotal(cartItem) / 100 }}</strong></td>
+          <td class="amount-area"><label :for="'cart-produkt' + cartItem.id">Menge: </label><input :id="'cart-produkt' + cartItem.id" class="cart__product-amount" :value="cartItem.amount" type="number" min="1" max="20"
+                     @change="updateItemPrice(cartItem.id)"></td>
+          <td class="options-area">
+            <div class="cart__giftwrap">
+              <label  :for="'giftwrap-' + cartItem.id" class="cart__giftwrap-label">
+                <input :id="'giftwrap-' + cartItem.id" type="checkbox" @change="toggleGiftWrap(cartItem.id)"
+                       :checked="hasGiftwrap(cartItem.id) ? true: undefined"><div>Geschenk<span class="cart__packaging-string">verpackung</span><br> (€ {{giftwrapPrice /
+                100}})</div></label>
 
+            </div>
+          </td>
+          <td class="remove-area">
+            <div >
+              <button @click="toggleCartItem(cartItem.id)" class="cart__remove-item-button">
+                <span class="visually-hidden">Aus Warenkorb entfernen</span>
+              </button>
+            </div>
+          </td>
+          <td class="price-area"><strong>€&nbsp;{{ (getLocalTotal(cartItem) / 100).toFixed(2) }}</strong></td>
         </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">Gesamtsumme € {{ (sum / 100).toFixed(2) }}</td>
+          </tr>
+        </tfoot>
       </table>
-      Gesamtsumme € {{ sum / 100 }}
-    <button type="submit">Bestellen</button>
+
+    <button class="cart__submit" type="submit">Bestellen</button>
     </form>
   </div>
 </dialog>

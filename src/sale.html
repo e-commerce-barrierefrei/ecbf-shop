@@ -2,7 +2,7 @@
 <html lang="de">
 <include src="partials/html-head.html">
   {
-  "title": "Winteraktion - ECBF.shop"
+  "title": "Karaffex - ECBF.shop"
   }
 </include>
 <body>
@@ -11,15 +11,12 @@
   <include src="partials/header.html"></include>
 
 </header>
-<main>
+<main id="content" @mounted="whenMounted()">
   <h1>Winteraktion</h1>
   <include src="partials/wintersale.html"></include>
 </main>
 <aside>
   <h2><span lang="en">Grey Friday</span>-Angebote</h2>
 </aside>
-<footer>
-  <include src="partials/html-footer.html"></include>
-</footer>
-</body>
-</html>
+<include src="partials/html-footer.html"></include>
+

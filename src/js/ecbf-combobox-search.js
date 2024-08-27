@@ -147,9 +147,15 @@ class ComboboxSearch extends HTMLElement {
   }
 
   open() {
+
     if (this.getQuery().length >= 2) {
-      setTimeout(() => this.input.setAttribute("aria-expanded", "true"), 500)
+      setTimeout(() => {
+          this.input.setAttribute("aria-expanded", "true");
+        }, 500);
     }
+
+    this.listbox.style.width = this.input.getBoundingClientRect().width + "px";
+    this.listbox.style.top = this.input.getBoundingClientRect().height + "px";
   }
 
   close() {

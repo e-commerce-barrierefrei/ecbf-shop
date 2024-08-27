@@ -3,7 +3,7 @@
 
 <include src="partials/produktfilter.html"></include>
 
-<ul id="cartproducts">
+<ul id="produktliste">
   <li v-for="product in sortedProducts"  :hidden="isFiltered(product)">
     <strong>{{product.name}}</strong>
     <p>€ {{product.price / 100}}</p>

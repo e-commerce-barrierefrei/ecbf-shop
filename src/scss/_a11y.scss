@@ -21,7 +21,9 @@
   }
 }
 
-.visually-hidden {
+
+.visually-hidden:not(:focus):not(:active),
+.u-skiplink{
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
@@ -29,4 +31,11 @@
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.u-skiplink:focus {
+  height: auto;
+  width: auto;
+  overflow: auto;
+  clip: auto;
 }

@@ -3,13 +3,16 @@ body {
     background-color: #fff;
     margin: 0;
     padding: 0;
+
+    --red: #B1004A;
+    --blue: #1E344E;
 }
 
 @import "scss/logo";
 @import "scss/header";
-@import "scss/footer";
 @import "scss/layout";
 @import "scss/main-nav";
+@import "scss/dialog";
 @import "scss/a11y";
 @import "scss/carousel";
 @import "scss/wintersale";
@@ -18,4 +21,6 @@ body {
 @import "scss/suchergebnis";
 @import "scss/modal";
 @import "scss/stars";
+@import "scss/cart";
+@import "scss/footer";
 

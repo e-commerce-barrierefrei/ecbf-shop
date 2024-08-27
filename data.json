@@ -6,7 +6,9 @@
     "price": 999,
     "amount": 1,
     "localTotal": 0,
-    "giftwrap": false
+    "giftwrap": false,
+    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
+    "img_alt": "Foo"
   },
   {
     "id": 2,
@@ -15,7 +17,9 @@
     "price": 499,
     "amount": 1,
     "localTotal": 0,
-    "giftwrap": false
+    "giftwrap": false,
+    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
+    "img_alt": "Foo"
   },
   {
     "id": 3,
@@ -24,7 +28,9 @@
     "price": 99,
     "amount": 1,
     "localTotal": 0,
-    "giftwrap": false
+    "giftwrap": false,
+    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
+    "img_alt": "Foo"
   },
   {
     "id": 4,
@@ -32,7 +38,9 @@
     "in_stock": 5,
     "price": 4599,
     "amount": 1,
-    "giftwrap": false
+    "giftwrap": false,
+    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
+    "img_alt": "Foo"
   }
 ]
 

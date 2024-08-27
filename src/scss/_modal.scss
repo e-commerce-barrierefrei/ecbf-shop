@@ -3,7 +3,6 @@
 
    &.fifty {
      position: fixed;
-    width: 50vw;
     right: 0;
     left: 50vw;
     bottom: 0;
@@ -11,11 +10,8 @@
 
 
      @media (max-width: 40em) {
-       width: 90vw;
-        left: 5vw;
-       right: 5vw;
-       top: 25vw;
-       bottom: 5vw;
+       width: auto;
+       inset: 5vw;
      }
 
 

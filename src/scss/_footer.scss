@@ -1,4 +1,10 @@
-footer {
+.footer {
   border-top: 1px solid #e5e7eb;
   padding: 2rem;
+  background-color: var(--blue);
+  color: #fff;
+
+  a {
+    color: inherit;
+  }
 }

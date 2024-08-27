@@ -6,14 +6,14 @@
 
 .mega-menu {
   --menu-bar-background: transparent;
-  --menu-bar-hover-background: #000e54;
+  --menu-bar-hover-background: transparent;
   --menu-bar-hover-color: #fff;
-  --menu-bar-open-color: #000;
+  --menu-bar-open-color: var(--red);
 
-  --menu-background: #f1f1f2;
+  --menu-background: #fff;
   --menu-link-color: #203299;
 
-  --menu-color: #000;
+  --menu-color: var(--blue);
   --menu-hover-background: #000e54;
   --menu-hover-color: #fff;
   --menu-font-size: 1rem;
@@ -55,14 +55,7 @@
   font-size: 1.25rem;
   height: 2rem;
 }
-.mega-menu button.responsive-toggle[aria-expanded="true"] {
-  color: var(--menu-bar-open-color);
-  background: var(--menu-background);
-}
-.mega-menu button.responsive-toggle[aria-expanded]:hover {
-  color: var(--menu-bar-hover-color);
-  background: var(--menu-bar-hover-background);
-}
+
 
 .mega-menu button.responsive-toggle svg {
   position: relative;
@@ -74,12 +67,8 @@
 
 .mega-menu button.mega-menu-toggle[aria-expanded="true"] {
   color: var(--menu-bar-open-color);
-  background: var(--menu-background);
 }
-.mega-menu button.mega-menu-toggle[aria-expanded]:hover {
-  color: var(--menu-bar-hover-color);
-  background: var(--menu-bar-hover-background);
-}
+
 .mega-menu button.mega-menu-toggle:focus-visible {
   outline: dotted currentColor 3px;
   outline-offset: -5px;
@@ -89,11 +78,6 @@
   outline-offset: -5px;
 }
 
-
-
-.mega-menu button.responsive-toggle[aria-expanded="true"] {
-  box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.4);
-}
 
 .mega-menu button.responsive-toggle[aria-expanded="false"] + ul {
   display: none;
@@ -116,7 +100,6 @@
   margin: 0;
   padding: 0;
   position: absolute;
-  background: var(--menu-background);
   list-style: none;
   z-index: 100;
 }
@@ -180,6 +163,7 @@
 
 .mega-sub-menu > ul li a {
   text-decoration: none;
+  color: var(--blue);
 }
 .mega-sub-menu > ul li a:focus {
   text-decoration: underline;
@@ -251,23 +235,45 @@
     background: transparent;
   }
   .mega-menu > ul > li {
-    padding: 0;
     display: inline-block;
   }
 
-
-
   .mega-menu > ul > li > button.mega-menu-toggle {
-    width: auto;
+    padding: 0 2rem 0 0;
+    margin-right: .5em;
     border-bottom: 0;
-    background: var(--menu-bar-background);
+    background-color: var(--menu-bar-background);
     color: var(--menu-bar-color);
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 1em;
+      right: .5em;
+      background-image: url(./img/pfeil.svg);
+      background-repeat: no-repeat;
+      width: 1.2em;
+      height: .8em;
+    }
+
+    &[aria-expanded="true"]::after {
+      transform: rotate(-180deg);
+    }
   }
-  .mega-menu ul > li > button[aria-expanded="true"] {
-    box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.4);
+
+  .mega-menu > ul > li:first-child .mega-menu-toggle {
+    padding-left: 0;
   }
+
+
+  //.mega-menu ul > li > button[aria-expanded="true"] {
+  //  box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.4);
+  //}
+
   .mega-menu ul > li > button[aria-expanded="true"]:not(:hover) {
-    background: var(--menu-background);
+    //background: var(--menu-background);
   }
 
 
@@ -278,16 +284,17 @@
   .mega-sub-menu {
     display: none;
     position: absolute;
-    background: var(--menu-background);
+    background-color: var(--menu-background);
     color: var(--menu-color);
     list-style: none;
-    padding: 15px var(--inner-sub-menu-margin);
+    padding: 1.5rem;
     box-sizing: border-box;
     width: var(--menu-width);
     transition: opacity .4s 1s;
-    box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.4);
+    outline-color: transparent;
+    box-shadow: 7px 7px 7px 0 rgba(0,0,0,0.3);
     z-index: 100;
-    left: 0;
+    left: -1.5rem;
   }
   /* add a "cushion" around the submenus to make it not close as easily */
   .mega-sub-menu:before {
@@ -318,7 +325,7 @@
   .mega-sub-menu > ul {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     padding: 0;
     border: 0;
   }
@@ -382,6 +389,7 @@
 
 
   .mega-sub-heading {
+    margin-bottom: .5em;
   }
 }
 

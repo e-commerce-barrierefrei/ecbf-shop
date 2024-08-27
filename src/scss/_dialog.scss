@@ -1,0 +1,13 @@
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+.dialog-content {
+  padding: 1.5rem;
+  overflow: scroll;
+
+  @media (max-width: 20em) {
+    padding: 1rem;
+
+  }
+}

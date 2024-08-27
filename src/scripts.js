@@ -45,6 +45,10 @@ if (urlParams.get("cookiebanner") === "1") {
   cookieModal.showModal();
 }
 
+if (urlParams.get("warenkorb") === "1") {
+  cartModal.showModal();
+}
+
 if (document.getElementById("c")) {
   initCarousel();
 }
@@ -71,9 +75,8 @@ import { cart } from "./js/cart";
 
 cart();
 
-
+// eslint-disable-next-line
 import jsondata from '../data.json';
-console.log(jsondata);
 
 // eslint-disable-next-line no-undef
 PetiteVue.createApp().mount("#content");
