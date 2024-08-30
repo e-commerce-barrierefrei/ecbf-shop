@@ -1,6 +1,14 @@
   header {
     border-bottom: 1px solid #e5e7eb;
     padding: 2rem;
+
+    @media (max-width: 40em) {
+      padding: 1rem 2rem 2rem;
+    }
+
+    @media (max-width: 20em) {
+      padding: 1rem;
+    }
   }
 
   .hero {
@@ -13,13 +21,47 @@
 
 header .search-widget {
   grid-area: search;
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding-left: 6rem;
+
+  @media (max-width: 60em) {
+    padding-left: 0;
+    align-items: start;
+  }
+}
+
+.search-widget__combobox-container {
+
+  @media (max-width: 20em) {
+      margin: .5em;
+      box-shadow: rgba(0, 0, 0, .16) 0 6px 12px, rgba(0, 0, 0, .23) 0 6px 12px;
+      border-radius: var(--border-radius);
+      position: fixed;
+      top: 6.5rem;
+      left: 0;
+      right: 0;
+      z-index: 10;
+  }
+
+    @media (max-width: 40em) {
+      position: fixed;
+      top: 8.5rem;
+      left: 0;
+      z-index: 10;
+      left: 0;
+      right: 0;
+  }
 }
 
 header .accountbutton {
   grid-area: accountbutton;
 
+  @media (max-width: 40em) {
+    place-content: end;
+  }
 }
 
 header [data-cart-modal-trigger] {
@@ -64,6 +106,7 @@ header [data-cart-modal-trigger] {
 
   .logo {
     display: block;
+    grid-area: logo;
   }
 }
 
@@ -75,6 +118,7 @@ header [data-cart-modal-trigger] {
     align-items: center;
     background: transparent;
     border: 1px solid transparent;
+    position: relative;
 
     span {
       line-height: 1;
@@ -82,5 +126,12 @@ header [data-cart-modal-trigger] {
 
     svg {
       margin-right: .5rem;
+    }
+  }
+
+  .header__cart-button-label,
+  .header__account-button-label {
+    @media (max-width: 20em) {
+      display: none;
     }
   }

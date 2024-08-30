@@ -1,7 +1,10 @@
 :root {
   --input-height: 3rem;
   --border-radius: 7px;
-  --input-width-max: 30rem;
+  --input-width-auto: auto;
+  --input-width-min: 30rem;
+  --input-width-min-medium: 20rem;
+  --input-width-max: 50rem;
 }
 
 ecbf-combobox-search {
@@ -39,7 +42,7 @@ ecbf-combobox-search button {
 }
 
 ecbf-combobox-search input {
-  width: 700px;
+  //width: 700px;
   border-right: none;
   outline: none;
   font-size: inherit;
@@ -144,6 +147,7 @@ ecbf-combobox-search button {
 }
 
 ecbf-combobox-search input {
+  min-width: var(--input-width-min);
   max-width: var(--input-width-max);
   width: auto;
   border-right: none;
@@ -156,6 +160,16 @@ ecbf-combobox-search input {
 
   &[aria-expanded="true"] + button + [role="listbox"] {
     display: block;
+  }
+
+  @media (max-width: 65em) {
+    min-width: var(--input-width-min-medium);
+    width: calc(100% - 3.5rem);
+  }
+
+  @media (max-width: 40em) {
+    min-width: 0;
+    width: calc(100vw - 3.5rem);
   }
 }
 
@@ -172,7 +186,8 @@ ecbf-combobox-search ul[data-products-list] li {
   display: grid;
   grid-template-areas: "products pages"
                         "search search";
-
+  gap: 1rem;
+  grid-template-columns: 50% 50%;
 }
 
 .ecbf-combobox-search-results-group-section--products {
@@ -212,6 +227,10 @@ ecbf-combobox-search button {
   padding: 1EM;
   z-index: 300;
   box-shadow: rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0.5) 0 4px 6px -1px, rgba(0, 0, 0, 0.33) 0 2px 4px -2px;
+
+  @media (max-width: 40em) {
+    top: 3rem;
+  }
 }
 
 [role="listbox"] [role="group"] {

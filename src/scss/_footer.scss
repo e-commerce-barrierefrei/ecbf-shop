@@ -4,6 +4,10 @@
   background-color: var(--blue);
   color: #fff;
 
+  @media (max-width: 20em) {
+    padding: 1rem;
+  }
+
   a {
     color: inherit;
   }

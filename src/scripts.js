@@ -41,12 +41,22 @@ cookieModal.addEventListener('cancel', (event) => {
 
 
 const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.get("cookiebanner") === "1") {
-  cookieModal.showModal();
+
+if (urlParams.get("hauptnav") === "1") {
+  document.querySelector('.mega-menu-toggle').setAttribute('aria-expanded', 'true');
+
+}
+
+if (urlParams.get("combobox") === "1") {
+  document.querySelector('[role="combobox"]').setAttribute('aria-expanded', 'true');
 }
 
 if (urlParams.get("warenkorb") === "1") {
   cartModal.showModal();
+}
+
+if (urlParams.get("cookiebanner") === "1") {
+  cookieModal.showModal();
 }
 
 if (document.getElementById("c")) {
