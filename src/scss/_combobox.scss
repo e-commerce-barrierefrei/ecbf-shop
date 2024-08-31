@@ -12,6 +12,7 @@ ecbf-combobox-search {
 
   @media (screen and width < 600) {
     display: flex;
+    width: 100%;
   }
 }
 
@@ -104,17 +105,14 @@ ul[role="listbox"] li[role="option"] {
 }
 
 [role="option"][aria-selected="true"] {
-  background: lightsalmon;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  font-weight: bold;
 }
 
 ecbf-combobox-search .group.focus polygon,
 ecbf-combobox-search .group:hover polygon {
   fill-opacity: 1;
-}
-
-[role="listbox"].focus [role="option"][aria-selected="true"],
-[role="listbox"] [role="option"]:hover {
-  background-color: #def;
 }
 
 ecbf-combobox-search-list {
@@ -173,12 +171,36 @@ ecbf-combobox-search input {
   }
 }
 
+ecbf-combobox-search a {
+  text-decoration: none;
+  color: var(--blue);
+}
+
+ecbf-combobox-search ul[data-pages-list] li {
+  margin-bottom: .5rem;
+}
+
 ecbf-combobox-search ul[data-products-list] li {
   display: flex;
-  justify-content: space-between;
+  //justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 1em;
+  gap: .5em;
+
+  img {
+    flex: 0;
+  }
+
+  a {
+    font-weight: bold;
+    justify-content: start;
+    flex: 1;
+  }
+
+  .preis {
+    justify-content: end;
+  }
 }
 
 #ecbf-combobox-search-results-groups-wrapper {
@@ -188,6 +210,14 @@ ecbf-combobox-search ul[data-products-list] li {
                         "search search";
   gap: 1rem;
   grid-template-columns: 50% 50%;
+
+  @media (max-width: 40em) {
+    width: auto;
+    grid-template-columns: 100%;
+    grid-template-areas: "products"
+                         "pages"
+                         "search";
+  }
 }
 
 .ecbf-combobox-search-results-group-section--products {
@@ -243,6 +273,11 @@ ecbf-combobox-search button {
   overflow-x: hidden;
   font-size: 87.5%;
   cursor: pointer;
+
+  @media (max-width: 40em) {
+    overflow: auto;
+    max-height: max-content;
+  }
 
 
   &:empty {

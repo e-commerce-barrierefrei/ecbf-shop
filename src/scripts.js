@@ -42,22 +42,32 @@ cookieModal.addEventListener('cancel', (event) => {
 
 const urlParams = new URLSearchParams(window.location.search);
 
-if (urlParams.get("hauptnav") === "1") {
+if (urlParams.get("debug") === "hauptnav") {
   document.querySelector('.mega-menu-toggle').setAttribute('aria-expanded', 'true');
+}
+
+if (urlParams.get("debug") === "combobox") {
+  setTimeout(() => {
+    if (document.body.classList.contains("mobile")) {
+      document.querySelector('#main-search-toggle').setAttribute('aria-expanded', 'true');
+      document.querySelector('[role="listbox"]').style.width = document.querySelector('[role="combobox"]').getBoundingClientRect().width + "px";
+    }
+    document.querySelector('[role="combobox"]').setAttribute('aria-expanded', 'true');
+
+  }, 500);
+
 
 }
 
-if (urlParams.get("combobox") === "1") {
-  document.querySelector('[role="combobox"]').setAttribute('aria-expanded', 'true');
-}
-
-if (urlParams.get("warenkorb") === "1") {
+if (urlParams.get("debug") === "warenkorb") {
   cartModal.showModal();
 }
 
-if (urlParams.get("cookiebanner") === "1") {
+if (urlParams.get("debug") === "cookiebanner") {
   cookieModal.showModal();
 }
+
+
 
 if (document.getElementById("c")) {
   initCarousel();
