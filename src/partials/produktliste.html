@@ -5,6 +5,7 @@
 
 <ul id="produktliste">
   <li v-for="product in sortedProducts"  :hidden="isFiltered(product)">
+    <img :src="product.img_url" :alt="product.img_alt" />
     <strong>{{product.name}}</strong>
     <p>€ {{product.price / 100}}</p>
     <button

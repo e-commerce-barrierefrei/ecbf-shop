@@ -61,7 +61,7 @@ if (urlParams.get("debug") === "warenkorb") {
   cartModal.showModal();
 }
 
-if (urlParams.get("debug") === "cookiebanner") {
+if (urlParams.get("debug") === "cookiedialog") {
   cookieModal.showModal();
 }
 
