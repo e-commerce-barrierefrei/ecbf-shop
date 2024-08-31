@@ -5,3 +5,4 @@ domains:
   - www.ecbf.shop
 image: node:20.17.0
 command: npm install && parcel build
+public: .
