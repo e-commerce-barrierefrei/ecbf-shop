@@ -48,9 +48,11 @@
 .slide h4 {
   display:inline-block;
   font-size: 1.25em;
-  margin:0;
+  margin: 1rem;
+  background-color: var(--blue);
+  color: #fff;
   padding: .25em;
-  background-color: rgba(255,255,255,.8);
+  //background-color: rgba(255,255,255,.8);
   float: left;
 }
 .slide p {
@@ -92,9 +94,9 @@
 .btn-next {
   position:absolute;
   z-index: 70;
-  top: 50%;
+  top: 35%;
   margin-top: -2.5em;
-  border:0;
+  border :0;
   background: rgba(255,255,255,.6);
   line-height: 1;
   padding:10px 5px;
