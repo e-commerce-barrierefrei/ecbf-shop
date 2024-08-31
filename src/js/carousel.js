@@ -292,12 +292,20 @@ var myCarousel = (function() {
 
 
 export function initCarousel() {
+    let animate = false;
+    let startAnimated = false;
+    let urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.get("debug") === "auto-carousel") {
+        animate = true;
+        startAnimated = true;
+    }
 
     var c = new myCarousel();
     c.init({
         id: 'c',
         slidenav: true,
-        animate: false,
-        startAnimated: false
+        animate: animate,
+        startAnimated: startAnimated
     });
 }

@@ -73,6 +73,14 @@ header [data-cart-modal-trigger] {
   color: var(--red);
 }
 
+.hero .title {
+  @media (max-width: 40em) {
+    padding: .25rem;
+    font-size: 1.5rem;
+  }
+
+}
+
 @media (min-width: 40em) {
   #main-nav-toggle,
   #main-search-toggle {

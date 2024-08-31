@@ -28,9 +28,7 @@ cartModalTriggers.forEach((cartModalTrigger) => {
 })
 
 
-cookieModalTrigger.addEventListener('click', () => {
-  cookieModal.showModal();
-});
+
 
 // Vermeide, dass sich der Cookie Modal per ESC schließen lässt, was das Standardverhalten bei modalen Dialogen ist
 cookieModal.addEventListener('cancel', (event) => {

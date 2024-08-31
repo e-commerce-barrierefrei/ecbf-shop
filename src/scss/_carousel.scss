@@ -7,6 +7,8 @@
 .active .slide.current {
   visibility: visible;
   left: 0;
+  margin-bottom: 0;
+
 }
 
 .active .slide.next {
@@ -53,26 +55,29 @@
   margin: 1rem;
   background-color: var(--blue);
   color: #fff;
-  padding: .25em;
+  padding: .225em .5em;
+  line-height: 1.5;
   //background-color: rgba(255,255,255,.8);
   float: left;
 
   @media (max-width: 40em) {
-    font-size: 1.25em;
+    font-size: 1.1em;
   }
 }
 .slide p {
   position: absolute;
-  bottom: 1rem;
+  bottom: 2rem;
   left: 50%;
-  right: 1rem;
+  right: 2rem;
   margin:0;
   clear:both;
   padding: 1rem;
+  line-height: 1.5;
   background-color: rgba(255,255,255,.9);
 
   @media (max-width: 40em) {
     left: 1rem;
+    right: 1rem;
     font-size: 87%;
   }
 }
@@ -86,6 +91,7 @@
   position: relative;
 
   @media (max-width: 40em) {
+    height: 21rem;
   }
 
 
@@ -101,21 +107,62 @@
 }
 
 .slide.current {
-  display:block;
+  display: block;
   z-index: 50;
+  position: relative;
+
+  @media (max-width: 40em) {
+    &:after {
+      content: '';
+      height: 35%;
+      bottom: 25%;
+      left: 0;
+      right: 0;
+      position: absolute;
+      background: linear-gradient(transparent, #fff);
+      z-index: -1;
+    }
+  }
+
+
+}
+
+.slide p {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  flex-direction: column;
+
+  @media (max-width: 40em) {
+    gap: .5rem;
+  }
+}
+
+.slide a {
+  display: inline-block;
+  background-color: var(--red);
+  margin-top: .5rem;
+  padding: .25em  .75em;
+  color: #fff;
+  text-decoration: none;
+
 }
 
 .btn-prev,
 .btn-next {
   position:absolute;
   z-index: 70;
-  top: 35%;
+  top: calc(100% - .82rem);
   margin-top: -2.5em;
   border :0;
   background: rgba(255,255,255,.6);
   line-height: 1;
   padding:10px 5px;
   transition: padding .4s ease-out;
+
+  @media (max-width: 40em) {
+    top: 33%;
+  }
 }
 
 .btn-next:hover,
@@ -128,27 +175,25 @@
 
 .btn-prev {
   left:0;
-  border-radius: 0 .25em .25em 0;
 }
 
 .btn-next {
   right:0;
-  border-radius: .25em 0 0 .25em;
 }
 
 .carousel.with-slidenav {
-  padding-bottom: 2em;
+  padding-bottom: 3em;
 }
 
 
 .slidenav {
   position: absolute;
   bottom: 1rem;
-  left: 1rem;
-  right: 0;
+  left: 4rem;
+  right: 4rem;
   z-index: 200;
 
-  @media (max-width: 20em) {
+  @media (max-width: 40em) {
     display: flex;
     justify-content: center;
   }
@@ -160,29 +205,29 @@
 }
 
 .slidenav button {
-  border: 2px solid #036;
-  background-color: #036;
+  border: 2px solid var(--blue);
+  background-color: var(--blue);
   line-height: 1em;
   height: 1.5em;
-  width:auto;
+  width: auto;
+  font: inherit;
   font-weight: bold;
+  font-size: 87%;
+  line-height: 1.2;
   color: #fff;
 }
 
 .slidenav button.current {
-  border-radius: .5em;
   background-color: #fff;
-  color: #333;
+  color: var(--blue);
 }
 
-.slidenav button:hover,
 .slidenav button:focus {
   border: 2px dotted #fff;
 }
 
-.slidenav button.current:hover,
 .slidenav button.current:focus {
-  border: 2px dotted #036;
+  border: 2px dotted var(--blue);
 }
 
 .slide {

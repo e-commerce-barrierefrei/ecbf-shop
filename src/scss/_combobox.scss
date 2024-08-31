@@ -163,6 +163,8 @@ ecbf-combobox-search input {
   @media (max-width: 65em) {
     min-width: var(--input-width-min-medium);
     width: calc(100% - 3.5rem);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+
   }
 
   @media (max-width: 40em) {
