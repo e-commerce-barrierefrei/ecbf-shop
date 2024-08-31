@@ -36,6 +36,7 @@
 .carousel ul {
   margin:0;
   padding: 0;
+  list-style: none;
 }
 .slide {
   height: 360px;
@@ -44,26 +45,36 @@
   position: relative;
   margin-bottom:1em;
   border:1px solid #333;
+  overflow: visible;
 }
 .slide h4 {
   display:inline-block;
-  font-size: 1.25em;
+  font-size: 1.75em;
   margin: 1rem;
   background-color: var(--blue);
   color: #fff;
   padding: .25em;
   //background-color: rgba(255,255,255,.8);
   float: left;
+
+  @media (max-width: 40em) {
+    font-size: 1.25em;
+  }
 }
 .slide p {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 1rem;
+  left: 50%;
+  right: 1rem;
   margin:0;
   clear:both;
-  padding: 5px;
-  background-color: rgba(255,255,255,.8);
+  padding: 1rem;
+  background-color: rgba(255,255,255,.9);
+
+  @media (max-width: 40em) {
+    left: 1rem;
+    font-size: 87%;
+  }
 }
 .slide a {
   display:block;
@@ -71,9 +82,13 @@
 }
 
 .carousel.active {
-  height: 360px;
-  border: 1px solid #333;
-  position:relative;
+  height: 23rem;
+  position: relative;
+
+  @media (max-width: 40em) {
+  }
+
+
 }
 
 .active .slide {
@@ -123,18 +138,20 @@
 
 .carousel.with-slidenav {
   padding-bottom: 2em;
-  background-color: #fff;
 }
-.carousel.with-slidenav .slide {
-  border-bottom: 1px solid #333;
-}
+
 
 .slidenav {
   position: absolute;
-  bottom:.25em;
-  left: 0;
+  bottom: 1rem;
+  left: 1rem;
   right: 0;
-  text-align: center;
+  z-index: 200;
+
+  @media (max-width: 20em) {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .slidenav li {
@@ -177,5 +194,6 @@
   object-fit: cover;
   position: absolute;
   inset: 0;
+  top: 2em;
   z-index: -1;
 }
