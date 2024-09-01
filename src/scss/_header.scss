@@ -44,6 +44,8 @@ header .search-widget {
     @media (max-width: 40em) {
       z-index: 10;
       position: absolute;
+      box-shadow: rgba(0, 0, 0, .16) 0 6px 12px, rgba(0, 0, 0, .23) 0 6px 12px;
+
       top: 2rem;
       left: 0;
       padding: 0;
