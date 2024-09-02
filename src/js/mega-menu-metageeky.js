@@ -145,7 +145,7 @@ window.addEventListener('load', function(event) {
   }
 
   let menuLinks = document.querySelectorAll('button.mega-menu-toggle + div.mega-sub-menu a');
-  for(e of menuLinks) {
+  for(let e of menuLinks) {
     e.addEventListener('focus', function(evt) {
       // if already having focus in the mega menu, not an issue
       if(megamenu.getAttribute('data-menu-state') == 'focus')
@@ -171,7 +171,7 @@ window.addEventListener('load', function(event) {
         }
 
         // set all things to close
-        for(b of menu.querySelectorAll('button[aria-expanded="true"]'))
+        for(let b of menu.querySelectorAll('button[aria-expanded="true"]'))
           b.setAttribute('aria-expanded','false');
       }
       else {
