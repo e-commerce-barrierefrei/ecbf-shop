@@ -31,7 +31,7 @@
 
 var myCarousel = (function() {
 
-    var carousel, slides, index, slidenav, settings, timer, setFocus, animationSuspended;
+    var carousel, slides, index, slidenav, settings, timer, setFocus, announceItem, animationSuspended;
 
     function forEachElement(elements, fn) {
         for (var i = 0; i < elements.length; i++)

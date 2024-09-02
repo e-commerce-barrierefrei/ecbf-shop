@@ -22,7 +22,7 @@ window.addEventListener('load', function(event) {
 
   // events for the top-level menu buttons for dropdowns
   let triggers = megamenu.querySelectorAll('button.mega-menu-toggle');
-  for(e of triggers) {
+  for(let e of triggers) {
     // click events for the top-level menu buttons for dropdowns
     e.addEventListener('click', function(evt) {
       let opened_menu = megamenu.querySelector('.mega-menu .mega-menu-toggle[aria-expanded="true"]');
