@@ -3,6 +3,6 @@ domains:
   - ecbf.shop
   # Domains that redirect to the primary
   - www.ecbf.shop
-image: node:20.17.0
+image: node:18.17.1
 command: npm install && npm run build
 public: dist
