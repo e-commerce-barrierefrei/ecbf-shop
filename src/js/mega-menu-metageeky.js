@@ -1,4 +1,4 @@
-import * as hoverintent from "hoverIntent";
+import * as hoverintent from "hoverintent";
 
 window.addEventListener('load', function(event) {
   // REWRITE NAV TO BE CLOSEST megamenu
