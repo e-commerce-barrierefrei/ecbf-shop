@@ -107,3 +107,12 @@ if (triggerBigImageDialog) {
     bigImageDialog.showModal();
   })
 }
+
+bigImageDialog.addEventListener('click', function (event) {
+  let rect = bigImageDialog.getBoundingClientRect();
+  let isInDialog=(rect.top <= event.clientY && event.clientY <= rect.top + rect.height
+    && rect.left <= event.clientX && event.clientX <= rect.left + rect.width);
+  if (!isInDialog) {
+    bigImageDialog.close();
+  }
+});

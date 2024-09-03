@@ -32,6 +32,12 @@ main {
   .wrapper__inner {
     display: grid;
     grid-template-columns: auto 1fr;
+    position: relative;
+    gap: 2rem;
+
+    @media (max-width: 40em) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 

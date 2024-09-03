@@ -1,13 +1,56 @@
+#cookie-modal, #big-image {
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 6px;
+
+  @media (max-width: 40em) {
+    width: 100vw;
+  }
+}
+
+#big-image::backdrop {
+  cursor: zoom-out;
+}
+
+.wrapper__inner img {
+  max-width: 100%;
+}
+
+#big-image button {
+  position: absolute;
+  right: 0;
+}
+
+#cookie-modal {
+  max-width: 60ch;
+}
+
+#trigger-big-image-dialog {
+  cursor: zoom-in;
+}
+
 body:has(dialog[open]) {
   overflow: hidden;
 }
 
 .dialog-content {
   padding: 1.5rem;
-  overflow: scroll;
+  overflow: auto;
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  .button-row {
+    margin-top: 1.75rem;
+
+    button {
+      margin-right: 1rem;
+    }
+  }
 
   @media (max-width: 20em) {
     padding: 1rem;
-
   }
 }

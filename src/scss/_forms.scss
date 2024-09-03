@@ -2,3 +2,10 @@
   margin: 0;
   color: rgb(120, 2, 2);
 }
+
+main button, dialog button {
+  all: unset;
+  background-color: var(--blue);
+  padding: .5rem .75rem;
+  color: #fff
+}
