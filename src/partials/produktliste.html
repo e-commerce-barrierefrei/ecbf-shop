@@ -11,6 +11,7 @@
     <button
       @click="toggleCartItem(product.id)"
       v-text="!isInCart(product.id) ? 'In den Warenkorb legen' : 'Aus dem Warenkorb entfernen'"
+      :aria-pressed="!isInCart(product.id) ? 'false' : 'true'"
     ></button>
   </li>
 </ul>

@@ -7,7 +7,11 @@ main button, dialog button {
   all: unset;
   background-color: var(--blue);
   padding: .5rem .75rem;
-  color: #fff
+  color: #fff;
+
+  &[aria-pressed="true"] {
+    background-color: var(--red);
+  }
 }
 
 .input-box {
