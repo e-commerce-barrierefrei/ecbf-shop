@@ -109,7 +109,7 @@ window.addEventListener('load', function(event) {
 
 
   let subs = megamenu.querySelectorAll('div.mega-sub-menu');
-  for(e of subs) {
+  for(let e of subs) {
     e.addEventListener('focus', function(evt) {
       // if in hover state and click on the opened menu, switch to focus with focus on toggle
       if(megamenu.getAttribute('data-menu-state') == 'hover') {
@@ -126,7 +126,7 @@ window.addEventListener('load', function(event) {
 
 
   let submenus = document.querySelectorAll('button.mega-menu-toggle + div.mega-sub-menu');
-  for(e of submenus) {
+  for(let e of submenus) {
     // handle hovering moving from opened sub-menu to the toggle button that controls it
     e.addEventListener('mouseleave', function(evt) {
       if(document.body.offsetWidth <= responsiveWidth)
