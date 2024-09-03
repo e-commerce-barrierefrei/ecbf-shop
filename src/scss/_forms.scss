@@ -9,3 +9,37 @@ main button, dialog button {
   padding: .5rem .75rem;
   color: #fff
 }
+
+.input-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "label input"
+                       "error error";
+  margin-top: 1rem;
+
+  input {
+    grid-area: input;
+    height: 1.5em;
+    padding: .15em;
+    font: inherit;
+  }
+}
+
+main fieldset {
+  border: none;
+  padding: 0;
+  margin: 1rem 0;
+
+  legend {
+    margin-bottom: .5rem;
+  }
+}
+
+.form__label {
+  flex-basis: 50%;
+  grid-area: label;
+}
+
+.input-box .form__error {
+  grid-area: error;
+}

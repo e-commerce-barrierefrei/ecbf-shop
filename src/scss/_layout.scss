@@ -60,3 +60,12 @@ main {
   margin-bottom: 3rem;
 }
 
+.main-inner--order {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @media (max-width: 40em) {
+    grid-template-columns: 1fr;
+  }
+}
+
