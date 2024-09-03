@@ -1,10 +1,10 @@
 {
-  "name": "ecbfws",
+  "name": "ecbf-shop",
   "version": "1.0.0",
   "description": "",
   "source": "src/index.html",
   "scripts": {
-    "start": "parcel src/*.html --no-source-maps",
+    "start": "parcel src/*.html",
     "build": "parcel build"
   },
   "keywords": [],

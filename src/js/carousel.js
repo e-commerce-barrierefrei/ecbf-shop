@@ -176,6 +176,7 @@ var myCarousel = (function() {
         announceItem = typeof announceItemHere !== 'undefined' ? announceItemHere : false;
         transition = typeof transition !== 'undefined' ? transition : 'none';
 
+
         new_current = parseFloat(new_current);
 
         var length = slides.length;

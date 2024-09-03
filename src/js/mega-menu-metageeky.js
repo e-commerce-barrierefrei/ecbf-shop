@@ -84,7 +84,7 @@ window.addEventListener('load', function(event) {
 
   // blur used to detect if focus has moved out of the mega menu
   let focusables = megamenu.querySelectorAll('.mega-sub-menu a, button.mega-menu-toggle');
-  for(e of focusables) {
+  for(let e of focusables) {
     e.addEventListener('blur', function(evt) {
       if(megamenu.getAttribute('data-menu-state') != 'focus')
         return;
