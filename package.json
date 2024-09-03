@@ -5,7 +5,7 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build"
+    "build": "rm -rf /dist && parcel build src/*.html"
   },
   "keywords": [],
   "author": "",
