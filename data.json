@@ -41,6 +41,49 @@
     "giftwrap": false,
     "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
     "img_alt": "Foo"
+  },
+  {
+    "id": 5,
+    "name": "Foo",
+    "in_stock": 3,
+    "price": 999,
+    "amount": 1,
+    "localTotal": 0,
+    "giftwrap": false,
+    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
+    "img_alt": "Foo"
+  },
+  {
+    "id": 6,
+    "name": "Do",
+    "in_stock": 30,
+    "price": 499,
+    "amount": 1,
+    "localTotal": 0,
+    "giftwrap": false,
+    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
+    "img_alt": "Foo"
+  },
+  {
+    "id": 3,
+    "name": "Re",
+    "in_stock": 13,
+    "price": 99,
+    "amount": 1,
+    "localTotal": 0,
+    "giftwrap": false,
+    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
+    "img_alt": "Foo"
+  },
+  {
+    "id": 7,
+    "name": "Karaffex",
+    "in_stock": 5,
+    "price": 4599,
+    "amount": 1,
+    "giftwrap": false,
+    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
+    "img_alt": "Foo"
   }
 ]
 

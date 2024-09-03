@@ -22,8 +22,11 @@ window.addEventListener('load', function(event) {
 
   // events for the top-level menu buttons for dropdowns
   let triggers = megamenu.querySelectorAll('button.mega-menu-toggle');
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get("debug") !== "nur-hover-hauptnav") {
+
   for(let e of triggers) {
-    // click events for the top-level menu buttons for dropdowns
+    //click events for the top-level menu buttons for dropdowns
     e.addEventListener('click', function(evt) {
       let opened_menu = megamenu.querySelector('.mega-menu .mega-menu-toggle[aria-expanded="true"]');
       // in the case of hover open, a click just switches the state to focus open
@@ -55,6 +58,7 @@ window.addEventListener('load', function(event) {
           responsive.setAttribute('aria-expanded','false');
       }
     });
+  }
 
     // hover
     hoverintent(e,
