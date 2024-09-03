@@ -4,5 +4,5 @@ domains:
   # Domains that redirect to the primary
   - www.ecbf.shop
 image: node:18.17.1
-command: npm install && parcel build src/*.html
+command: rm -rf /dist && npm install && parcel build src/*.html
 public: dist
