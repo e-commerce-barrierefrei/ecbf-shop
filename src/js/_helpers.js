@@ -1,7 +1,10 @@
 export function toggleAriaExpanded(el) {
   el.addEventListener('click', (e) => {
     let setExpanded = e.target.getAttribute("aria-expanded") === "true" ? "false" : "true";
-    e.target.setAttribute("aria-expanded", setExpanded);
+
+    if (e.target.tagName === "BUTTON" || e.target.tagName === "A") {
+      e.target.setAttribute("aria-expanded", setExpanded);
+    }
   })
 }
 

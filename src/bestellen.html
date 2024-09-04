@@ -16,41 +16,74 @@
     <div>
       <h1>Bestellen</h1>
       <h2>Zusammenfassung</h2>
-      <table>
+      <table class="cart__table" tabindex="-1" ref="cart">
+        <caption class="visually-hidden">
+          <span>Warenkorb, Gesamtsumme </span>
+          <span data-cart-caption-total></span>
+          <span> Euro</span>
+        </caption>
         <thead>
         <tr>
-          <th>Produkt</th>
-          <th id="menge">Menge</th>
-          <th>Preis</th>
+          <th><span class="visually-hidden">Produkt</span></th>
+          <th><span class="visually-hidden">Menge</span></th>
+          <th><span class="visually-hidden">Optionen</span></th>
+          <th><span class="visually-hidden">Warenkorb</span></th>
+          <th><span class="visually-hidden">Preis</span></th>
         </tr>
         </thead>
         <tbody>
-        <tr id="cartproducts">
-          <td><strong>Karaffex</strong></td>
-          <td>2</td>
+        <tr v-for="cartItem in cart">
+          <td class="product-area">
+            <strong><a class="cart__product-link" href="produkt.html">{{cartItem.name}}</a></strong>
+            <img class="cart__product-image" :src="cartItem.img_url" :alt="cartItem.img_alt" />
+          </td>
+          <td class="amount-area"><label :for="'cart-produkt' + cartItem.id">Menge: </label><input :id="'cart-produkt' + cartItem.id" class="cart__product-amount" :value="cartItem.amount" type="number" min="1" max="20"
+                                                                                                   @change="updateItemPrice(cartItem.id)"></td>
+          <td class="options-area">
+            <div class="cart__giftwrap">
+              <label  :for="'giftwrap-' + cartItem.id" class="cart__giftwrap-label">
+                <input :id="'giftwrap-' + cartItem.id" type="checkbox" @change="toggleGiftWrap(cartItem.id)"
+                       :checked="hasGiftwrap(cartItem.id) ? true: undefined"><div>Geschenk<span class="cart__packaging-string">verpackung</span><br> (€ {{giftwrapPrice /
+                100}})</div></label>
 
-          <td><strong>€ 91,98</strong></td>
-
-        </tr>
-        <tr>
-          <td><strong>Grüner Tee Uno</strong></td>
-          <td>1</td>
-          <td><strong>€ 7,99</strong></td>
-
+            </div>
+          </td>
+          <td class="remove-area">
+            <div >
+              <button @click="toggleCartItem(cartItem.id)" class="cart__remove-item-button" type="button">
+                <span class="visually-hidden">Aus Warenkorb entfernen</span>
+              </button>
+            </div>
+          </td>
+          <td class="price-area"><strong>€&nbsp;{{ (getLocalTotal(cartItem) / 100).toFixed(2) }}</strong></td>
         </tr>
         </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="5">Gesamtsumme € {{ (sum / 100).toFixed(2) }}</td>
+        </tr>
+        </tfoot>
       </table>
 
-      <p>Gesamt: <strong>€ 99,88</strong></p>
+      <fieldset aria-required="true" role="radiogroup" data-required-error="err13">
+        <legend><h2>Bezahlmethode</h2></legend>
 
-      <button type="button" data-cart-modal-trigger>Warenkorb anpassen</button>
+        <div><label for="rechnung"> <input type="radio" id="rechnung" name="bezahlmethode"> Rechnung</label></div>
+        <div><label for="vorkasse"> <input type="radio" id="vorkasse" name="bezahlmethode"> Vorkasse</label></div>
+        <div><label for="paythis"> <input type="radio" id="paythis" name="bezahlmethode"> Online bezahlen via
+          PayStuffNow</label></div>
+
+        <p class="form__error" hidden id="err13">Bitte Zahlmethode wählen</p>
+
+      </fieldset>
+
     </div>
     <div>
 
-      <h2>Warenkorb</h2>
+      <h2>Ihre Daten</h2>
 
 
-      <h2>Versandadresse</h2>
+      <h3>Versandadresse</h3>
 
       <form data-order method="post">
         <div>
@@ -156,7 +189,7 @@
             </div>
           </div>
           <div>
-            <h2>Rechnungsaddresse</h2>
+            <h3>Rechnungsaddresse</h3>
 
           </div>
           <div>
@@ -264,7 +297,7 @@
             <input type="hidden" v-if="invoiceDataHidden" name="customerDataIsInvoiceData">
             <div class="row">
               <div>
-                <h2>Kundenkonto</h2>
+                <h3>Kundenkonto</h3>
 
                 <label for="registerUser"><input type="checkbox" id="registerUser" name="registerUser" value="1">
 
@@ -283,7 +316,7 @@
                     <span class="visually-hidden" aria-live="polite"></span>
                     <p class="form__error" hidden id="err10">Bitte Passwort angeben</p>
                   </div>
-                  <div>
+                  <div class="input-box">
                     <label class="form__label" for="logonData.loginPasswordRepeat">Passwort wiederholen<em>*</em>
                     </label>
                     <input type="password" data-required-error="err11" data-pw-mismatch-error="err12"
@@ -302,19 +335,8 @@
           </div>
         </div>
 
-        <fieldset aria-required="true" role="radiogroup" data-required-error="err13">
-          <legend>Bezahlmethode</legend>
 
-          <div><label for="rechnung"> <input type="radio" id="rechnung" name="bezahlmethode"> Rechnung</label></div>
-          <div><label for="vorkasse"> <input type="radio" id="vorkasse" name="bezahlmethode"> Vorkasse</label></div>
-          <div><label for="paythis"> <input type="radio" id="paythis" name="bezahlmethode"> Online bezahlen via
-            PayThisNow</label></div>
-
-          <p class="form__error" hidden id="err13">Bitte Zahlmethode wählen</p>
-
-        </fieldset>
-
-        <button type="submit">Absenden</button>
+        <button class="button" type="submit">Absenden</button>
 
       </form>
 

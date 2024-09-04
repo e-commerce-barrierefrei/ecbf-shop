@@ -1,3 +1,13 @@
+dialog {
+  will-change: opacity;
+  backface-visibility: hidden;
+}
+
+dialog[open] {
+  animation: open 1s forwards;
+}
+
+
 #cookie-modal, #big-image {
   top: 50%;
   left: 50%;

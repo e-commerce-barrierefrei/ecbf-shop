@@ -19,3 +19,15 @@
     margin: 0;
   }
 }
+
+.product-options {
+  display: flex;
+  justify-content: end;
+  gap: 2rem;
+
+  @media (max-width: 40em) {
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 0;
+  }
+}

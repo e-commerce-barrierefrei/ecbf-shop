@@ -3,7 +3,7 @@
   color: rgb(120, 2, 2);
 }
 
-main button, dialog button {
+main .button, dialog .button {
   all: unset;
   background-color: var(--blue);
   padding: .5rem .75rem;
@@ -21,13 +21,28 @@ main button, dialog button {
                        "error error";
   margin-top: 1rem;
 
-  input {
-    grid-area: input;
-    height: 1.5em;
-    padding: .15em;
-    font: inherit;
-  }
+
 }
+
+input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
+  grid-area: input;
+  height: 1.5em;
+  padding: .25em;
+  font: inherit;
+  border: 1px solid var(--blue);
+  background-color: transparent;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  accent-color: var(--blue);
+  border: 1px solid var(--blue);
+  background-color: transparent;
+}
+
+button * {
+  pointer-events: none;
+}
+
 
 main fieldset {
   border: none;

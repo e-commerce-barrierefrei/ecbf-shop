@@ -8,7 +8,7 @@
     <img :src="product.img_url" :alt="product.img_alt" />
     <strong>{{product.name}}</strong>
     <p>€ {{product.price / 100}}</p>
-    <button
+    <button class="button"
       @click="toggleCartItem(product.id)"
       v-text="!isInCart(product.id) ? 'In den Warenkorb legen' : 'Aus dem Warenkorb entfernen'"
       :aria-pressed="!isInCart(product.id) ? 'false' : 'true'"

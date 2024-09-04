@@ -63,9 +63,11 @@ main {
 .main-inner--order {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 
   @media (max-width: 40em) {
     grid-template-columns: 1fr;
+    gap: 0;
   }
 }
 
