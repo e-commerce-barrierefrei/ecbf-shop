@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-"plugins": {
-    "posthtml-include": {
-        "root": "./src"
-=======
 {
     "plugins": {
         "posthtml-include": {
             "root": "./src"
         }
->>>>>>> parent of 75d6f7a (SVG fix attempt)
     }
 }
