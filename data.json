@@ -1,89 +1,89 @@
 [
   {
     "id": 1,
-    "name": "Foo",
+    "name": "Bartöl",
     "in_stock": 3,
     "price": 999,
     "amount": 1,
     "localTotal": 0,
     "giftwrap": false,
-    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
-    "img_alt": "Foo"
+    "img_url": "https://marcus-herrmann.com/dateien/ecbf/bartoel.jpg",
+    "img_alt": "Drei kleine Fläschchen Bartöl, braun."
   },
   {
     "id": 2,
-    "name": "Do",
+    "name": "Podcast-Kopfhörer",
     "in_stock": 30,
-    "price": 499,
+    "price": 2499,
     "amount": 1,
     "localTotal": 0,
     "giftwrap": false,
-    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
+    "img_url": "https://marcus-herrmann.com/dateien/ecbf/kopfhoerer.jpg",
     "img_alt": "Foo"
   },
   {
     "id": 3,
-    "name": "Re",
+    "name": "Smartphone-Hülle",
     "in_stock": 13,
-    "price": 99,
+    "price": 1199,
     "amount": 1,
     "localTotal": 0,
     "giftwrap": false,
-    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
-    "img_alt": "Foo"
+    "img_url": "https://marcus-herrmann.com/dateien/ecbf/smart-huelle.jpg",
+    "img_alt": "Schwarze Over-Ear-Kopfhörer."
   },
   {
     "id": 4,
-    "name": "Karaffex",
+    "name": "Loser Grüner Tee",
     "in_stock": 5,
-    "price": 4599,
+    "price": 599,
     "amount": 1,
     "giftwrap": false,
-    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
-    "img_alt": "Foo"
+    "img_url": "https://marcus-herrmann.com/dateien/ecbf/loser-tee.jpg",
+    "img_alt": "Ein Glas mit losen Grünen Tee neben einer Tasse mit heißem Tee."
   },
   {
     "id": 5,
-    "name": "Foo",
+    "name": "Handtasche",
     "in_stock": 3,
-    "price": 999,
+    "price": 5999,
     "amount": 1,
     "localTotal": 0,
     "giftwrap": false,
-    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
-    "img_alt": "Foo"
+    "img_url": "https://marcus-herrmann.com/dateien/ecbf/handtasche.jpg",
+    "img_alt": "Braune Lederhandtasche"
   },
   {
     "id": 6,
-    "name": "Do",
+    "name": "Armband",
     "in_stock": 30,
-    "price": 499,
+    "price": 3499,
     "amount": 1,
     "localTotal": 0,
     "giftwrap": false,
-    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
-    "img_alt": "Foo"
-  },
-  {
-    "id": 3,
-    "name": "Re",
-    "in_stock": 13,
-    "price": 99,
-    "amount": 1,
-    "localTotal": 0,
-    "giftwrap": false,
-    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
-    "img_alt": "Foo"
+    "img_url": "https://marcus-herrmann.com/dateien/ecbf/armband.jpg",
+    "img_alt": "Armband in martitimen Design, mit einem dominanten goldenen Anker."
   },
   {
     "id": 7,
-    "name": "Karaffex",
+    "name": "Yoga-Zubehör",
+    "in_stock": 13,
+    "price": 1999,
+    "amount": 1,
+    "localTotal": 0,
+    "giftwrap": false,
+    "img_url": "https://marcus-herrmann.com/dateien/ecbf/yoga-zubehoer.jpg",
+    "img_alt": "Yogamatte, zusammengerollt, neben zwei unterschiedlich hohen Yoga-Blöcken."
+  },
+  {
+    "id": 8,
+    "name": "T-Shirt Baumwolle",
     "in_stock": 5,
-    "price": 4599,
+    "price": 2599,
     "amount": 1,
     "giftwrap": false,
-    "img_url": "https://dummyimage.com/250x250/000/fff&text=Produkt",
-    "img_alt": "Foo"
+    "img_url": "https://marcus-herrmann.com/dateien/ecbf/t-shirt.jpg",
+    "img_alt": "Blau-graues T-Shirt auf einem Kleiderbügel."
   }
 ]
 

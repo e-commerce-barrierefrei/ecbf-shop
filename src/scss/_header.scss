@@ -124,6 +124,7 @@ header [data-cart-modal-trigger] {
   #main-nav-toggle[aria-expanded] + .aufklapp-bereich,
   #main-search-toggle[aria-expanded] + .aufklapp-bereich {
     display: flex;
+    opacity: 1;
   }
 
   .nav-main ul {

@@ -3,11 +3,12 @@
   color: rgb(120, 2, 2);
 }
 
-main .button, dialog .button {
+.button {
   all: unset;
   background-color: var(--blue);
   padding: .5rem .75rem;
   color: #fff;
+  font-size: 90%;
 
   &[aria-pressed="true"] {
     background-color: var(--red);

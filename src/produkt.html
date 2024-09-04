@@ -2,7 +2,7 @@
 <html lang="de">
 <include src="partials/html-head.html">
   {
-  "title": "Karaffex - ECBF.shop"
+  "title": "T-Shirt Baumwolle - ECBF.shop"
   }
 </include>
 <body>
@@ -13,7 +13,7 @@
 </header>
 <main id="content" @mounted="whenMounted()">
   <div class="wrapper">
-    <h1>Karaffex</h1>
+    <h1>T-Shirt Baumwolle</h1>
     <div class="wrapper__inner">
       <div class="img-container">
         <include src="partials/produktbild.html"></include>
@@ -22,11 +22,11 @@
         <include src="partials/produktpreis.html"></include>
 
         <ul>
-          <li>Für köstlich aromatischen Filterkaffee</li>
-          <li>Filterkaffeezubereiter und Dekantiergefäß in einem</li>
-          <li>Ergonomischer Holzgriff für komfortable Handhabung</li>
-          <li>Präziser Ausgießer für tropffreies Einschenken</li>
-          <li>Im Museum of Modern Art in New York als eines der 100 schönsten Designobjekte präsentiert</li>
+          <li>Herren Rundhals T-Shirt</li>
+          <li>100% Baumwolle</li>
+          <li>Fairtrade-Siegel</li>
+          <li>Armlänge: kurzer Arm</li>
+          <li>Regular Fit</li>
         </ul>
 
         <include src="partials/5star.html"></include>
@@ -38,17 +38,16 @@
             <dt>Marke</dt>
             <dd>ACME</dd>
             <dt>Material</dt>
-            <dd>Glas</dd>
-            <dt>Konnektivitätstechnologie</dt>
-            <dd>Kabellos</dd>
+            <dd>Baumwolle</dd>
+            <dt>Pflegehinweise</dt>
+            <dd>Maschinenwäsche</dd>
             <dt>Modellname</dt>
-            <dd>Lorem Karaffex</dd>
-            <dt>Formfaktor</dt>
-            <dd>Ohrumschließend</dd>
-            <dt>Rauschkontrolle</dt>
-            <dd>Geräuschabschirmung</dd>
-            <dt>Kopfhörerbuchse</dt>
-            <dd>3,5 mm Klinke</dd>
+            <dd>Lorem Shirtex</dd>
+            <dt>Kragenform</dt>
+            <dd>Crew-Ausschnitt</dd>
+            <dt>Herkunftsland</dt>
+            <dd>Turmezistan</dd>
+
           </dl>
 
         </details>
@@ -59,6 +58,7 @@
         </details>
 
         <button
+          class="button"
           @click="toggleCartItem(4)"
           v-text="!isInCart(4) ? 'In den Warenkorb legen' : 'Aus dem Warenkorb entfernen'"
         ></button>

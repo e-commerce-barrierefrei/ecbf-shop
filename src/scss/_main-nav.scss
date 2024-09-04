@@ -89,7 +89,7 @@
   outline: dotted currentColor 3px;
   outline-offset: -5px;
 }
-@media (max-width: 40em) {
+@media (max-width: 60em) {
 
 
   .mega-menu button.responsive-toggle[aria-expanded="false"] + ul {
@@ -129,7 +129,7 @@
   }
 
 
-  @media (max-width: 40em) {
+  @media (max-width: 60em) {
     padding: 1.5rem .5rem .5rem
   }
 }
@@ -140,7 +140,7 @@
   padding: .5em 0 .5em;
   position: relative;
 
-  @media (max-width: 40em) {
+  @media (max-width: 60em) {
     padding-left: 1.5em;
 
     &:after {
@@ -525,12 +525,15 @@
 .mega-menu__sub-menu {
   position: relative;
 
-  @media (max-width: 60em) {
+  @media (width <= 60em) {
     position: absolute;
     padding: 1.5rem .5rem .75rem .5rem;
     left: 1rem;
     right: 1rem;
+    top: 5.5rem;
+   }
+
+  @media (width <= 40em) {
     top: 3.5rem;
-    border-radius: 2px;
   }
 }

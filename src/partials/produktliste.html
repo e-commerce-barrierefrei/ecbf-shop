@@ -5,7 +5,10 @@
 
 <ul id="produktliste">
   <li v-for="product in sortedProducts"  :hidden="isFiltered(product)">
+    <div>
     <img :src="product.img_url" :alt="product.img_alt" />
+    </div>
+    <div>
     <strong>{{product.name}}</strong>
     <p>€ {{product.price / 100}}</p>
     <button class="button"
@@ -13,5 +16,6 @@
       v-text="!isInCart(product.id) ? 'In den Warenkorb legen' : 'Aus dem Warenkorb entfernen'"
       :aria-pressed="!isInCart(product.id) ? 'false' : 'true'"
     ></button>
+    </div>
   </li>
 </ul>
