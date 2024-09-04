@@ -1,7 +1,4 @@
 {
-    "plugins": {
-        "posthtml-include": {
-            "root": "./src"
-        }
-    }
+    "recognizeSelfClosing": true,
+    "lowerCaseAttributeNames": false
 }
