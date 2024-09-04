@@ -23,7 +23,7 @@
       <h1 class="cart__title" id="cart-modal-title">Warenkorb ({{ totalCartItems }})</h1>
     </div>
     <div v-show="cart.length === 0">Leer</div>
-    <form v-show="cart.length !== 0" action="./bestellen.html">
+    <form v-show="cart.length !== 0" action="/bestellen.html">
       <table class="cart__table" tabindex="-1" ref="cart">
         <caption class="visually-hidden">
           <span>Warenkorb, Gesamtsumme </span>

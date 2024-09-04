@@ -16,7 +16,6 @@ export function cart() {
     sortBy: "id",
     sortDirection: "asc",
     giftwrapPrice: 299,
-    filterOn: false,
     get sortedProducts() {
       return this.products.sort((p1, p2) => {
         let modifier = 1;
@@ -84,9 +83,6 @@ export function cart() {
     },
     localSum(cartItem, amount) {
       return this.getLocalSum(cartItem, amount);
-    },
-    isFiltered(product) {
-      return (this.filterOn && product.amount < 10);
     },
     isInCart(id) {
       return this.cart.find(x => x.id === id);
