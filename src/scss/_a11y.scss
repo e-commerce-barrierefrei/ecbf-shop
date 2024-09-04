@@ -1,5 +1,14 @@
 .aufklapp-button[aria-expanded="false"] + .aufklapp-bereich {
   display: none;
+  opacity: 0;
+}
+
+.aufklapp-button[aria-expanded="true"] + .aufklapp-bereich {
+  display: block;
+  opacity: 1;
+  transition: opacity .2s ease-in;
+
+  @starting-style { opacity: 0 }
 }
 
 /* Fokusstile, wenn :focus-visible nicht unterstützt wird */

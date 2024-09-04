@@ -89,10 +89,23 @@
   outline: dotted currentColor 3px;
   outline-offset: -5px;
 }
+@media (max-width: 40em) {
 
 
-.mega-menu button.responsive-toggle[aria-expanded="false"] + ul {
-  display: none;
+  .mega-menu button.responsive-toggle[aria-expanded="false"] + ul {
+    display: none;
+    opacity: 0;
+  }
+
+  .mega-menu button.responsive-toggle[aria-expanded="true"] + ul {
+    display: block;
+    opacity: 1;
+    transition: opacity .2s ease-in;
+
+    @starting-style {
+      opacity: 0
+    }
+  }
 }
 
 .mega-menu button.responsive-toggle[aria-expanded="true"] {

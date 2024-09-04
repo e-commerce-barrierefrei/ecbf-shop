@@ -90,7 +90,7 @@ header .account-wrapper {
   padding: 1rem;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0.35) 0 4px 6px -1px, rgba(0, 0, 0, 0.13) 0 2px 4px -2px;
-
+  background-color: white;
 }
 
 header [data-cart-modal-trigger] {
@@ -113,6 +113,8 @@ header [data-cart-modal-trigger] {
 
 }
 
+
+
 @media (min-width: 40em) {
   #main-nav-toggle,
   #main-search-toggle {
@@ -123,9 +125,6 @@ header [data-cart-modal-trigger] {
   #main-search-toggle[aria-expanded] + .aufklapp-bereich {
     display: flex;
   }
-
-
-
 
   .nav-main ul {
     display: flex;
