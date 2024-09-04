@@ -203,15 +203,17 @@
 }
 
 .mega-menu button[aria-expanded="true"] + .mega-sub-menu {
-  opacity: 1;
-  transition: opacity 0.33s;
   display: block;
+  opacity: 1;
 
-  @starting-style {
-    opacity: 0;
-    display: none;
+  @media (min-width: 60em) {
+    transition: opacity 0.33s;
+
+    @starting-style {
+      opacity: 0;
+      display: none;
+    }
   }
-
 }
 
 .mega-sub-menu > ul {
