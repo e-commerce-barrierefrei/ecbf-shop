@@ -32,6 +32,11 @@ dialog[open] {
   right: 0;
 }
 
+#big-image img {
+  max-width: 90vw;
+}
+
+
 #cookie-modal {
   max-width: 60ch;
 }

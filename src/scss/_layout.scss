@@ -45,6 +45,10 @@ main {
     position: relative;
     gap: 2rem;
 
+    &--product {
+      grid-template-columns: 2fr 1fr;
+    }
+
     @media (max-width: 40em) {
       grid-template-columns: 1fr;
     }
@@ -53,6 +57,22 @@ main {
 
 .page-title {
   margin: .25em 0 0;
+
+  @media (max-width: 40em) {
+    font-size: 1.5em;
+  }
+
+  @media (max-width: 20em) {
+    font-size: 1.25em;
+  }
+
+  &--product {
+    margin-bottom: 2rem;
+
+    @media (max-width: 40em) {
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 .header-inner, .main-inner, .footer-inner {

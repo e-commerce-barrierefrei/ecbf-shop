@@ -12,16 +12,16 @@
 
 </header>
 <main id="content" @mounted="whenMounted()">
-  <div class="wrapper">
-    <h1>T-Shirt Baumwolle</h1>
-    <div class="wrapper__inner">
+  <div class="main-inner ">
+    <h1 class="page-title page-title--product">T-Shirt Baumwolle</h1>
+    <div class="wrapper__inner wrapper__inner--product">
       <div class="img-container">
         <include src="partials/produktbild.html"></include>
       </div>
       <div>
         <include src="partials/produktpreis.html"></include>
 
-        <ul>
+        <ul class="product-facts">
           <li>Herren Rundhals T-Shirt</li>
           <li>100% Baumwolle</li>
           <li>Fairtrade-Siegel</li>
@@ -31,36 +31,81 @@
 
         <include src="partials/5star.html"></include>
 
-        <details>
+        <div class="product__size-switcher">
+        <label for="product-size"> Größe:</label>
+        <select id="product-size">
+          <option value="s">S</option>
+          <option value="m">M</option>
+          <option value="l">L</option>
+          <option value="xl">XL</option>
+          <option value="xxl">XXL</option>
+        </select>
+        </div>
+
+        <details class="product__disclosure">
           <summary>Produkteigenschaften</summary>
 
-          <dl>
+          <dl class="product__properties">
             <dt>Marke</dt>
             <dd>ACME</dd>
             <dt>Material</dt>
             <dd>Baumwolle</dd>
-            <dt>Pflegehinweise</dt>
+            <dt>Pflege</dt>
             <dd>Maschinenwäsche</dd>
             <dt>Modellname</dt>
             <dd>Lorem Shirtex</dd>
             <dt>Kragenform</dt>
             <dd>Crew-Ausschnitt</dd>
-            <dt>Herkunftsland</dt>
+            <dt>Herkunft</dt>
             <dd>Turmezistan</dd>
 
           </dl>
 
         </details>
 
-        <details>
+        <details class="product__disclosure">
           <summary>Maße</summary>
-          6,3 &times; 9,6 &times; 1,4 cm
+          <table class="product__table">
+            <tbody>
+            <tr>
+              <th>Größe</th>
+              <th>Shirt-Breite</th>
+              <th>Shirt-Länge</th>
+            </tr>
+            <tr>
+              <th scope="row"><strong>S</strong></th>
+              <td>48 cm</td>
+              <td>70 cm</td>
+            </tr>
+            <tr>
+              <th scope="row"><strong>M</strong></th>
+              <td>51 cm</td>
+              <td>72 cm</td>
+            </tr>
+            <tr>
+              <th scope="row"><strong>L</strong></th>
+              <td>54 cm</td>
+              <td>74 cm</td>
+            </tr>
+            <tr>
+              <th scope="row"><strong>XL</strong></th>
+              <td>57 cm</td>
+              <td>76 cm</td>
+            </tr>
+            <tr>
+              <th scope="row"><strong>XXL</strong></th>
+              <td>61 cm</td>
+              <td>78 cm</td>
+            </tr>
+            </tbody>
+          </table>
         </details>
 
         <button
-          class="button"
-          @click="toggleCartItem(4)"
-          v-text="!isInCart(4) ? 'In den Warenkorb legen' : 'Aus dem Warenkorb entfernen'"
+          :aria-pressed="!isInCart(8) ? 'false' : 'true'"
+          class="button product-order-button"
+          @click="toggleCartItem(8)"
+          v-text="!isInCart(8) ? 'In den Warenkorb legen' : 'Aus dem Warenkorb entfernen'"
         ></button>
       </div>
     </div>
