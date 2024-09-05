@@ -8,7 +8,9 @@
   opacity: 1;
   transition: opacity .2s ease-in;
 
-  @starting-style { opacity: 0 }
+  @starting-style {
+    opacity: 0;
+  }
 }
 
 /* Fokusstile, wenn :focus-visible nicht unterstützt wird */
@@ -25,14 +27,13 @@
 
   /* Fokusstile, wenn :focus-visible unterstützt wird */
   *:focus-visible {
-    outline: 2px solid blue;
+    outline: 2px solid var(--brand-blue);
     outline-offset: 0.25em;
   }
 }
 
-
 .visually-hidden:not(:focus):not(:active),
-.u-skiplink{
+.skiplink{
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
@@ -42,7 +43,7 @@
   width: 1px;
 }
 
-.u-skiplink:focus {
+.skiplink:focus {
   height: auto;
   width: auto;
   overflow: auto;

@@ -1,116 +1,55 @@
-.form__error {
-  margin: .5em 0;
-  background-color: rgb(120, 2, 2);
-  padding: .25em;
-  color: #fff;
-}
+.form {
 
-.password-show-wrapper {
-  position: relative;
-}
-
-
-                                                       .button {
-  all: unset;
-  background-color: var(--blue);
-  padding: .5rem .75rem;
-  color: #fff;
-  font-size: 90%;
-
-  &[aria-pressed="true"] {
-    background-color: var(--red);
+  &__error {
+    grid-area: error;
+    margin: .5em 0;
+    background-color: rgb(120, 2, 2);
+    padding: .25em;
+    color: #fff;
   }
-}
 
-.button--order {
-  margin-top: 2rem;
-}
+  &__password-show-wrapper {
+    position: relative;
+  }
 
-.input-box {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "label input"
+  &__input-box {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "label input"
                        "error error";
-  margin-top: 1rem;
+    margin-block-start: 1rem;
 
-  @media (max-width: 40em) {
-    grid-template-columns: 1fr;
-    grid-template-areas: "label"
+    @media (max-width: 40em) {
+      grid-template-columns: 1fr;
+      grid-template-areas: "label"
                         "input"
                         "error";
-  }
-
-}
-
-input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
-  grid-area: input;
-  height: 1.5em;
-  padding: .25em;
-  font: inherit;
-  border: 1px solid var(--blue);
-  background-color: transparent;
-}
-
-input[type="radio"], input[type="checkbox"] {
-  accent-color: var(--blue);
-  border: 1px solid var(--blue);
-  background-color: transparent;
-}
-
-button * {
-  pointer-events: none;
-}
-
-
-main fieldset {
-  border: none;
-  padding: 0;
-  margin: 1rem 0;
-
-  legend {
-    margin-bottom: .5rem;
-  }
-}
-
-.form__label {
-  flex-basis: 50%;
-  grid-area: label;
-}
-
-.input-box .form__error {
-  grid-area: error;
-}
-
-.new-password:has(+ .form__password-switch) {
-  width: calc(100% - 3.5rem);
-}
-
-.form__password-switch {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  padding: 0 .5rem;
-
-
-  &[aria-pressed="true"] {
-    .hide {
-      display: block;
-    }
-
-    .show {
-      display: none;
     }
   }
 
-  &[aria-pressed="false"] {
-    .hide {
-      display: none;
-    }
+  &__label {
+    flex-basis: 50%;
+    grid-area: label;
 
-    .show {
-      display: block;
+    @media (max-width: 40em) {
+      margin-block-end: .5rem;
     }
+  }
+
+
+  input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
+    grid-area: input;
+    height: 1.5em;
+    padding: .25em;
+    font: inherit;
+    border: 1px solid var(--brand-blue);
+    background-color: transparent;
+  }
+
+  input[type="radio"], input[type="checkbox"] {
+    accent-color: var(--brand-blue);
+    border: 1px solid var(--brand-blue);
+    background-color: transparent;
   }
 }

@@ -30,10 +30,13 @@
 
   &-row {
     float: left;
-    margin-top: -230px;
+    margin-block-start: -230px;
 
     &:not(:first-child) {
-      margin-left: 30px;
+      margin-inline-start
+
+
+: 30px;
     }
 
     //&:nth-child(odd) {
@@ -42,7 +45,7 @@
   }
 
   &-tree {
-    margin-bottom: 20px;
+    margin-block-end: 20px;
 
     &_branch {
       animation: color 5s linear infinite;
@@ -54,13 +57,13 @@
       transform: rotate(-135deg);
 
       &:nth-child(even) {
-        margin-top: -10px;
+        margin-block-start: -10px;
       }
     }
   }
 
   &-pine {
-    margin-bottom: 30px;
+    margin-block-end: 30px;
 
     &_branch {
       width: 0;
@@ -76,7 +79,7 @@
       }
 
       &:not(:first-child) {
-        margin-top: -10px;
+        margin-block-start: -10px;
       }
     }
   }
@@ -95,7 +98,7 @@
 
 @keyframes snow {
   100% {
-    margin-top: -23px;
+    margin-block-start: -23px;
   }
 }
 

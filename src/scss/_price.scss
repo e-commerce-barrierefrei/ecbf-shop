@@ -1,6 +1,7 @@
 .price {
-  .new {
-    color: var(--red);
+
+  &__new {
+    color: var(--brand-red);
     font-weight: bold;
     font-size: 2em;
 

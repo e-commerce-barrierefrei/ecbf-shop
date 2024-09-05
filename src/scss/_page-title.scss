@@ -1,0 +1,28 @@
+.page-title {
+  margin: .25em 0 0;
+
+  @media (max-width: 40em) {
+    font-size: 1.5em;
+  }
+
+  @media (max-width: 20em) {
+    font-size: 1.25em;
+  }
+
+  &--product {
+    margin-block-end: 2rem;
+
+    @media (max-width: 40em) {
+      margin-block-end: 1rem;
+    }
+  }
+
+  &--home {
+    margin: 0;
+    padding: .5em 0;
+
+    @media (max-width: 40em) {
+      font-size: 1.5rem;
+    }
+  }
+}

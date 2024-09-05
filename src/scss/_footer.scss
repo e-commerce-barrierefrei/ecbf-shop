@@ -1,7 +1,7 @@
 .footer {
   border-top: 1px solid #e5e7eb;
   padding: 2rem;
-  background-color: var(--blue);
+  background-color: var(--brand-blue);
   color: #fff;
   line-height: 1.5;
 
@@ -9,12 +9,12 @@
     padding: 1rem;
   }
 
-  h2 {
-    margin-top: 0;
-    margin-bottom: 0;
+  &__headline {
+    margin-block-start: 0;
+    margin-block-end: 0;
   }
 
-  a {
+  &__link {
     color: inherit;
   }
 }

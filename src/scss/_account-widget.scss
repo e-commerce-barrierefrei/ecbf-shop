@@ -1,0 +1,38 @@
+.account--widget {
+  grid-area: accountbutton;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  @media (max-width: 40em) {
+    place-content: end;
+  }
+
+  &__container {
+    position: absolute;
+    right: 0;
+    top: 2.75rem;
+    left: 0;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0.35) 0 4px 6px -1px, rgba(0, 0, 0, 0.13) 0 2px 4px -2px;
+    background-color: white;
+  }
+
+  &__button {
+    &[aria-expanded="false"] + .account--widget__container {
+      display: none;
+      opacity: 0;
+    }
+
+    &[aria-expanded="true"] + .account--widget__container {
+      display: block;
+      opacity: 1;
+      transition: opacity .25s ease-in;
+
+      @starting-style {
+        opacity: 0
+      }
+    }
+  }
+}

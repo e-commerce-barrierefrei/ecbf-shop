@@ -6,7 +6,7 @@
   }
 </include>
 <body>
-<header>
+<header class="header">
 
   <include src="partials/header.html"></include>
 
@@ -66,7 +66,7 @@
         </tfoot>
       </table>
 
-      <fieldset aria-required="true" role="radiogroup" data-required-error="err13">
+      <fieldset class="fieldset" aria-required="true" role="radiogroup" data-required-error="err13">
         <legend><h2>Bezahlmethode</h2></legend>
 
         <div><label for="rechnung"> <input type="radio" id="rechnung" name="bezahlmethode"> Rechnung</label></div>
@@ -86,14 +86,14 @@
 
       <h3>Versandadresse</h3>
 
-      <form data-order method="post">
+      <form data-order method="post" class="form">
         <div>
           <div class="box box--form">
             <small class="form__required-label">* bedeutet: Notwendige Angaben</small>
             <div class="row">
 
-              <fieldset aria-required="true" role="radiogroup" class="" data-required-error="err1">
-                <legend class="util-add-margin-bottom">
+              <fieldset class="fieldset" aria-required="true" role="radiogroup" class="" data-required-error="err1">
+                <legend>
                   Anrede<em>*</em>
                 </legend>
 
@@ -120,14 +120,14 @@
                 <p id="err1" class="form__error" hidden>Bitte wählen Sie eine Anrede aus.</p>
               </fieldset>
 
-              <div class="input-box">
+              <div class="form__input-box">
                 <label for="address.firstName" class="form__label">Vorname<em>*</em>
                 </label>
                 <input aria-required="true" data-required-error="err2" autocomplete="given-name" type="text"
                        name="address.firstName" id="address.firstName">
                 <p class="form__error" hidden id="err2">Bitte Vornamen angeben</p>
               </div>
-              <div class="input-box">
+              <div class="form__input-box">
                 <label for="address.lastName" class="form__label">Nachname<em>*</em>
                 </label>
                 <input aria-required="true" data-required-error="err3" type="text" name="address.lastName"
@@ -136,21 +136,21 @@
               </div>
             </div>
             <div class="row">
-              <div class="input-box">
+              <div class="form__input-box">
                 <label for="address.company" class="form__label">Adresszusatz / Firma
                 </label>
                 <input type="text" name="address.company" id="address.company" autocomplete="organization"
                        value="">
               </div>
               <div class="row">
-                <div class="input-box">
+                <div class="form__input-box">
                   <label for="address.address1" class="form__label">Straße<em>*</em>
                   </label>
                   <input type="text" aria-required="true" data-required-error="err4" name="address.address1"
                          id="address.address1" autocomplete="address-level3">
                   <p class="form__error" hidden id="err4">Bitte Straße angeben</p>
                 </div>
-                <div class="input-box">
+                <div class="form__input-box">
                   <label for="address.address2" class="form__label">Nr.<em>*</em>
                   </label>
                   <input type="text" aria-required="true" data-required-error="err5" name="address.address2"
@@ -159,14 +159,14 @@
                 </div>
               </div>
               <div class="row">
-                <div class="input-box">
+                <div class="form__input-box">
                   <label for="address.zipCode" class="form__label">PLZ<em>*</em>
                   </label>
                   <input type="text" aria-required="true" data-required-error="err6" name="address.zipCode"
                          id="address.zipCode" autocomplete="postal-code" pattern="[0-9]*">
                   <p class="form__error" hidden id="err6">Bitte Postleitzahl angeben</p>
                 </div>
-                <div class="input-box">
+                <div class="form__input-box">
                   <label for="address.city" class="form__label">Ort<em>*</em>
                   </label>
                   <input autocomplete="address-level2" aria-required="true" data-required-error="err7" type="text"
@@ -175,7 +175,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="input-box col-xs-12">
+                <div class="form__input-box col-xs-12">
                   <label for="address.email" class="form__label">E-Mail-Adresse<em>*</em>
                   </label>
                   <input aria-required="true" data-required-error="err8" data-email-syntax-error="err9" type="email"
@@ -202,20 +202,20 @@
               Die Versandadresse entspricht der Rechnungsadresse
             </label>
             <div v-show="!invoiceDataHidden">
-              <fieldset aria-required="true" role="radiogroup" data-required-error="err1">
-                <legend class="util-add-margin-bottom">
+              <fieldset class="fieldset" aria-required="true" role="radiogroup" data-required-error="err1">
+                <legend>
                   Anrede<em>*</em>
                 </legend>
 
                 <input type="radio" name="address.radiogroup.salutation" id="address-invoice.radiogroup.salutation.Mrs"
                        value="Mrs" class="">
-                <label class="util-add-margin-right-full" for="address-invoice.radiogroup.salutation.Mrs">
+                <label for="address-invoice.radiogroup.salutation.Mrs">
                   Frau
                 </label>
 
                 <input type="radio" name="address-invoice.radiogroup.salutation"
                        id="address-invoice.radiogroup.salutation.Mr" value="Mr" class="">
-                <label class="util-add-margin-right-full" for="address-invoice.radiogroup.salutation.Mr">
+                <label for="address-invoice.radiogroup.salutation.Mr">
                   Herr
                 </label>
 
@@ -227,14 +227,14 @@
 
                 <p id="err21" class="form__error" hidden>Bitte wählen Sie eine Anrede aus.</p>
               </fieldset>
-              <div class="input-box">
+              <div class="form__input-box">
                 <label class="form__label" for="address-invoice.firstName">Vorname<em>*</em>
                 </label>
                 <input aria-required="true" data-required-error="err22" autocomplete="given-name" type="text"
                        name="address-invoice.firstName" id="address-invoice.firstName">
                 <p class="form__error" hidden id="err22">Bitte Vornamen angeben</p>
               </div>
-              <div class="input-box">
+              <div class="form__input-box">
                 <label class="form__label" for="address-invoice.lastName">Nachname<em>*</em>
                 </label>
                 <input aria-required="true" data-required-error="err23" type="text" name="address-invoice.lastName"
@@ -242,7 +242,7 @@
                 <p class="form__error" hidden id="err23">Bitte Nachnamen angeben</p>
               </div>
               <div class="row">
-                <div class="input-box">
+                <div class="form__input-box">
                   <label class="form__label" for="address-invoice.company">Adresszusatz / Firma
                   </label>
                   <input type="text" name="address-invoice.company" id="address-invoice.company"
@@ -250,14 +250,14 @@
                          data-nudge="#nudgeCheckoutPersonalData-company-ng-maxlength" value="">
                 </div>
                 <div class="row">
-                  <div class="input-box">
+                  <div class="form__input-box">
                     <label class="form__label" for="address-invoice.address1">Straße<em>*</em>
                     </label>
                     <input type="text" aria-required="true" data-required-error="err24" name="address-invoice.address1"
                            id="address-invoice.address1" autocomplete="address-level3">
                     <p class="form__error" hidden id="err24">Bitte Straße angeben</p>
                   </div>
-                  <div class="input-box">
+                  <div class="form__input-box">
                     <label class="form__label" for="address-invoice.address2">Nr.<em>*</em>
                     </label>
                     <input type="text" aria-required="true" data-required-error="err25" name="address-invoice.address2"
@@ -266,14 +266,14 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="input-box">
+                  <div class="form__input-box">
                     <label class="form__label" for="address-invoice.zipCode">PLZ<em>*</em>
                     </label>
                     <input type="text" aria-required="true" data-required-error="err26" name="address-invoice.zipCode"
                            id="address-invoice.zipCode" autocomplete="postal-code" pattern="[0-9]*">
                     <p class="form__error" hidden id="err26">Bitte Postleitzahl angeben</p>
                   </div>
-                  <div class="input-box">
+                  <div class="form__input-box">
                     <label class="form__label" for="address-invoice.city">Ort<em>*</em>
                     </label>
                     <input autocomplete="address-level2" aria-required="true" data-required-error="err27" type="text"
@@ -282,7 +282,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="input-box col-xs-12">
+                  <div class="form__input-box col-xs-12">
                     <label class="form__label" for="address-invoice.email">E-Mail-Adresse<em>*</em>
                     </label>
                     <input aria-required="true" data-required-error="err28" data-email-syntax-error="err29" type="email"
@@ -297,7 +297,7 @@
             </div>
             <input type="hidden" v-if="invoiceDataHidden" name="customerDataIsInvoiceData">
             <div class="row">
-              <div>
+              <div class="create-account">
                 <h3>Kundenkonto</h3>
 
                 <label for="registerUser"><input type="checkbox" id="registerUser" name="registerUser" value="1">
@@ -307,15 +307,15 @@
 
 
                 <div class="row" id="registerUserArea" hidden>
-                  <div class="input-box">
+                  <div class="form__input-box">
                     <label class="form__label" for="logonData.loginPassword">Passwort (min. 6 Zeichen)<em>*</em>
                     </label>
-                    <div class="password-show-wrapper">
+                    <div class="form__password-show-wrapper">
 
-                    <input type="password" data-required-error="err10" aria-required="true" class="new-password"
+                    <input type="password" data-required-error="err10" aria-required="true" class="create-account__new-password-input"
                            name="logonData.loginPassword"
                            id="logonData.loginPassword" value="" title="Passwort (min. 6 Zeichen)" maxlength="30">
-                    <button class="button form__password-switch passwordHideShow" type="button">
+                    <button class="button create-account__password-switch passwordHideShow" type="button">
                       <svg class="show" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 16.01C14.2091 16.01 16 14.2191 16 12.01C16 9.80087 14.2091 8.01001 12 8.01001C9.79086 8.01001 8 9.80087 8 12.01C8 14.2191 9.79086 16.01 12 16.01Z" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M2 11.98C8.09 1.31996 15.91 1.32996 22 11.98" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -335,15 +335,15 @@
                     <span class="visually-hidden" aria-live="polite"></span>
                     <p class="form__error" hidden id="err10">Bitte Passwort angeben</p>
                   </div>
-                  <div class="input-box">
+                  <div class="form__input-box">
                     <label class="form__label" for="logonData.loginPasswordRepeat">Passwort wiederholen<em>*</em>
                     </label>
-                    <div class="password-show-wrapper">
-                    <input type="password" data-required-error="err11" data-pw-mismatch-error="err12" class="new-password"
+                    <div class="form__password-show-wrapper">
+                    <input type="password" data-required-error="err11" data-pw-mismatch-error="err12" class="create-account__new-password-input"
                            aria-required="true"
                            name="logonData.loginPasswordRepeat" id="logonData.loginPasswordRepeat" value=""
                            title="Passwort wiederholen" maxlength="30">
-                    <button class="button form__password-switch passwordHideShow" type="button">
+                    <button class="button create-account__password-switch passwordHideShow" type="button">
                       <svg class="show" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 16.01C14.2091 16.01 16 14.2191 16 12.01C16 9.80087 14.2091 8.01001 12 8.01001C9.79086 8.01001 8 9.80087 8 12.01C8 14.2191 9.79086 16.01 12 16.01Z" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M2 11.98C8.09 1.31996 15.91 1.32996 22 11.98" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

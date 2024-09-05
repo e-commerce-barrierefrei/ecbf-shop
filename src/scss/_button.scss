@@ -1,0 +1,22 @@
+.button {
+  border-color: transparent;
+  background-color: var(--brand-blue);
+  padding: .5rem .75rem;
+  color: #fff;
+  font-size: 90%;
+
+  &[aria-pressed="true"] {
+    background-color: var(--brand-red);
+  }
+
+  &--order {
+    margin-block-start: 2rem;
+    font-size: 110%;
+  }
+}
+
+button * {
+  pointer-events: none;
+}
+
+

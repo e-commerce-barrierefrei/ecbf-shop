@@ -1,0 +1,36 @@
+.create-account {
+
+  &__password-switch {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    padding: 0 .5rem;
+
+
+    &[aria-pressed="true"] {
+      .hide {
+        display: block;
+      }
+
+      .show {
+        display: none;
+      }
+    }
+
+    &[aria-pressed="false"] {
+      .hide {
+        display: none;
+      }
+
+      .show {
+        display: block;
+      }
+    }
+  }
+
+  &__new-password-input:has(+ .passwordHideShow) {
+    width: calc(100% - 3.75rem);
+  }
+
+}

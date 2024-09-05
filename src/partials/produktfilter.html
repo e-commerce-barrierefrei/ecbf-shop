@@ -1,8 +1,8 @@
-<a href="#produktliste" class="u-skiplink">Zur Produktliste</a>
-<div class="product-options">
+<a href="#produktliste" class="skiplink">Zur Produktliste</a>
+<div class="product-list__options">
 
-    <label for="sort">Sortierichtung:</label>
-    <select id="sort" name="sort" @change="changeSort">
+    <label class="product-list__label" for="sort">Sortierichtung:</label>
+    <select class="product-list__select" id="sort" name="sort" @change="changeSort">
       <option value="" checked></option>
       <option value="name-desc">Alphabetisch, Z - A</option>
       <option value="name-asc">Alphabetisch, A - Z</option>

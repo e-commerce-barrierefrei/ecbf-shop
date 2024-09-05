@@ -84,7 +84,7 @@ if (document.querySelector("#produktliste")) {
 }
 
 
-toggleAriaExpanded(document.querySelector('.accountbutton'));
+toggleAriaExpanded(document.querySelector('.account--widget__button'));
 
 
 

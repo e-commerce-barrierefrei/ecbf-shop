@@ -3,10 +3,10 @@
 
 <include src="partials/produktfilter.html"></include>
 
-<ul id="produktliste">
-  <li v-for="product in sortedProducts">
+<ul id="produktliste" class="product-list">
+  <li v-for="product in sortedProducts" class="product-list__product">
     <div>
-    <img :src="product.img_url" :alt="product.img_alt" />
+    <img class="product-list__image" :src="product.img_url" :alt="product.img_alt" />
     </div>
     <div>
     <strong>{{product.name}}</strong>

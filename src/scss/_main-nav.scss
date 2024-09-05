@@ -1,4 +1,5 @@
-
+/* Folgendes ist ein nur leicht angepasstes https://github.com/metageeky/mega-menu
+unter https://www.mozilla.org/en-US/MPL/2.0/ */
 
 :root {
   --content-width: 1200px;
@@ -8,12 +9,12 @@
   --menu-bar-background: transparent;
   --menu-bar-hover-background: transparent;
   --menu-bar-hover-color: #fff;
-  --menu-bar-open-color: var(--red);
+  --menu-bar-open-color: var(--brand-red);
 
   --menu-background: #fff;
   --menu-link-color: #203299;
 
-  --menu-color: var(--blue);
+  --menu-color: var(--brand-blue);
   --menu-hover-background: #000e54;
   --menu-hover-color: #fff;
   --menu-font-size: 1rem;
@@ -41,12 +42,11 @@
 }
 
 .mega-menu button.mega-menu-toggle {
-  padding-left: 1rem;
+  padding-inline-start: 1rem;
 }
 
 .mega-menu button.responsive-toggle,
 .mega-menu button.mega-menu-toggle {
-  //padding: 0;
   text-decoration: none;
   white-space: nowrap;
   border: none;
@@ -57,7 +57,6 @@
 .mega-menu button.responsive-toggle {
   background: var(--menu-bar-background);
   color: var(--menu-bar-color);
-  //display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: end;
@@ -66,7 +65,10 @@
   gap: .5rem;
 
   svg {
-    margin-left: .5rem;
+    margin-inline-start
+
+
+: .5rem;
   }
 }
 
@@ -128,7 +130,6 @@
     list-style: none;
   }
 
-
   @media (max-width: 60em) {
     padding: 1.5rem .5rem .5rem
   }
@@ -141,7 +142,7 @@
   position: relative;
 
   @media (max-width: 60em) {
-    padding-left: 1.5em;
+    padding-inline-start: 1.5em;
 
     &:after {
       content: '';
@@ -159,11 +160,7 @@
         background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiBoZWlnaHQ9IjI4NyIgdmlld0JveD0iMCAwIDI5NyAyODciIHdpZHRoPSIyOTciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTAgMGgyOTd2Mjg3aC0yOTd6IiBmaWxsPSIjZmZmIi8+PHJlY3QgZmlsbD0iI2IxMDE0YSIgaGVpZ2h0PSIyNSIgcng9IjEyLjUiIHdpZHRoPSIyOTciIHk9IjEzMyIvPjwvc3ZnPg==");
       }
     }
-
-
   }
-
-
 }
 
 /* accessibility fix for list-style none ul in safari */
@@ -178,7 +175,10 @@
   width: 0.625em;
   position: relative;
   top: -1px;
-  margin-left: 2px;
+  margin-inline-start
+
+
+: 2px;
 }
 .mega-menu li button[aria-expanded="false"] svg.icon.up {
   display: none;
@@ -227,12 +227,12 @@
 }
 
 .mega-menu .text-column:last-of-type ul {
-  margin-bottom: 0;
+  margin-block-end: 0;
 }
 
 .mega-sub-menu > ul li a {
   text-decoration: none;
-  color: var(--blue);
+  color: var(--brand-blue);
 }
 .mega-sub-menu > ul li a:focus {
   text-decoration: underline;
@@ -250,30 +250,30 @@
 }
 
 .mega-sub-menu > ul > li > ul {
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 
 .mega-sub-menu > ul > li.text-column + li.text-column > .mega-sub-heading {
-  margin-top: 0.625rem;
+  margin-block-start: 0.625rem;
 }
 
 .mega-sub-menu > ul > li > ul.mega-menu-bulleted {
   list-style-type: none;
   list-style-position: outside;
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 
 .mega-sub-menu > ul > li > ul.mega-menu-bulleted li {
-  margin-top: .25rem;
+  margin-block-start: .25rem;
 
   @media (max-width: 40em) {
-    margin-top: .75rem;
+    margin-block-start: .75rem;
   }
 }
 
 .mega-sub-menu .mega-menu-bulleted {
   @media (max-width: 40em) {
-    margin-bottom: 1.5rem;
+    margin-block-end: 1.5rem;
   }
 }
 
@@ -327,7 +327,10 @@
 
   .mega-menu > ul > li > button.mega-menu-toggle {
     padding: 0 2rem 0 0;
-    margin-right: .5em;
+    margin-inline-end
+
+
+: .5em;
     border-bottom: 0;
     background-color: var(--menu-bar-background);
     color: var(--menu-bar-color);
@@ -351,22 +354,8 @@
   }
 
   .mega-menu > ul > li:first-child .mega-menu-toggle {
-    padding-left: 0;
+    padding-inline-start: 0;
   }
-
-
-  //.mega-menu ul > li > button[aria-expanded="true"] {
-  //  box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.4);
-  //}
-
-  .mega-menu ul > li > button[aria-expanded="true"]:not(:hover) {
-    //background: var(--menu-background);
-  }
-
-
-
-
-
 
   .mega-sub-menu {
     display: none;
@@ -430,7 +419,10 @@
   }
 
   .mega-sub-menu > ul > li + li {
-    margin-left: var(--inner-sub-menu-margin);
+    margin-inline-start
+
+
+: var(--inner-sub-menu-margin);
   }
 
   .mega-sub-menu > ul > li.text-column {
@@ -438,7 +430,7 @@
   }
 
   .mega-sub-menu > ul > li.text-column + li.text-column > .mega-sub-heading {
-    margin-top: 0;
+    margin-block-start: 0;
   }
 
   .mega-sub-menu > ul > li.image-column {
@@ -453,7 +445,7 @@
   }
 
   .mega-sub-menu > ul > li > ul.mega-menu-bulleted li:first-of-type {
-    margin-top: 0;
+    margin-block-start: 0;
   }
 
   .mega-sub-menu > ul > li.double > ul.mega-menu-bulleted {
@@ -476,24 +468,7 @@
 
 
   .mega-sub-heading {
-    margin-bottom: .5em;
-  }
-}
-
-
-#main-search-toggle {}
-
-.header-button {
-  display: flex;
-  align-items: center;
-  border: none;
-  background-color: transparent;
-  font: inherit;
-  font-size: .85em;
-  padding: 0;
-
-  svg {
-    width: 1rem;
+    margin-block-end: .5em;
   }
 }
 
@@ -537,5 +512,33 @@
 
   @media (width <= 40em) {
     top: 3.5rem;
+  }
+
+  .nav-main li {
+    position: relative;
+  }
+}
+@media (min-width: 40em) {
+  #main-nav-toggle,
+  #main-search-toggle {
+    display: none;
+  }
+
+  #main-nav-toggle[aria-expanded] + .aufklapp-bereich,
+  #main-search-toggle[aria-expanded] + .aufklapp-bereich {
+    display: flex;
+    opacity: 1;
+  }
+
+  .nav-main ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .nav-main li .aufklapp-bereich {
+    position: absolute;
+    left: 0;
+    background-color: #fff;
   }
 }

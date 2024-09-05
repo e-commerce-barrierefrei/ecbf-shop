@@ -1,39 +1,29 @@
-body {
-    font-family: 'Schibsted Grotesk', sans-serif;
-    background-color: #fff;
-    margin: 0;
-    padding: 0;
-
-    --red: #B1004A;
-    --blue: #1E344E;
-}
-
-h1 {
-    margin-top: 0;
-    padding: 0;
-}
-
-svg {
-    pointer-events: none;
-}
-
-@import "scss/keyframes";
-@import "scss/logo";
-@import "scss/header";
-@import "scss/layout";
-@import "scss/main-nav";
-@import "scss/dialog";
-@import "scss/a11y";
-@import "scss/carousel";
-@import "scss/wintersale";
-@import "scss/forms";
-@import "scss/combobox";
-@import "scss/suchergebnis";
-@import "scss/produktliste";
-@import "scss/price";
-@import "scss/modal";
-@import "scss/stars";
-@import "scss/cart";
-@import "scss/product";
-@import "scss/footer";
+@import "scss/variables"; // √
+@import "scss/fonts"; // √
+@import "scss/keyframes"; // √
+@import "scss/logo"; // √
+@import "scss/svg"; // √
+@import "scss/header"; // √
+@import "scss/headings"; // √
+@import "scss/page-title"; // √
+@import "scss/search-widget"; // √
+@import "scss/account-widget"; // √
+@import "scss/cart-widget-button"; // √
+@import "scss/layout"; // √
+@import "scss/main-nav"; // √
+@import "scss/dialog"; // √
+@import "scss/a11y"; // √
+@import "scss/carousel"; // √
+@import "scss/button"; // √
+@import "scss/forms"; // √
+@import "scss/fieldset"; // √
+@import "scss/create-account"; // √
+@import "scss/combobox"; // !!!!!!!
+@import "scss/suchergebnis"; // !!!!!!!
+@import "scss/product-list"; // √
+@import "scss/price"; // √
+@import "scss/stars"; // √
+@import "scss/cart"; // √
+@import "scss/product"; // √
+@import "scss/footer"; // √
 

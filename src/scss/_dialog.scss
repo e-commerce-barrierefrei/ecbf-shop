@@ -1,71 +1,114 @@
-dialog {
-  will-change: opacity;
-  backface-visibility: hidden;
-}
-
-dialog[open] {
-  animation: open 1s forwards;
-}
-
-
-#cookie-modal, #big-image {
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  border-radius: 6px;
-
-  @media (max-width: 40em) {
-    width: 100vw;
-  }
-}
-
-#big-image::backdrop {
-  cursor: zoom-out;
-}
-
-.wrapper__inner img {
-  max-width: 100%;
-}
-
-#big-image button {
-  position: absolute;
-  right: 0;
-}
-
-#big-image img {
-  max-width: 90vw;
-}
-
-
-#cookie-modal {
-  max-width: 60ch;
-}
-
-#trigger-big-image-dialog {
-  cursor: zoom-in;
-}
-
 body:has(dialog[open]) {
   overflow: hidden;
 }
 
-.dialog-content {
-  padding: 1.5rem;
-  overflow: auto;
+dialog {
+  padding: 0;
 
-  h1 {
-    margin-bottom: 0;
+  &[open] {
+    animation: open 1s forwards;
   }
 
-  .button-row {
-    margin-top: 1.75rem;
+  &::backdrop {
+    background: rgba(0, 0, 0, .65);
+    backdrop-filter: blur(4px);
+  }
+}
+
+.dialog {
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: var(--border-radius);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  will-change: opacity;
+  backface-visibility: hidden;
+  overflow: hidden;
+
+  &__title {
+    margin-block-end: 0;
+  }
+
+  &__button-row {
+    margin-block-start: 1.75rem;
 
     button {
-      margin-right: 1rem;
+      margin-inline-end
+
+
+: 1rem;
+
+      @media (max-width: 20em) {
+        margin-block-end: 1rem;
+      }
     }
   }
 
-  @media (max-width: 20em) {
-    padding: 1rem;
+  &__trigger-big-image-dialog {
+    cursor: zoom-in;
+  }
+
+  &__content {
+    padding: 2rem;
+    overflow: auto;
+    background-color: white;
+
+    &--fifty {
+      position: fixed;
+      right: 0;
+      left: 50vw;
+      bottom: 0;
+      top: 0;
+
+      @media (max-width: 40em) {
+        width: auto;
+        inset: 5vw;
+      }
+
+      @media (max-width: 20em) {
+        padding: 1rem;
+      }
+    }
+  }
+
+  &[open] {
+    animation: open 1s forwards;
+  }
+
+  &--cookie {
+    max-width: 60ch;
+  }
+
+  &--big-image {
+    &::backdrop {
+      cursor: zoom-out;
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+    }
+
+    img {
+      max-width: 90vw;
+    }
+  }
+
+  @media (max-width: 40em) {
+    width: 95vw;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
