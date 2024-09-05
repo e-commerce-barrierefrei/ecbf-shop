@@ -33,17 +33,24 @@ export function formManagement() {
       /**
        * @param {Event} e
        */
+      passwordFieldHideShow.setAttribute("aria-pressed", "false");
+
       passwordFieldHideShow.addEventListener("click", (e) => {
         /** @const {HTMLElement} */
         const target = e.target;
         const liveRegion = target.nextElementSibling,
           passwordInput = target.previousElementSibling;
 
+
         if (passwordInput.getAttribute("type") === "password") {
           passwordInput.setAttribute("type", "text");
+          target.setAttribute("aria-pressed", "true");
+
           liveRegion.textContent = "Password sichtbar";
         } else {
           passwordInput.setAttribute("type", "password");
+          target.setAttribute("aria-pressed", "false");
+
           liveRegion.textContent = "Password unsichtbar";
         }
       });
@@ -65,7 +72,7 @@ export function formManagement() {
        * @param {HTMLInputElement} requiredField
        */
       requiredFields.forEach((requiredField) => {
-        
+
         // Ist "requiredField" ein Fieldset, in dem ein Input ausgewählt ist?
         let requiredFieldsetisChecked = requiredField.tagName === "FIELDSET" && !requiredField.querySelector("input:checked");
 

@@ -1,9 +1,16 @@
 .form__error {
-  margin: 0;
-  color: rgb(120, 2, 2);
+  margin: .5em 0;
+  background-color: rgb(120, 2, 2);
+  padding: .25em;
+  color: #fff;
 }
 
-.button {
+.password-show-wrapper {
+  position: relative;
+}
+
+
+                                                       .button {
   all: unset;
   background-color: var(--blue);
   padding: .5rem .75rem;
@@ -20,12 +27,19 @@
 }
 
 .input-box {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "label input"
                        "error error";
   margin-top: 1rem;
 
+  @media (max-width: 40em) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "label"
+                        "input"
+                        "error";
+  }
 
 }
 
@@ -66,4 +80,37 @@ main fieldset {
 
 .input-box .form__error {
   grid-area: error;
+}
+
+.new-password:has(+ .form__password-switch) {
+  width: calc(100% - 3.5rem);
+}
+
+.form__password-switch {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  padding: 0 .5rem;
+
+
+  &[aria-pressed="true"] {
+    .hide {
+      display: block;
+    }
+
+    .show {
+      display: none;
+    }
+  }
+
+  &[aria-pressed="false"] {
+    .hide {
+      display: none;
+    }
+
+    .show {
+      display: block;
+    }
+  }
 }

@@ -135,7 +135,7 @@ input[type=number]::-webkit-outer-spin-button {
   }
 
   @media (max-width: 40em) {
-    grid-template: "product amount remove" 2.5rem "product options price" 1fr / 30% 50% 20%;
+    grid-template: "product amount remove" 2.5rem "product options price" 1fr / 50% 35% 15%;
     width: calc(100% - 2rem);
   }
 
