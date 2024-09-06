@@ -1,3 +1,6 @@
+/* Folgendes ist ein nur leicht angepasstes https://github.com/metageeky/mega-menu
+unter https://www.mozilla.org/en-US/MPL/2.0/ */
+
 import * as hoverintent from "hoverintent";
 
 window.addEventListener('load', function(event) {

@@ -1,7 +1,6 @@
 import products from '../../data.json';
 const cartModal = document.querySelector("#cart-modal");
 
-
 export function cart() {
   PetiteVue.createApp({
     products,
@@ -128,7 +127,6 @@ export function cart() {
       localStorage.setItem('cart', JSON.stringify(this.cart));
     },
     toggleCartItem(productId) {
-      console.log(productId);
       let product = this.getProductById(productId);
 
 
@@ -137,7 +135,6 @@ export function cart() {
         this.persistCart();
         this.updateTotalSum();
         this.filterLiveRegion.textContent = "Artikel " + product[0].name + " entfernt. Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100;
-       // console.log(this.cart);
         this.$refs.cart.focus();
       }
       else {
@@ -161,8 +158,6 @@ export function cart() {
       let addedOrRemoved =  (item.giftwrap) ? 'hinzugefügt' : 'entfernt';
 
       this.filterLiveRegion.textContent = "Geschenkverpackung " + addedOrRemoved + ". Neuer Preis: €" + this.getLocalTotal(item) / 100 + ". Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100;
-
-      //console.log("Geschenkverpackung " + addedOrRemoved + ". Neuer Preis: €" + this.getLocalTotal(item) / 100 + ". Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100);
     },
     hasGiftwrap(id) {
       if (this.getCartItemById(id)[0]) return this.getCartItemById(id)[0].giftwrap;
@@ -176,10 +171,9 @@ export function cart() {
   }).mount();
 }
 
-
-const dialog = document.querySelector('#cart-modal');
-dialog.addEventListener('click', (event) => {
+const cartDialog = document.querySelector('#cart-modal');
+cartDialog.addEventListener('click', (event) => {
   if (event.target.nodeName === 'DIALOG') {
-    dialog.close();
+    cartDialog.close();
   }
 });

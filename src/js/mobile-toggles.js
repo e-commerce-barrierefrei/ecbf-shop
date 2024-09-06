@@ -1,5 +1,4 @@
 import { toggleAriaExpanded } from './_helpers';
-
 export function mobileToggles() {
     const mainNavToggle = document.getElementById('main-nav-toggle');
     const mainSearchToggle = document.getElementById('main-search-toggle');
