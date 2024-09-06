@@ -33,15 +33,8 @@
     margin-block-start: -230px;
 
     &:not(:first-child) {
-      margin-inline-start
-
-
-: 30px;
+      margin-inline-start: 30px;
     }
-
-    //&:nth-child(odd) {
-    //  animation: snow 8s linear infinite;
-    //}
   }
 
   &-tree {

@@ -135,8 +135,6 @@ class ComboboxSearch extends HTMLElement {
     this.statusElement.setAttribute("aria-hidden", "false");
     this.statusElement.textContent = statusText;
 
-    console.log("live region", statusText);
-
     setTimeout(() => {
       this.statusElement.setAttribute("aria-hidden", "true");
     }, 1000);

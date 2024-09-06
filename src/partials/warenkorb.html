@@ -20,7 +20,10 @@
 
       <h1 class="cart__title" id="cart-modal-title">Warenkorb ({{ totalCartItems }})</h1>
     </div>
-    <div v-show="cart.length === 0">Leer</div>
+    <div class="cart--empty" v-show="cart.length === 0">
+      <h2>Noch leer…</h2>
+      <p>Dies ist ein Text der zum Befüllen des Warenkorbs und letztendlich zum Kaufen animieren soll.</p>
+    </div>
     <form v-show="cart.length !== 0" action="/bestellen.html">
       <table class="cart__table" tabindex="-1" ref="cart">
         <caption class="visually-hidden">
@@ -43,11 +46,11 @@
             <strong><a class="cart__product-link" href="produkt.html">{{cartItem.name}}</a></strong>
             <img class="cart__product-image" :src="cartItem.img_url" :alt="cartItem.img_alt" />
           </td>
-          <td class="amount-area"><label :for="'cart-produkt' + cartItem.id">Menge: </label><input :id="'cart-produkt' + cartItem.id" class="cart__product-amount" :value="cartItem.amount" type="number" min="1" max="20"
+          <td class="amount-area"><label :for="'cart-produkt-' + cartItem.id">Menge: </label><input :id="'cart-produkt-' + cartItem.id" class="cart__product-amount" :value="cartItem.amount" type="number" min="1" max="20"
                      @change="updateItemPrice(cartItem.id)"></td>
           <td class="options-area">
             <div class="cart__giftwrap">
-              <label  :for="'giftwrap-' + cartItem.id" class="cart__giftwrap-label">
+              <label :for="'giftwrap-' + cartItem.id" class="cart__giftwrap-label">
                 <input :id="'giftwrap-' + cartItem.id" type="checkbox" @change="toggleGiftWrap(cartItem.id)"
                        :checked="hasGiftwrap(cartItem.id) ? true: undefined"><div>Geschenk<span class="cart__packaging-string">verpackung</span><br> (€ {{giftwrapPrice /
                 100}})</div></label>

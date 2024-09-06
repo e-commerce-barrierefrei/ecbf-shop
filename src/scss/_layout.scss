@@ -2,14 +2,15 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: var(--brand-white);
   margin: 0;
   padding: 0;
+  color: var(--brand-blue);
 }
 
 main {
   flex: 1;
-  background-color: rgb(250, 251, 252);
+  background-color: var(--brand-lightgrey);
   padding: 1rem 2rem;
 
   @media (max-width: 20em) {
@@ -69,9 +70,9 @@ main {
 .main-inner--order {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 3rem;
 
-  @media (max-width: 40em) {
+  @media (max-width: 65em) {
     grid-template-columns: 1fr;
     gap: 0;
   }

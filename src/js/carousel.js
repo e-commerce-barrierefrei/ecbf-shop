@@ -304,7 +304,7 @@ export function initCarousel() {
 
     var c = new myCarousel();
     c.init({
-        id: 'c',
+        id: 'carousel',
         slidenav: true,
         animate: animate,
         startAnimated: startAnimated

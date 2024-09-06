@@ -17,18 +17,12 @@
 
 .product-facts {
   list-style: square;
-  margin-inline-start
-
-
-: 1rem;
+  margin-inline-start: 1rem;
   padding-inline-start: 0;
   line-height: 1.5;
 
   li {
-    margin-inline-start
-
-
-: .5rem;
+    margin-inline-start: .5rem;
   }
 }
 
@@ -41,10 +35,7 @@
   display: grid;
   gap: .5rem;
   grid-template-columns: 25% 75%;
-  margin-inline-start
-
-
-: 1rem;
+  margin-inline-start: 1rem;
 
 
   dt {
@@ -53,10 +44,7 @@
 
   dd {
     padding-inline-start: 0;
-    margin-inline-start
-
-
-: 1rem;
+    margin-inline-start: 1rem;
   }
 }
 

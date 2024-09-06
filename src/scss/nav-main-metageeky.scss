@@ -8,15 +8,15 @@ unter https://www.mozilla.org/en-US/MPL/2.0/ */
 .mega-menu {
   --menu-bar-background: transparent;
   --menu-bar-hover-background: transparent;
-  --menu-bar-hover-color: #fff;
+  --menu-bar-hover-color: var(--brand-white);
   --menu-bar-open-color: var(--brand-red);
 
-  --menu-background: #fff;
+  --menu-background: var(--brand-white);
   --menu-link-color: #203299;
 
   --menu-color: var(--brand-blue);
   --menu-hover-background: #000e54;
-  --menu-hover-color: #fff;
+  --menu-hover-color: var(--brand-white);
   --menu-font-size: 1rem;
 
   grid-area: menu;
@@ -38,7 +38,7 @@ unter https://www.mozilla.org/en-US/MPL/2.0/ */
 
 /* mega-menu top-level */
 .mega-sub-menu ul {
-  background-color: #fff;
+  background-color: var(--brand-white);
 }
 
 .mega-menu button.mega-menu-toggle {
@@ -51,7 +51,7 @@ unter https://www.mozilla.org/en-US/MPL/2.0/ */
   white-space: nowrap;
   border: none;
   line-height: inherit;
-  background-color: #fff;
+  background-color: var(--brand-white);
   font: inherit;
 }
 .mega-menu button.responsive-toggle {
@@ -65,10 +65,7 @@ unter https://www.mozilla.org/en-US/MPL/2.0/ */
   gap: .5rem;
 
   svg {
-    margin-inline-start
-
-
-: .5rem;
+    margin-inline-start: .5rem;
   }
 }
 
@@ -121,7 +118,7 @@ unter https://www.mozilla.org/en-US/MPL/2.0/ */
 }
 
 .mega-menu > ul {
-  background: #fff;
+  background: var(--brand-white);
   margin: 0;
   padding: 0;
   z-index: 220;
@@ -175,10 +172,7 @@ unter https://www.mozilla.org/en-US/MPL/2.0/ */
   width: 0.625em;
   position: relative;
   top: -1px;
-  margin-inline-start
-
-
-: 2px;
+  margin-inline-start: 2px;
 }
 .mega-menu li button[aria-expanded="false"] svg.icon.up {
   display: none;
@@ -327,10 +321,7 @@ unter https://www.mozilla.org/en-US/MPL/2.0/ */
 
   .mega-menu > ul > li > button.mega-menu-toggle {
     padding: 0 2rem 0 0;
-    margin-inline-end
-
-
-: .5em;
+    margin-inline-end: .5em;
     border-bottom: 0;
     background-color: var(--menu-bar-background);
     color: var(--menu-bar-color);
@@ -419,10 +410,7 @@ unter https://www.mozilla.org/en-US/MPL/2.0/ */
   }
 
   .mega-sub-menu > ul > li + li {
-    margin-inline-start
-
-
-: var(--inner-sub-menu-margin);
+    margin-inline-start: var(--inner-sub-menu-margin);
   }
 
   .mega-sub-menu > ul > li.text-column {
@@ -539,6 +527,6 @@ unter https://www.mozilla.org/en-US/MPL/2.0/ */
   .nav-main li .aufklapp-bereich {
     position: absolute;
     left: 0;
-    background-color: #fff;
+    background-color: var(--brand-white);
   }
 }

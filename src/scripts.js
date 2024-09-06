@@ -81,11 +81,20 @@ const bigImageDialog = document.querySelector('#big-image');
 // Erkenne die grobe Design-Ausprägung
   isMobile();
 
+// Schließen von allen offenen Ausklappbereichen bei ESC
+document.addEventListener('keydown', function(e) {
+  if(e.key === "Escape"){
+    document.querySelectorAll('[aria-expanded="true"]').forEach((disclosure) => {
+      disclosure.setAttribute('aria-expanded', 'false');
+    });
+  }
+});
+
 // Mein-Konto-Ausklappbereich im Header
   toggleAriaExpanded(document.querySelector('.account--widget__button'));
 
 
-if (document.getElementById("c")) {
+if (document.getElementById("carousel")) {
   initCarousel();
 }
 

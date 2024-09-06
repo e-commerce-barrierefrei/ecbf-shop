@@ -5,12 +5,11 @@
 
 <ul id="produktliste" class="product-list">
   <li v-for="product in sortedProducts" class="product-list__product">
-    <div>
+    <div class="product-list__item-inner">
     <img class="product-list__image" :src="product.img_url" :alt="product.img_alt" />
-    </div>
-    <div>
-    <strong>{{product.name}}</strong>
+    <strong><a class="product-list__link" href="produkt.html">{{product.name}}</a></strong>
     <p>€ {{product.price / 100}}</p>
+    </div>
     <button class="button"
       @click="toggleCartItem(product.id)"
       v-text="!isInCart(product.id) ? 'In den Warenkorb legen' : 'Aus dem Warenkorb entfernen'"

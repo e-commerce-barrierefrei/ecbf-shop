@@ -6,3 +6,9 @@
     opacity: 1;
   }
 }
+
+@keyframes slide-from-right {
+  0% {
+    transform: translateX(100%);
+  }
+}

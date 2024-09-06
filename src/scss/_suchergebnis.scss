@@ -1,3 +1,32 @@
-.pagination a[aria-current="page"] {
-  font-weight: bold;
+.search-results {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  line-height: 1.5;
+
+  a {
+    color: var(--brand-blue);
+    text-decoration: none;
+  }
+
+  &__pagination {
+    margin: 3rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+
+    a  {
+      display: inline-block;
+      background-color: var(--brand-blue);
+      color: var(--brand-white);
+      padding: .25em .5em;
+      margin-inline-end: .25em;
+      text-decoration: none;
+
+      &[aria-current="page"] {
+        font-weight: bold;
+        background-color: var(--brand-red);
+      }
+    }
+  }
 }

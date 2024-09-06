@@ -6,25 +6,23 @@
   }
 </include>
 <body>
-<header>
+<header class="header">
   <script>
     /* Nur für die Demo */
     window.onload = function() {
       const urlParams = new URLSearchParams(window.location.search);
-      document.getElementById('cb1-input').value =  urlParams.get('s');
-      document.getElementById('searchTerm').textContent =  urlParams.get('s');
-      document.querySelectorAll('.searchTerm-instance').forEach((searchTermInstance) => searchTermInstance.textContent = urlParams.get('s'))
-    }
+      document.querySelector(".search__input").value = urlParams.get("q");
+      document.getElementById("searchTerm").textContent = urlParams.get("q");
+      document.querySelectorAll(".searchTerm-instance").forEach((searchTermInstance) => searchTermInstance.textContent = urlParams.get("q"));
+    };
   </script>
-
   <include src="partials/header.html"></include>
-
-  <!--      <button @click="toggleCartItem(5)">increment</button>-->
 </header>
-<main id="petite-vue">
-<h1>Suche nach: <span id="searchTerm">"Suchbegriff"</span> – 42 Ergebnissse</h1>
-  <include src="partials/search-results.html"></include>
-
+<main id="content" @mounted="whenMounted()">
+  <div class="main-inner">
+    <h1 class="page-title">Suche nach: <span id="searchTerm">"Suchbegriff"</span> – 42 Ergebnissse</h1>
+    <include src="partials/search-results.html"></include>
+  </div>
 </main>
 
 <include src="partials/html-footer.html"></include>

@@ -1,5 +1,5 @@
 .header {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--brand-grey);
   padding: 2rem;
 
   @media (max-width: 40em) {
@@ -19,6 +19,10 @@
     border: 1px solid transparent;
     position: relative;
 
+    &[aria-expanded="true"] {
+      color: var(--brand-red);
+    }
+
     &__cart-button-label,
     &__account-button-label {
       @media (max-width: 20em) {
@@ -28,10 +32,7 @@
 
     svg {
       width: 1rem;
-      margin-inline-end
-
-
-: .5rem;
+      margin-inline-end: .5rem;
     }
 
     span {

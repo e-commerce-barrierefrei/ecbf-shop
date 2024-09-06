@@ -20,10 +20,7 @@ ecbf-combobox-search {
     border-top-right-radius: var(--combobox-border-radius);
     border-bottom-right-radius: var(--combobox-border-radius);
     padding: 0 .75rem;
-    margin-inline-start
-
-
-: -.25rem;
+    margin-inline-start: -.25rem;
     border-left: none;
     outline: none;
     color: rgb(0 90 156);
@@ -65,10 +62,7 @@ ecbf-combobox-search {
       align-items: center;
       flex-wrap: wrap;
       margin-block-end: 1em;
-      margin-inline-end
-
-
-: .75rem;
+      margin-inline-end: .75rem;
       gap: .5em;
 
       img {
@@ -135,10 +129,7 @@ ecbf-combobox-search {
   button[type="submit"] {
     width: 2.5rem;
     padding: 0 .75rem;
-    margin-inline-start
-
-
-: -.25rem;
+    margin-inline-start: -.25rem;
     border-left: none;
     color: rgb(0 90 156);
   }
@@ -209,7 +200,7 @@ ecbf-combobox-search {
     cursor: pointer;
     scrollbar-gutter: stable;
     scrollbar-width: thin;
-    scrollbar-color: var(--brand-blue) #fff;
+    scrollbar-color: var(--brand-blue) var(--brand-white);
     padding-inline-end: 1rem;
 
     &:empty {
@@ -281,11 +272,8 @@ ecbf-combobox-search {
     justify-content: space-between;
 
     img {
-      width: 50px;
-      margin-inline-end
-
-
-: .5rem;
+      width: 3.125rem;
+      margin-inline-end: .5rem;
     }
 
     a {

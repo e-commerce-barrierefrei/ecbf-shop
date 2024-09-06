@@ -2,6 +2,10 @@
   color: var(--brand-blue);
   box-shadow: rgba(0, 0, 0, .26) 0 6px 12px, rgba(0, 0, 0, .33) 0 6px 12px;
 
+  &--empty {
+    opacity: .675;
+  }
+
   &__close {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjk3IiBoZWlnaHQ9IjI4NyIgdmlld0JveD0iMCAwIDI5NyAyODciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF8yNl8yKSI+CjxyZWN0IHdpZHRoPSIyOTciIGhlaWdodD0iMjg3IiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB4PSIxNy42Nzc2IiB5PSItMC4yNjkxOTYiIHdpZHRoPSIzNzkuODk0IiBoZWlnaHQ9IjI1IiByeD0iMTIuNSIgdHJhbnNmb3JtPSJyb3RhdGUoNDUgMTcuNjc3NiAtMC4yNjkxOTYpIiBmaWxsPSIjMUQzNDREIi8+CjxyZWN0IHg9IjI5Ni42MDIiIHk9IjE2LjY3NzciIHdpZHRoPSIzNzguNTgiIGhlaWdodD0iMjUiIHJ4PSIxMi41IiB0cmFuc2Zvcm09InJvdGF0ZSgxMzUgMjk2LjYwMiAxNi42Nzc3KSIgZmlsbD0iIzFEMzQ0RCIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzI2XzIiPgo8cmVjdCB3aWR0aD0iMjk3IiBoZWlnaHQ9IjI4NyIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K");
     background-size: contain;
@@ -44,6 +48,111 @@
     width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
+
+    thead th {
+      position: absolute;
+      left: auto;
+    }
+
+    td {
+      vertical-align: top;
+    }
+
+    tbody tr {
+      margin-block-end: 1rem;
+      display: table-row;
+
+      @media (max-width: 80em) {
+        display: grid;
+        gap: 0 1rem;
+        width: calc(100% - 3rem);
+        margin-block-end: 1.5rem;
+        grid-template: "product product amount remove" 2.5rem "product product options price" 1fr / 6rem 20% 40% 20%;
+      }
+
+      @media (max-width: 40em) {
+        grid-template: "product amount remove" 2.5rem "product options price" 1fr / 50% 35% 15%;
+        width: calc(100% - 2rem);
+      }
+
+      @media (max-width: 20em) {
+        margin-block-end: 1.5rem;
+        gap: .75rem;
+      }
+    }
+
+    td.product-area {
+      grid-area: product;
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: row-reverse;
+      gap: 1em;
+      padding-inline-start: 0;
+
+      @media (max-width: 40em) {
+        display: grid;
+        gap: .5em;
+        grid-template-columns: 1fr;
+      }
+
+      img {
+        object-fit: contain;
+        margin-block-end: 1rem;
+      }
+    }
+
+    td.options-area {
+      grid-area: options;
+
+      label {
+        word-break: break-all;
+      }
+    }
+
+    td.amount-area {
+      grid-area: amount;
+      font-size: 82%;
+      border-radius: 2px;
+    }
+
+    td.price-area {
+      grid-area: price;
+
+      padding-inline-end: 0;
+      padding-block-end: 1rem;
+
+      @media (max-width: 80em) {
+        display: flex;
+        place-content: end;
+        align-items: start;
+      }
+
+      @media (max-width: 60em) {
+        align-items: end;
+      }
+
+      @media (max-width: 40em) {
+        display: flex;
+        justify-content: end;
+        align-content: end;
+      }
+    }
+
+    tfoot td {
+      padding-inline-start: 0;
+      padding-block-end: 1.5rem;
+      font-weight: bold;
+    }
+
+    td.remove-area {
+      grid-area: remove;
+      text-align: right;
+      padding-inline-end: 1rem;
+
+      @media (max-width: 80em) {
+        padding-inline-end: 0;
+      }
+    }
   }
 
   &__title {
@@ -61,111 +170,6 @@
 
   &__product-amount {
     width: 5ch;
-  }
-
-  &__table thead th {
-    position: absolute;
-    left: auto;
-  }
-
-  &__table td {
-    vertical-align: top;
-  }
-
-  &__table tbody tr {
-    margin-block-end: 1rem;
-    display: table-row;
-
-    @media (max-width: 80em) {
-      display: grid;
-      gap: 0 1rem;
-      width: calc(100% - 3rem);
-      margin-block-end: 1.5rem;
-      grid-template: "product product amount remove" 2.5rem "product product options price" 1fr / 6rem 20% 40% 20%;
-    }
-
-    @media (max-width: 40em) {
-      grid-template: "product amount remove" 2.5rem "product options price" 1fr / 50% 35% 15%;
-      width: calc(100% - 2rem);
-    }
-
-    @media (max-width: 20em) {
-      margin-block-end: 1.5rem;
-      gap: .75rem;
-    }
-  }
-
-  &__table td.product-area {
-    grid-area: product;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
-    gap: 1em;
-    padding-inline-start: 0;
-
-    @media (max-width: 40em) {
-      display: grid;
-      gap: .5em;
-      grid-template-columns: 1fr;
-    }
-
-    img {
-      object-fit: contain;
-      margin-block-end: 1rem;
-    }
-  }
-
-  &__table td.options-area {
-    grid-area: options;
-
-    label {
-      word-break: break-all;
-    }
-  }
-
-  &__table td.amount-area {
-    grid-area: amount;
-    font-size: 82%;
-    border-radius: 2px;
-  }
-
-  &__table td.price-area {
-    grid-area: price;
-
-    padding-inline-end: 0;
-    padding-block-end: 1rem;
-
-    @media (max-width: 80em) {
-      display: flex;
-      place-content: end;
-      align-items: start;
-    }
-
-    @media (max-width: 60em) {
-      align-items: end;
-    }
-
-    @media (max-width: 40em) {
-      display: flex;
-      justify-content: end;
-      align-content: end;
-    }
-  }
-
-  &__table tfoot td {
-    padding-inline-start: 0;
-    padding-block-end: 1.5rem;
-    font-weight: bold;
-  }
-
-  &__table td.remove-area {
-    grid-area: remove;
-    text-align: right;
-    padding-inline-end: 1rem;
-
-    @media (max-width: 80em) {
-      padding-inline-end: 0;
-    }
   }
 
   &__giftwrap {
@@ -208,7 +212,7 @@
 
   &__submit {
     background-color: #1E344E;
-    color: #fff;
+    color: var(--brand-white);
     border: none;
     appearance: none;
     font: inherit;

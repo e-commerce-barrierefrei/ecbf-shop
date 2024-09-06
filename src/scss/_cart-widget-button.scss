@@ -8,18 +8,12 @@
 
   @media (max-width: 40em) {
     padding: 0 0 0 0;
-    margin-inline-end
-
-
-: 2em;
+    margin-inline-end: 2em;
   }
 
   @media (max-width: 25em) {
     padding: 0 0 0 0;
-    margin-inline-end
-
-
-: 0;
+    margin-inline-end: 0;
   }
 
   &__total-cart-items {
@@ -31,10 +25,11 @@
     top: -.25rem;
     background-color: var(--brand-red);
     border-radius: 50%;
-    color: #fff;
+    color: var(--brand-white);
     font-weight: bold;
     min-width: 1.5rem;
     min-height: 1.5rem;
+    border: 1px solid transparent;
 
     @media (max-width: 40em) {
       top: -1.35rem;

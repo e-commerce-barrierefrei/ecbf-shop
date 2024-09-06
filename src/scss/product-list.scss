@@ -17,6 +17,21 @@
     width: 100%;
   }
 
+  &__link {
+    text-decoration: none;
+    color: var(--brand-blue);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+  }
+
+  &__item-inner {
+    position: relative;
+  }
+
   &__select {
     height: 2em;
     font: inherit;
