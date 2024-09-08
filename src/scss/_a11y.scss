@@ -28,6 +28,7 @@
   /* Fokusstile, wenn :focus-visible unterstützt wird */
   *:focus-visible {
     outline: 2px solid var(--brand-blue);
+    z-index: 9999;
     outline-offset: 0.25em;
   }
 }
