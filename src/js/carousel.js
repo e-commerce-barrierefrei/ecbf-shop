@@ -205,7 +205,7 @@ var myCarousel = (function() {
 
 
         if (announceItem) {
-            carousel.querySelector('.liveregion').textContent = 'Item ' + (new_current + 1) + ' von ' +   slides.length;
+            carousel.querySelector('.liveregion').textContent = 'Folie ' + (new_current + 1) + ' von ' +   slides.length;
         }
 
         if(settings.slidenav) {
