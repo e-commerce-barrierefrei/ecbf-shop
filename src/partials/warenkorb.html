@@ -25,6 +25,7 @@
       <p>Dies ist ein Text der zum Befüllen des Warenkorbs und letztendlich zum Kaufen animieren soll.</p>
     </div>
     <form v-show="cart.length !== 0" action="/bestellen.html">
+      <a class="skiplink cart__skiplink" href="#order">Tabelle überspringen</a>
       <table class="cart__table" tabindex="-1" ref="cart">
         <caption class="visually-hidden">
           <span>Warenkorb, Gesamtsumme </span>
@@ -74,7 +75,7 @@
         </tfoot>
       </table>
 
-    <button class="cart__submit" type="submit">Bestellen</button>
+    <button class="cart__submit" id="order" type="submit">Bestellen</button>
     </form>
   </div>
 </dialog>
