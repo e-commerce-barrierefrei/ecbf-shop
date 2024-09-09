@@ -38,7 +38,11 @@ export function cart() {
     whenMounted() {
       this.updateCartItemAmount();
       this.updateTotalSum();
-      this.cartCaptionTotal.textContent = String(this.sum/100);
+
+      setTimeout(() => {
+        this.cartCaptionTotal.textContent = String(this.sum/100);
+      }, 500);
+
     },
     updateCartItemAmount() {
       let cartItemAmount = 0;
@@ -128,16 +132,20 @@ export function cart() {
     },
     toggleCartItem(productId) {
       let product = this.getProductById(productId);
-
-
+      // Wenn bereits im Warenkorb, entferne den Artikel, aktualisiere die Summe, gib eine entsprechende Meldung in der Live Region aus und persistiere den neuen Warenkorb in Local Storage
       if (this.cart.find(x => x.id === productId)) {
         this.cart = this.cart.filter((n) => n.id !== product[0].id);
         this.persistCart();
         this.updateTotalSum();
         this.filterLiveRegion.textContent = "Artikel " + product[0].name + " entfernt. Neuer Gesamtpreis des Warenkorbs: € " + this.sum/100;
+        setTimeout(() => {
+          this.cartCaptionTotal.textContent = String(this.sum/100);
+        }, 100);
+        // Fokussiere die Warenkorbtabelle, sodass ihr zugänglicher Name in Form einer aktualisierten <caption> ausgegeben wird
         this.$refs.cart.focus();
       }
       else {
+        // Wenn nicht im Warenkorb, ergänze, aktualisiere die Summe, gib eine entsprechende Meldung in der Live Region aus und persistiere den neuen Warenkorb in Local Storage
         product[0].localTotal = product[0].price;
         this.cart.push(product[0]);
         this.updateTotalSum();
@@ -147,8 +155,9 @@ export function cart() {
       }
       this.getLocalTotal(product);
       this.updateCartItemAmount();
-
-
+      setTimeout(() => {
+        this.cartCaptionTotal.textContent = String(this.sum/100);
+      }, 100);
     },
     toggleGiftWrap(id) {
       let item = this.getCartItemById(id)[0];
