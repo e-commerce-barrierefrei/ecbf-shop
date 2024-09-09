@@ -12,3 +12,10 @@ Leicht veränderte Fassung der von @metageeky erstellten zugänglichen Megamenü
 
 ## Nutzung
 Sofern nicht von anderen Lizenzen abgedeckt (siehe oben), steht der Code dieses Beispielshops unter der Creative Commons Zero-Lizenz.
+
+## Lokaler Server
+Dieses Projekt nutzt [Parcel.js](https://parceljs.org/). Um einen lokalen Server zu starten, sind die folgenden Schritte nötig:
+1. Klonen dieses Repositories
+2. `npm install`
+3. `npm start`
+4. Der lokale Server steht nun unter http://localhost:1234/ zur Verfügung.
