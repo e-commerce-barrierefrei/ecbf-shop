@@ -1,7 +1,7 @@
 {
   "name": "ecbf-shop",
   "version": "1.0.0",
-  "description": "",
+  "description": "Beispielshop für das Lernportal e-commerce-barrierefrei.de",
   "source": "src/index.html",
   "scripts": {
     "start": "parcel src/*.html",

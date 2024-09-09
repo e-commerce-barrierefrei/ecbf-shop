@@ -81,12 +81,11 @@ unter https://www.mozilla.org/en-US/MPL/2.0/ */
 }
 
 .mega-menu button.mega-menu-toggle:focus-visible {
-  outline: dotted currentColor 3px;
-  outline-offset: -5px;
+  border-bottom: 2px solid;
+  outline: none;
 }
 .mega-menu button.mega-menu-toggle:focus-visible:hover {
-  outline: dotted currentColor 3px;
-  outline-offset: -5px;
+  border-color: var(--brand-red);
 }
 @media (max-width: 60em) {
 

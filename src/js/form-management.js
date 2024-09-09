@@ -154,6 +154,16 @@ export function formManagement() {
 
       if (document.querySelectorAll("[aria-required]").length === document.querySelectorAll(".form__error[hidden]").length) {
         alert("Formular erfolgreich versandt")
+      } else {
+
+        let errorAmount = document.querySelectorAll('.form__error').length;
+
+        // Kommuniziere, dass Eingabefehler aufgetreten sind per Dokumententitel und Live Region
+        document.title = `${errorAmount} Fehler bei der Eingabe` + document.title;
+        document.querySelector('#filter-live-region').textContent = `${errorAmount} Fehler bei der Eingabe`;
+
+        // Finde das erste fehlerhafte Feld und fokussiere es
+        document.querySelector('input[aria-invalid="true"]').focus();
       }
     });
   });

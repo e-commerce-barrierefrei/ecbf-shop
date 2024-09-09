@@ -9,12 +9,11 @@
 <header class="header">
   <include src="partials/header.html"></include>
 </header>
-<main id="content" @mounted="whenMounted()">
+<main id="content" @mounted="whenMounted()" tabindex="-1">
   <div class="main-inner">
     <h1 class="page-title page-title--home">Dein Shop für alles Mögliche</h1>
 
     <include src="partials/carousel.html"></include>
-
 
     <include src="partials/produktliste.html"></include>
   </div>
