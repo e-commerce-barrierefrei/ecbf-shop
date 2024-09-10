@@ -74,6 +74,16 @@ const bigImageDialog = document.querySelector('#big-image');
     cartModal.showModal();
   }
 
+if (urlParams.get("debug") === "warenkorb-vorausgefuellt") {
+  setTimeout(() => {
+    document.getElementById('produktliste').querySelectorAll('button')[6].click();
+  }, 200);
+
+  setTimeout(() => {
+    document.getElementById('produktliste').querySelectorAll('button')[0].click();
+  }, 400);
+}
+
   if (urlParams.get("debug") === "cookiedialog") {
     cookieModal.showModal();
   }
