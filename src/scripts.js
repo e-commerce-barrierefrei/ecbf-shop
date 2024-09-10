@@ -81,6 +81,8 @@ if (urlParams.get("debug") === "warenkorb-vorausgefuellt") {
 
   setTimeout(() => {
     document.getElementById('produktliste').querySelectorAll('button')[0].click();
+
+    document.getElementById('order').focus();
   }, 400);
 }
 
