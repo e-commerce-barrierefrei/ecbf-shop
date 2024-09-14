@@ -110,7 +110,11 @@ document.addEventListener('keydown', function(e) {
   toggleAriaExpanded(document.querySelector('.account--widget__button'));
 
 
-if (document.getElementById("carousel")) {
+
+
+if (document.getElementById("carousel") && urlParams.get("debug") === "karussell-autostart") {
+  initCarousel(true);
+} else if (document.getElementById("carousel") && urlParams.get("debug") !== "karussell-autostart") {
   initCarousel();
 }
 
