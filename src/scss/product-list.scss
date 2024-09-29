@@ -49,12 +49,16 @@
     display: flex;
     justify-content: end;
     gap: 2rem;
-  }
-
-  &__label {
 
     @media (max-width: 40em) {
-      margin-block-end: .5rem;
+      display: block;
+    }
+  }
+
+  &__select {
+
+    @media (max-width: 40em) {
+      margin-block-start: .5rem;
     }
   }
 }
