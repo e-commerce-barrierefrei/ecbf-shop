@@ -55,7 +55,7 @@ const bigImageDialog = document.querySelector('#big-image');
   });
 
 
-if (document.querySelector(".xmas")) {
+if (document.querySelector(".festive-animation")) {
   animations();
 }
 
@@ -108,7 +108,6 @@ document.addEventListener('keydown', function(e) {
 
 // Mein-Konto-Ausklappbereich im Header
   toggleAriaExpanded(document.querySelector('.account--widget__button'));
-
 
 
 

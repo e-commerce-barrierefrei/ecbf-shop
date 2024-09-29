@@ -1,0 +1,287 @@
+.allows-animation {
+  .festive-animation-row:nth-child(odd) {
+    animation: snow 8s linear infinite;
+  }
+
+  .festive-animation-pine_branch {
+    animation: color 5s linear infinite;
+  }
+}
+
+.present-teaser {
+  width: 40rem;
+  left: 50%;
+  position: absolute;
+  transform: translate(-20rem, -16rem);
+  background-color: var(--brand-lightgrey);
+  top: 50%;
+  height: 32rem;
+  z-index: 10;
+  padding: 2rem;
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  @media (width <= 70rem) {
+    padding: 1rem;
+    max-width: 20rem;
+    max-height: 22rem;
+    transform: translate(-10rem, -11rem);
+  }
+
+  @media (width <= 26rem) {
+    max-width: 14rem;
+    max-height: 18rem;
+    transform: translate(-7rem, -6rem);
+  }
+}
+
+.present-teaser__headline {
+  margin: 0 0 1rem;
+  text-align: center;
+
+  @media (width <= 20rem) {
+    font-size: 70%;
+    margin: 0;
+  }
+}
+
+.present-teaser__image {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.present-teaser__link {
+  margin: .5rem 0 0;
+  display: block;
+  text-align: center;
+
+  @media (width <= 26rem) {
+    font-size: 80%;
+    margin: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+}
+
+
+.festive-color {
+  color: var(--brand-red);
+}
+
+.festive-animation__controls {
+  display: flex;
+  justify-content: end;
+}
+
+.festive-animation {
+  box-sizing: border-box;
+  height: 40rem;
+  overflow: hidden;
+  margin: 2rem 0 3rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 3rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to top, rgba(255,0,0,0), var(--brand-lightgrey));
+    z-index: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 3rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom, rgba(255,0,0,0), var(--brand-lightgrey));
+    z-index: 1;
+  }
+
+  @media (width <= 60rem) {
+    margin: 1.5rem 0;
+    height: 20rem;
+  }
+
+  .festive-animation-pine {
+    @media (width <= 60rem) {
+      display: none;
+    }
+  }
+
+  &-row {
+    position: absolute;
+    margin-block-start: -14.375em;
+
+    &:nth-child(1) {
+      left: 0;
+    }
+
+    &:nth-child(2) {
+      left: 4vw;
+    }
+
+    &:nth-child(3) {
+      left: 8vw;
+    }
+
+    &:nth-child(4) {
+      left: 12vw;
+    }
+
+    &:nth-child(5) {
+      left: 16vw;
+    }
+
+    &:nth-child(6) {
+      left: 20vw;
+    }
+
+    &:nth-child(7) {
+      left: 24vw;
+    }
+
+    &:nth-child(8) {
+      left: 28vw;
+    }
+
+    &:nth-child(9) {
+      left: 32vw;
+    }
+
+    &:nth-child(10) {
+      left: 36vw;
+    }
+
+    &:nth-child(11) {
+      left: 40vw;
+    }
+
+    &:nth-child(12) {
+      left: 44vw;
+    }
+
+    &:nth-child(13) {
+      left: 48vw;
+    }
+
+    &:nth-child(14) {
+      left: 52vw;
+    }
+
+    &:nth-child(15) {
+      left: 56vw;
+    }
+
+    &:nth-child(16) {
+      left: 60vw;
+    }
+
+    &:nth-child(17) {
+      left: 64vw;
+    }
+
+    &:nth-child(18) {
+      left: 68vw;
+    }
+
+    &:nth-child(19) {
+      left: 72vw;
+    }
+
+    &:nth-child(20) {
+      left: 76vw;
+    }
+
+    &:nth-child(21) {
+      left: 80vw;
+    }
+
+    &:nth-child(22) {
+      left: 84vw;
+    }
+
+    &:nth-child(23) {
+      left: 88vw;
+    }
+
+    &:nth-child(24) {
+      left: 92vw;
+    }
+
+    &:nth-child(25) {
+      left: 96vw;
+    }
+
+    &:nth-child(26) {
+      left: 100vw;
+    }
+
+    margin-inline-start: .75vw;
+  }
+
+  &-tree {
+    margin-block-end: 2vw;
+
+    &_branch {
+      animation: color 5s linear infinite;
+      width: 2vw;
+      height: 2vw;
+      border-right: 2px solid var(--brand-red);
+      border-bottom: 2px solid green;
+      margin: 5px;
+      transform: rotate(-135deg);
+
+      @media (width <= 60rem) {
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+      }
+
+      &:nth-child(even) {
+        margin-block-start: -10px;
+      }
+    }
+  }
+
+  &-pine {
+    margin-block-end: 2.75vw;
+
+    &_branch {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 1.5vw 2vw 1.5vw;
+      border-color: transparent transparent green transparent;
+
+      &:first-child {
+        border-bottom-color: var(--brand-red);
+        position: relative;
+        z-index: 10;
+      }
+
+      &:not(:first-child) {
+        margin-block-start: -10px;
+      }
+    }
+  }
+}
+
+@keyframes snow {
+  100% {
+    margin-block-start: -23px;
+  }
+}
+
+@keyframes color {
+  40%, 50% {
+    border-bottom-color: #90b573;
+  }
+}
