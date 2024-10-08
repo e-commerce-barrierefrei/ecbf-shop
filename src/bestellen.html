@@ -16,7 +16,7 @@
     <h1 class="page-title">Bestellen</h1>
     <div class="main-inner--order">
     <div>
-      <h2>Zusammenfassung</h2>
+      <h2>Produkte</h2>
       <table class="cart__table" tabindex="-1" ref="cart">
         <caption class="visually-hidden">
           <span>Warenkorb, Gesamtsumme </span>
@@ -88,7 +88,7 @@
 
       <form data-order method="post" class="form">
         <div>
-          <div class="box box--form">
+          <div class="box box--form data-input">
             <small class="form__required-label">* bedeutet: Notwendige Angaben</small>
             <div class="row">
 
@@ -112,7 +112,7 @@
                 </label>
 
                 <input type="radio" name="address.radiogroup.salutation" id="address.radiogroup.salutation.Other"
-                       value="Other" class="">
+                       value="Keine" class="" checked>
                 <label class="" for="address.radiogroup.salutation.Other">
                   Keine Angabe
                 </label>
@@ -193,34 +193,32 @@
             <h3>Rechnungsaddresse</h3>
 
           </div>
-          <div>
+          <div >
             <input type="checkbox" :checked="invoiceDataHidden" id="addressIsInvoiceAddress"
                    name="addressIsInvoiceAddress"
-                   value="1"
                    @click="invoiceDataHidden = !invoiceDataHidden">
             <label class="form__label" for="addressIsInvoiceAddress">
               Die Versandadresse entspricht der Rechnungsadresse
             </label>
-            <div v-show="!invoiceDataHidden">
-              <fieldset class="fieldset" aria-required="true" role="radiogroup" data-required-error="err1">
+            <div :hidden="invoiceDataHidden" :class="(invoiceDataHidden) ? undefined : 'data-input'">
+              <fieldset class="fieldset" :aria-required="(!invoiceDataHidden) ? 'true' : undefined" role="radiogroup" data-required-error="err1" >
                 <legend>
                   Anrede<em>*</em>
                 </legend>
 
-                <input type="radio" name="address.radiogroup.salutation" id="address-invoice.radiogroup.salutation.Mrs"
-                       value="Mrs" class="">
+                <input type="radio" name="address.radiogroup.salutation" id="address-invoice.radiogroup.salutation.Mrs" value="Mrs" disabled>
                 <label for="address-invoice.radiogroup.salutation.Mrs">
                   Frau
                 </label>
 
                 <input type="radio" name="address-invoice.radiogroup.salutation"
-                       id="address-invoice.radiogroup.salutation.Mr" value="Mr" class="">
+                       id="address-invoice.radiogroup.salutation.Mr" value="Mr" class="" disabled>
                 <label for="address-invoice.radiogroup.salutation.Mr">
                   Herr
                 </label>
 
                 <input type="radio" name="address-invoice.radiogroup.salutation"
-                       id="address-invoice.radiogroup.salutation.Other" value="Other" class="">
+                       id="address-invoice.radiogroup.salutation.Other" value="Other" class="" checked disabled>
                 <label class="" for="address-invoice.radiogroup.salutation.Other">
                   Keine Angabe
                 </label>
@@ -230,15 +228,15 @@
               <div class="form__input-box">
                 <label class="form__label" for="address-invoice.firstName">Vorname<em>*</em>
                 </label>
-                <input aria-required="true" data-required-error="err22" autocomplete="given-name" type="text"
-                       name="address-invoice.firstName" id="address-invoice.firstName">
+                <input :aria-required="(!invoiceDataHidden) ? 'true' : undefined" data-required-error="err22" autocomplete="given-name" type="text" value="Dies ist nur ein"
+                       name="address-invoice.firstName" id="address-invoice.firstName" disabled>
                 <p class="form__error" hidden id="err22">Bitte Vornamen angeben</p>
               </div>
               <div class="form__input-box">
                 <label class="form__label" for="address-invoice.lastName">Nachname<em>*</em>
                 </label>
-                <input aria-required="true" data-required-error="err23" type="text" name="address-invoice.lastName"
-                       id="address-invoice.lastName" autocomplete="family-name" value="">
+                <input :aria-required="(!invoiceDataHidden) ? 'true' : undefined" data-required-error="err23" type="text" name="address-invoice.lastName"
+                       id="address-invoice.lastName" autocomplete="family-name" value="Beispiel" disabled>
                 <p class="form__error" hidden id="err23">Bitte Nachnamen angeben</p>
               </div>
               <div class="row">
@@ -247,21 +245,21 @@
                   </label>
                   <input type="text" name="address-invoice.company" id="address-invoice.company"
                          autocomplete="organization"
-                         data-nudge="#nudgeCheckoutPersonalData-company-ng-maxlength" value="">
+                         data-nudge="#nudgeCheckoutPersonalData-company-ng-maxlength" value="für eine beliebige" disabled>
                 </div>
                 <div class="row">
                   <div class="form__input-box">
                     <label class="form__label" for="address-invoice.address1">Straße<em>*</em>
                     </label>
-                    <input type="text" aria-required="true" data-required-error="err24" name="address-invoice.address1"
-                           id="address-invoice.address1" autocomplete="address-level3">
+                    <input type="text" :aria-required="(!invoiceDataHidden) ? 'true' : undefined" data-required-error="err24" name="address-invoice.address1" value="Befüllung"
+                           id="address-invoice.address1" autocomplete="address-level3" disabled>
                     <p class="form__error" hidden id="err24">Bitte Straße angeben</p>
                   </div>
                   <div class="form__input-box">
                     <label class="form__label" for="address-invoice.address2">Nr.<em>*</em>
                     </label>
-                    <input type="text" aria-required="true" data-required-error="err25" name="address-invoice.address2"
-                           id="address-invoice.address2" value="">
+                    <input type="text" :aria-required="(!invoiceDataHidden) ? 'true' : undefined" data-required-error="err25" name="address-invoice.address2"
+                           id="address-invoice.address2" value="42" disabled>
                     <p class="form__error" hidden id="err25">Bitte Hausnummer angeben</p>
                   </div>
                 </div>
@@ -269,15 +267,15 @@
                   <div class="form__input-box">
                     <label class="form__label" for="address-invoice.zipCode">PLZ<em>*</em>
                     </label>
-                    <input type="text" aria-required="true" data-required-error="err26" name="address-invoice.zipCode"
-                           id="address-invoice.zipCode" autocomplete="postal-code" pattern="[0-9]*">
+                    <input type="text" :aria-required="(!invoiceDataHidden) ? 'true' : undefined" data-required-error="err26" name="address-invoice.zipCode" value="12345"
+                           id="address-invoice.zipCode" autocomplete="postal-code" pattern="[0-9]*" disabled>
                     <p class="form__error" hidden id="err26">Bitte Postleitzahl angeben</p>
                   </div>
                   <div class="form__input-box">
                     <label class="form__label" for="address-invoice.city">Ort<em>*</em>
                     </label>
-                    <input autocomplete="address-level2" aria-required="true" data-required-error="err27" type="text"
-                           name="address-invoice.city" id="address-invoice.city" value="">
+                    <input autocomplete="address-level2" :aria-required="(!invoiceDataHidden) ? 'true' : undefined" data-required-error="err27" type="text"
+                           name="address-invoice.city" id="address-invoice.city" value="mit Adressdaten" disabled>
                     <p class="form__error" hidden id="err27">Bitte Ort angeben</p>
                   </div>
                 </div>
@@ -285,9 +283,9 @@
                   <div class="form__input-box col-xs-12">
                     <label class="form__label" for="address-invoice.email">E-Mail-Adresse<em>*</em>
                     </label>
-                    <input aria-required="true" data-required-error="err28" data-email-syntax-error="err29" type="email"
-                           name="address-invoice.email" id="address-invoice.email" value="" maxlength="50"
-                           autocomplete="email">
+                    <input :aria-required="(!invoiceDataHidden) ? 'true' : undefined" data-required-error="err28" data-email-syntax-error="err29" type="email"
+                           name="address-invoice.email" id="address-invoice.email" value="foo@bar.tld" maxlength="50"
+                           autocomplete="email" disabled>
                     <p class="form__error" hidden id="err28">Bitte E-Mail-Adresse angeben</p>
                     <p class="form__error" hidden id="err29">Die E-Mail-Adresse wurde nicht im richtigen Format
                       eingegeben.</p>

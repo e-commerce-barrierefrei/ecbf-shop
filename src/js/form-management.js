@@ -46,12 +46,12 @@ export function formManagement() {
           passwordInput.setAttribute("type", "text");
           target.setAttribute("aria-pressed", "true");
 
-          liveRegion.textContent = "Password sichtbar";
+          liveRegion.textContent = "Password sichtdata-input";
         } else {
           passwordInput.setAttribute("type", "password");
           target.setAttribute("aria-pressed", "false");
 
-          liveRegion.textContent = "Password unsichtbar";
+          liveRegion.textContent = "Password unsichtdata-input";
         }
       });
     });
@@ -63,7 +63,7 @@ export function formManagement() {
       e.preventDefault();
 
       // requiredFields nicht cachen!
-      requiredFields = document.querySelectorAll("[aria-required='true']");
+      requiredFields = document.querySelectorAll(".data-input [aria-required='true']");
       emailFields = document.querySelectorAll("input[type='email']");
 
       // Loope durch alle Pflichtfelder
@@ -73,8 +73,8 @@ export function formManagement() {
        */
       requiredFields.forEach((requiredField) => {
 
-        // Ist "requiredField" ein Fieldset, in dem ein Input ausgewählt ist?
-        let requiredFieldsetisChecked = requiredField.tagName === "FIELDSET" && !requiredField.querySelector("input:checked");
+         // Ist "requiredField" ein Fieldset, in dem ein Input ausgewählt ist?
+        let requiredFieldsetisChecked = requiredField.tagName === "FIELDSET" && requiredField.value;
 
         // Erkenne nicht ausgefüllte oder nicht gecheckte Pflichtfelder oder Radiogroups in Fehlerzustand
         const fieldInputEmptyThoughRequired = (!requiredField.checked && requiredField.value === "") || !!requiredFieldsetisChecked;
@@ -89,7 +89,7 @@ export function formManagement() {
           // Assoziiere den Fehlerneldungstext
           requiredField.setAttribute("aria-describedby", idRefRequired);
 
-          // Macht die Fehlermeldungen auch visuell sichtbar
+          // Macht die Fehlermeldungen auch visuell sichtdata-input
           document.getElementById(idRefRequired).removeAttribute("hidden");
 
           // Feld ausgefüllt? Dann etwaigen Fehlerzustand auflösen:
@@ -152,18 +152,87 @@ export function formManagement() {
         });
       });
 
-      if (document.querySelectorAll("[aria-required]").length === document.querySelectorAll(".form__error[hidden]").length) {
-        alert("Formular erfolgreich versandt")
+      if (!document.querySelectorAll('.data-input .form__error:not([hidden])').length) {
+        window.location.href = 'zusammenfassung.html';
+
+        let address_salutation = document.querySelector('input[name="address.radiogroup.salutation"]:checked').value;
+        localStorage.setItem('address.salutation', address_salutation);
+
+        let address_firstName = document.getElementById('address.firstName').value;
+        localStorage.setItem('address.firstName', address_firstName);
+
+        let address_lastName = document.getElementById('address.lastName').value;
+        localStorage.setItem('address.lastName', address_lastName);
+
+        let address_company = document.getElementById('address.company').value;
+        localStorage.setItem('address.company', address_company);
+
+        let address_address1 = document.getElementById('address.address1').value;
+        localStorage.setItem('address.address1', address_address1);
+
+        let address_address2 = document.getElementById('address.address2').value;
+        localStorage.setItem('address.address2', address_address2);
+
+        let address_zipCode = document.getElementById('address.zipCode').value;
+        localStorage.setItem('address.zipCode', address_zipCode);
+
+        let address_city = document.getElementById('address.city').value;
+        localStorage.setItem('address.city', address_city);
+
+        let address_email = document.getElementById('address.email').value;
+        localStorage.setItem('address.email', address_email);
+
+        if (document.querySelector('input[name="addressIsInvoiceAddress"]:checked')) {
+          let addressIsInvoiceAddress = document.querySelector('input[name="addressIsInvoiceAddress"]:checked').value;
+
+          if (addressIsInvoiceAddress === "on") {
+            localStorage.setItem('addressIsInvoiceAddress', addressIsInvoiceAddress);
+          } else {
+            localStorage.setItem('addressIsInvoiceAddress', "off");
+          }
+        } else {
+          localStorage.removeItem("addressIsInvoiceAddress");
+        }
+
+        let address_invoice_salutation = document.querySelector('input[name="address-invoice.radiogroup.salutation"]:checked').value;
+        localStorage.setItem('address-invoice.salutation', address_invoice_salutation);
+
+        let address_invoice_firstName = document.getElementById('address-invoice.firstName').value;
+        localStorage.setItem('address-invoice.firstName', address_invoice_firstName);
+
+        let address_invoice_lastName = document.getElementById('address-invoice.lastName').value;
+        localStorage.setItem('address-invoice.lastName', address_invoice_lastName);
+
+        let address_invoice_company = document.getElementById('address-invoice.company').value;
+        localStorage.setItem('address-invoice.company', address_invoice_company);
+
+        let address_invoice_address1 = document.getElementById('address-invoice.address1').value;
+        localStorage.setItem('address-invoice.address1', address_invoice_address1);
+
+        let address_invoice_address2 = document.getElementById('address-invoice.address2').value;
+        localStorage.setItem('address-invoice.address2', address_invoice_address2);
+
+        let address_invoice_zipCode = document.getElementById('address-invoice.zipCode').value;
+        localStorage.setItem('address-invoice.zipCode', address_invoice_zipCode);
+
+        let address_invoice_city = document.getElementById('address-invoice.city').value;
+        localStorage.setItem('address-invoice.city', address_invoice_city);
+
+        let address_invoice_email = document.getElementById('address-invoice.email').value;
+        localStorage.setItem('address-invoice.email', address_invoice_email);
+
       } else {
 
-        let errorAmount = document.querySelectorAll('.form__error').length;
+        let errorAmount = document.querySelectorAll('.data-input .form__error:not([hidden])').length;
 
         // Kommuniziere, dass Eingabefehler aufgetreten sind per Dokumententitel und Live Region
         document.title = `${errorAmount} Fehler bei der Eingabe` + document.title;
         document.querySelector('#filter-live-region').textContent = `${errorAmount} Fehler bei der Eingabe`;
 
         // Finde das erste fehlerhafte Feld und fokussiere es
-        document.querySelector('input[aria-invalid="true"]').focus();
+        if ( document.querySelector('input[aria-invalid="true"]')) {
+          document.querySelector('input[aria-invalid="true"]').focus();
+        }
       }
     });
   });

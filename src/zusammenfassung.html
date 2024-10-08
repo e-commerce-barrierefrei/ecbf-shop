@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="de">
+<include src="partials/html-head.html">
+  {
+  "title": "Zusammenfassung der Bestellung - ECBF.shop"
+  }
+</include>
+<body>
+<header class="header">
+
+  <include src="partials/header.html"></include>
+
+</header>
+<main id="content" @mounted="whenMounted()">
+  <div class="main-inner ">
+    <h1 class="page-title">Bestellen</h1>
+    <div class="main-inner--order">
+    <div>
+      <h2>Produkte</h2>
+      <table class="cart__table" tabindex="-1" ref="cart">
+        <caption class="visually-hidden">
+          <span>Warenkorb, Gesamtsumme </span>
+          <span data-cart-caption-total></span>
+          <span> Euro</span>
+        </caption>
+        <thead>
+        <tr>
+          <th><span class="visually-hidden">Produkt</span></th>
+          <th><span class="visually-hidden">Menge</span></th>
+          <th><span class="visually-hidden">Optionen</span></th>
+          <th><span class="visually-hidden">Warenkorb</span></th>
+          <th><span class="visually-hidden">Preis</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="cartItem in cart">
+          <td class="product-area">
+            <strong><a class="cart__product-link" href="produkt.html">{{cartItem.name}}</a></strong>
+            <img class="cart__product-image" :src="cartItem.img_url" :alt="cartItem.img_alt" />
+          </td>
+          <td class="amount-area"><label :for="'cart-produkt' + cartItem.id">Menge: </label><input :id="'cart-produkt' + cartItem.id" class="cart__product-amount" :value="cartItem.amount" type="number" min="1" max="20"
+                                                                                                   @change="updateItemPrice(cartItem.id)"></td>
+          <td class="options-area">
+            <div class="cart__giftwrap">
+              <label  :for="'giftwrap-' + cartItem.id" class="cart__giftwrap-label">
+                <input :id="'giftwrap-' + cartItem.id" type="checkbox" @change="toggleGiftWrap(cartItem.id)"
+                       :checked="hasGiftwrap(cartItem.id) ? true: undefined"><div>Geschenk<span class="cart__packaging-string">verpackung</span><br> (€ {{giftwrapPrice /
+                100}})</div></label>
+
+            </div>
+          </td>
+          <td class="remove-area">
+            <div >
+              <button @click="toggleCartItem(cartItem.id)" class="cart__remove-item-button" type="button">
+                <span class="visually-hidden">Aus Warenkorb entfernen</span>
+              </button>
+            </div>
+          </td>
+          <td class="price-area"><strong>€&nbsp;{{ (getLocalTotal(cartItem) / 100).toFixed(2) }}</strong></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="5">Gesamtsumme € {{ (sum / 100).toFixed(2) }}</td>
+        </tr>
+        </tfoot>
+      </table>
+
+
+    </div>
+    <div>
+
+      <h2>Zusammenfassung der Daten</h2>
+
+      <h3>Rechnungsadresse</h3>
+      <div class="data">
+        <dl>
+          <dt>Anrede:</dt>
+          <dd>{{ localStorage.getItem('address.salutation') }}</dd>
+          <dt>Vorname:</dt>
+          <dd>{{ localStorage.getItem('address.firstName') }}</dd>
+          <dt>Nachname:</dt>
+          <dd>{{ localStorage.getItem('address.lastName') }}</dd>
+          <dt>Organisation:</dt>
+          <dd>{{ (localStorage.getItem('address.company')) ? localStorage.getItem('address.company') : '-' }}</dd>
+          <dt>Straße</dt>
+          <dd>{{ localStorage.getItem('address.address1') }}</dd>
+          <dt>Hausnummer</dt>
+          <dd>{{ localStorage.getItem('address.adress2') }}</dd>
+          <dt>PLZ</dt>
+          <dd>{{ localStorage.getItem('address.zipCode') }}</dd>
+          <dt>Ort</dt>
+          <dd>{{ localStorage.getItem('address.city') }}</dd>
+          <dt>E-Mail</dt>
+          <dd>{{ localStorage.getItem('address.email') }}</dd>
+        </dl>
+
+        <p v-show="localStorage.getItem('addressIsInvoiceAddress') === 'on'">
+        Die Rechnungsadresse entspricht der Versandadresse
+        </p>
+        <div v-show="localStorage.getItem('addressIsInvoiceAddress') === 'off' || !localStorage.getItem('addressIsInvoiceAddress')">
+          <h3>Abweichende Versandadresse</h3>
+          <dl>
+            <dt>Anrede:</dt>
+            <dd>Keine</dd>
+            <dt>Vorname:</dt>
+            <dd>Dies ist nur ein</dd>
+            <dt>Nachname:</dt>
+            <dd>Beispiel</dd>
+            <dt>Organisation:</dt>
+            <dd>für eine beliebige</dd>
+            <dt>Straße</dt>
+            <dd>Befüllung</dd>
+            <dt>Hausnummer</dt>
+            <dd>42</dd>
+            <dt>PLZ</dt>
+            <dd>12345</dd>
+            <dt>Ort</dt>
+            <dd>mit Adressdaten</dd>
+            <dt>E-Mail</dt>
+            <dd>foo@bar.tld</dd>
+          </dl>
+        </div>
+      </p>
+
+
+      <button @click="alert('Danke, die Bestellung ist final aufgegeben.')" class="button">Die Daten sind richtig, ich will bestellen</button>
+
+
+
+    </div>
+  </div>
+  </div>
+</main>
+<aside>
+
+</aside>
+<include src="partials/html-footer.html"></include>
+
