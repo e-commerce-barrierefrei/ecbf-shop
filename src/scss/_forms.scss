@@ -16,8 +16,8 @@
     position: relative;
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-areas: "label input"
-                       "error error";
+    grid-template-areas:  "error error"
+                          "label input";
     margin-block-start: 1rem;
 
     @media (max-width: 40em) {
