@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+<include src="partials/html-head.html">
+  {
+  "title": "ECBF.shop – Dein Shop für alles Mögliche... für Weihnachten!"
+  }
+</include>
+<body>
+<header class="header">
+  <include src="partials/header.html"></include>
+</header>
+<main id="content" @mounted="whenMounted()" tabindex="-1">
+  <div class="main-inner">
+    <h1 class="page-title page-title--home">Dein Shop für alles Mögliche... <span class="festive-color">auch für die Feiertage!</span></h1>
+
+    <include src="partials/festivesale-teaser.html"></include>
+
+    <include src="partials/produktliste.html"></include>
+  </div>
+</main>
+<include src="partials/html-footer.html"></include>
+

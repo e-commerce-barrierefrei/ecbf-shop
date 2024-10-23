@@ -292,17 +292,17 @@ var myCarousel = (function() {
 });
 
 
-export function initCarousel() {
+export function initCarousel(carouselAutostart) {
+
     let animate = false;
     let startAnimated = false;
-    let urlParams = new URLSearchParams(window.location.search);
+   let c = new myCarousel();
 
-    if (urlParams.get("debug") === "auto-carousel") {
+    if (carouselAutostart) {
         animate = true;
         startAnimated = true;
     }
 
-    var c = new myCarousel();
     c.init({
         id: 'carousel',
         slidenav: true,

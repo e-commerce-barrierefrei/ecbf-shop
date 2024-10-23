@@ -6,6 +6,8 @@ import { initCarousel } from "./js/carousel";
 import { sorting } from "./js/sorting";
 import { formManagement } from "./js/form-management";
 import { cart } from "./js/cart";
+import { animations } from "./js/animations";
+
 
 // eslint-disable-next-line
 const mainSearchToggle = document.getElementById("main-search-toggle");
@@ -53,7 +55,9 @@ const bigImageDialog = document.querySelector('#big-image');
   });
 
 
-
+if (document.querySelector(".festive-animation")) {
+  animations();
+}
 
   // Debug
   if (urlParams.get("debug") === "hauptnav") {
@@ -106,7 +110,10 @@ document.addEventListener('keydown', function(e) {
   toggleAriaExpanded(document.querySelector('.account--widget__button'));
 
 
-if (document.getElementById("carousel")) {
+
+if (document.getElementById("carousel") && urlParams.get("debug") === "karussell-autostart") {
+  initCarousel(true);
+} else if (document.getElementById("carousel") && urlParams.get("debug") !== "karussell-autostart") {
   initCarousel();
 }
 

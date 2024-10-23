@@ -31,16 +31,21 @@
 
         <include src="partials/5star.html"></include>
 
-        <div class="product__size-switcher">
-        <label for="product-size"> Größe:</label>
-        <select id="product-size">
-          <option value="s">S</option>
-          <option value="m">M</option>
-          <option value="l">L</option>
-          <option value="xl">XL</option>
-          <option value="xxl">XXL</option>
-        </select>
-        </div>
+        <fieldset class="product-variations--size">
+        <legend><h2 class="product-variations--size__heading">Größe</h2></legend>
+        <div class="product-variations--size__item"><input type="radio" id="product-size-s" name="size" value="s" /><label for="product-size-s">S</label></div>
+        <div class="product-variations--size__item"><input checked type="radio" id="product-size-m" name="size" value="m" /><label for="product-size-m">M</label></div>
+        <div class="product-variations--size__item"><input type="radio" id="product-size-l" name="size" value="l" /><label for="product-size-l">L</label></div>
+        <div class="product-variations--size__item"><input type="radio" id="product-size-xl" name="size" value="xl" /><label for="product-size-xl">XL</label></div>
+        <div class="product-variations--size__item"><input type="radio" id="product-size-xxl" name="size" value="xxl" /><label for="product-size-xxl">XXL</label></div>
+        </fieldset>
+
+        <h2 class="product-variations--color__heading">Variationen</h2>
+        <ul class="product-variations--color">
+          <li><a href="#" class="product-variations--color__item"><img src="https://marcus-herrmann.com/dateien/ecbf/shirt-rot.jpg" alt="Rot"></a></li>
+          <li><a href="#" class="product-variations--color__item"><img src="https://marcus-herrmann.com/dateien/ecbf/shirt-lila.jpg" alt="Lila"></a></li>
+          <li><a href="#" class="product-variations--color__item"><img src="https://marcus-herrmann.com/dateien/ecbf/shirt-grün.jpg" alt="Grün"></a></li>
+        </ul>
 
         <details class="product__disclosure">
           <summary>Produkteigenschaften</summary>
