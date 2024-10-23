@@ -120,6 +120,7 @@
   &-row {
     position: absolute;
     margin-block-start: -14.375em;
+    margin-inline-start: .75vw;
 
     &:nth-child(1) {
       left: 0;
@@ -224,8 +225,6 @@
     &:nth-child(26) {
       left: 100vw;
     }
-
-    margin-inline-start: .75vw;
   }
 
   &-tree {
