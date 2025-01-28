@@ -189,9 +189,11 @@ window.addEventListener('load', function(event) {
       else {
         // desktop mode
         let bu1 = menu.querySelector('button.mega-menu-toggle[aria-expanded="true"]');
+        let parentButton = event.target.closest('.mega-sub-menu').parentElement.querySelector('.mega-menu-toggle');
 
         bu1?.setAttribute('aria-expanded','false');
         bu1?.focus();
+        parentButton?.focus();
 
         menu.setAttribute('data-hover-open', 'false');
         menu.setAttribute('data-menu-state', 'closed');
